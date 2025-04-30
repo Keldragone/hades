@@ -1,33 +1,43 @@
-import { BoonState } from './logic/boon';
+import { useState } from 'react';
+
+import { getAllGods } from './data/god';
 
 import BoonLine from './BoonLine';
 import BoonIcon from './BoonIcon';
 
 import './App.css'
-import { BoonData } from './data/boon';
+import { getSingleGodBoonIds } from './data/boon';
 
-const boonState = new BoonState();
+const boonClicked = (boonId: string): void => {
+    console.log(boonId);
+};
 
 function App() {
-  return (
-    <div className="App">
-      <div className="App_Sidebar">
-        <BoonIcon boonId="Dionysus_Attack" iconSizePx={120} />
-        guh
-        <BoonLine boonIds={boonState.collectedBoonIds} collectedBoonIds={[]} />
-        <p>Collected Boon IDs: {boonState.collectedBoonIds.join(' | ')}</p>
+    const [ collectedBoonIds, setCollectedBoonIds ] = useState([]);
 
-      </div>
-      <div className="App_Content">
-        {["Artemis", "Dionysus"].map(god => (
-          <BoonLine
-            boonIds={Object.entries(BoonData).filter(([key, value]) => value.god === god).map(([key, value]) => key)}
-            collectedBoonIds={boonState.collectedBoonIds}
-          />
-        ))}
-      </div>
-    </div>
-  )
+    return (
+        <div className="App">
+        <div className="App_Sidebar">
+            <BoonIcon boonId="Dionysus_Attack" iconSizePx={120} />
+            <BoonIcon boonId="Dionysus_Special" iconSizePx={120} />
+            <BoonIcon boonId="Dionysus_Cast" iconSizePx={120} />
+            <BoonIcon boonId="Dionysus_Dash" iconSizePx={120} />
+            <BoonIcon boonId="Dionysus_Aid" iconSizePx={120} />
+            <BoonLine boonIds={collectedBoonIds} collectedBoonIds={[]} />
+            <p>Collected Boon IDs: {collectedBoonIds.join(' | ')}</p>
+
+        </div>
+        <div className="App_Content">
+            {getAllGods().map(god => (
+                <BoonLine
+                    boonIds={getSingleGodBoonIds(god)}
+                    collectedBoonIds={collectedBoonIds}
+                    onClick={boonClicked}
+                />
+            ))}
+        </div>
+        </div>
+    )
 }
 
 export default App

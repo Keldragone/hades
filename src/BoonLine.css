@@ -4,16 +4,27 @@
   height: 50px;
   justify-content: center;
   align-items: center;
+
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 }
 
-.BoonLine_Item:hover {
-  background-color: red;
+.BoonLine_Item_iconHighlight {
+  display: block;
+  position: absolute;
+  width: 50px;
+  z-index: 50;
+  visibility: hidden;
+}
+
+.BoonLine_Item:hover .BoonLine_Item_iconHighlight {
+  visibility: visible;
 }
 
 .BoonLine_Item_icon {
   display: block;
   position: absolute;
   width: 50px;
+  z-index: 49;
 }
 
 .BoonLine_Item_iconBorder {
