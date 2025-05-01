@@ -1,16 +1,17 @@
 import { God } from "../god";
+
 import { BoonData_Aphrodite } from "./Aphrodite";
 import { BoonData_Ares } from "./Ares";
-
 import { BoonData_Artemis } from "./Artemis";
 import { BoonData_Athena } from "./Athena";
 import { BoonData_Demeter } from "./Demeter";
 import { BoonData_Dionysus } from "./Dionysus";
 import { BoonData_Duo } from "./Duo";
+import { BoonData_Hermes } from "./Hermes";
 import { BoonData_Poseidon } from "./Poseidon";
+import { BoonData_Zeus } from "./Zeus";
 
 import { BoonInfo } from "./types";
-import { BoonData_Zeus } from "./Zeus";
 
 export const BoonData: { [ id: string ]: BoonInfo } = {
     ...BoonData_Aphrodite,
@@ -19,6 +20,7 @@ export const BoonData: { [ id: string ]: BoonInfo } = {
     ...BoonData_Athena,
     ...BoonData_Demeter,
     ...BoonData_Dionysus,
+    ...BoonData_Hermes,
     ...BoonData_Poseidon,
     ...BoonData_Zeus,
     ...BoonData_Duo,
@@ -43,6 +45,9 @@ const getBoonData = (god: God) => {
     else if (god === God.Dionysus) {
         return BoonData_Dionysus;
     }
+    else if (god === God.Hermes) {
+        return BoonData_Hermes;
+    }
     else if (god === God.Poseidon) {
         return BoonData_Poseidon;
     }
@@ -65,5 +70,13 @@ export const getSingleGodBoons = (god: God) => {
 export const getSingleGodBoonIds = (god: God) => {
     const boonData = getBoonData(god);
 
+    console.log(boonData);
+
+    return Object.keys(boonData);
+};
+
+export const getDuoBoonIds = () => {
+    const boonData = BoonData_Duo;
+    
     return Object.keys(boonData);
 };

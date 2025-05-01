@@ -1,6 +1,7 @@
 import { BoonInfo } from "./types";
 import { doesNotHaveAnyOf, hasAtLeastOneOf, hasAtLeastXOf, satisfiesAllOf } from "./requirementsTests";
 
+import { BoonRarityType } from "../boonRarityType";
 import { BoonSlot } from "../boonSlot";
 import { God } from "../god";
 
@@ -95,7 +96,7 @@ export const BoonData_Artemis: { [ id: string ]: BoonInfo } = {
         name: "Fully Loaded",
         description: "You gain extra [Cast] for your Cast.",
         god: God.Artemis,
-        rarityType: "Legendary",
+        rarityType: BoonRarityType.Legendary,
         requirementTest: hasAtLeastXOf(2, [ "Artemis_ExitWounds", "Artemis_PressurePoints", "Artemis_SupportFire" ]),
         iconPath: "./BoonIcons/Artemis/Artemis_Legendary.webp",
     },

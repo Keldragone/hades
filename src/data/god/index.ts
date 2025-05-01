@@ -1,5 +1,5 @@
 export enum God {
-    Aphrodite, Ares, Artemis, Athena, Demeter, Dionysus, Poseidon, Zeus
+    Aphrodite, Ares, Artemis, Athena, Demeter, Dionysus, Hermes, Poseidon, Zeus
 };
 
 export const getAllGods = (): Array<God> => {

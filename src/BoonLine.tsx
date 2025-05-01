@@ -30,7 +30,7 @@ const BoonLine = (props) => {
 
   const iconSizePx = 80;
   const iconSpacingPx = 4;
-  const rowSpacingPx = 16;
+  const rowSpacingPx = 0;
 
   return (
     <div className="BoonLine" style={{ position: 'relative', height: iconSizePx + 2 * 0.707 * iconSpacingPx + rowSpacingPx }}>

@@ -1,6 +1,7 @@
 import { hasAtLeastOneOf, satisfiesAllOf } from "./requirementsTests";
 import { BoonInfo } from "./types";
 
+import { BoonRarityType } from "../boonRarityType";
 import { BoonSlot } from "../boonSlot";
 import { God } from "../god";
 
@@ -96,7 +97,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         name: "Black Out",
         description: "Hangover-afflicted foes take bonus damage in Festive Fog.",
         god: God.Dionysus,
-        rarityType: "Legendary",
+        rarityType: BoonRarityType.Legendary,
         requirementTest: satisfiesAllOf([
             hasAtLeastOneOf([ "Dionysus_Attack", "Dionysus_Special", "Dionysus_Dash", "Dionysus_Aid" ]),
             hasAtLeastOneOf([ "Dionysus_Cast" ]),

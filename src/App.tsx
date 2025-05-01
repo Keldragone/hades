@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import { getAllGods } from './data/god';
+import { God, getAllGods } from './data/god';
 
 import BoonLine from './BoonLine';
 import BoonIcon from './BoonIcon';
 
 import './App.css'
-import { getSingleGodBoonIds } from './data/boon';
+import { getSingleGodBoonIds, getDuoBoonIds } from './data/boon';
 
 const boonClicked = (boonId: string): void => {
     console.log(boonId);
@@ -35,6 +35,16 @@ function App() {
                     onClick={boonClicked}
                 />
             ))}
+            <BoonLine
+                boonIds={getSingleGodBoonIds(God.Hermes)}
+                collectedBoonIds={collectedBoonIds}
+                onClick={boonClicked}
+            />
+            <BoonLine
+                boonIds={getDuoBoonIds()}
+                collectedBoonIds={collectedBoonIds}
+                onClick={boonClicked}
+            />
         </div>
         </div>
     )
