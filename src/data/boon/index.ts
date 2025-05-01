@@ -70,8 +70,6 @@ export const getSingleGodBoons = (god: God) => {
 export const getSingleGodBoonIds = (god: God) => {
     const boonData = getBoonData(god);
 
-    console.log(boonData);
-
     return Object.keys(boonData);
 };
 
