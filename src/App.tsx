@@ -10,58 +10,27 @@ import './App.css'
 import { getSingleGodBoonIds, getDuoBoonIds } from './data/boon';
 import { getAllKeepsakes } from './data/keepsake';
 import { getAllMirrorTalents } from './data/mirror';
+import { Aspect_Rail, getWeaponFromId, Weapon } from './data/weapon';
+import { getHammersForWeapon } from './data/DaedalusHammer';
 
 const boonClicked = (boonId: string): void => {
     console.log(boonId);
 };
 
-const App_Weapon = () => {
-    const weapons = {
-        Sword: {
-            id: 'Sword',
-            name: 'Stygian Blade',
-            loreName: 'Stygius',
-            aspects: [ 'Zagreus', 'Nemesis', 'Poseidon', 'Arthur' ],
-        },
-        Spear: {
-            id: 'Spear',
-            name: 'Eternal Spear',
-            loreName: 'Varatha',
-            aspects: [ 'Zagreus', 'Achilles', 'Hades', 'Guan Yu' ],
-        },
-        Shield: {
-            id: 'Shield',
-            name: 'Shield of Chaos',
-            loreName: 'Aegis',
-            aspects: [ 'Zagreus', 'Chaos', 'Zeus', 'Beowulf' ],
-        },
-        Bow: {
-            id: 'Bow',
-            name: 'Heart-Seeking Bow',
-            loreName: 'Coronacht',
-            aspects: [ 'Zagreus', 'Chiron', 'Hera', 'Rama' ],
-        },
-        Fists: {
-            id: 'Fists',
-            name: 'Twin Fists',
-            loreName: 'Malphon',
-            aspects: [ 'Zagreus', 'Talos', 'Demeter', 'Gilgamesh' ],
-        },
-        Rail: {
-            id: 'Rail',
-            name: 'Adamant Rail',
-            loreName: 'Exagryph',
-            aspects: [ 'Zagreus', 'Eris', 'Hestia', 'Lucifer' ],
-        },
-    }
-
-    const chosenWeaponId = 'Rail';
-    const chosenAspectId = 1;
-
-    const chosenWeapon = weapons[chosenWeaponId];
+const App_Weapon = (props) => {
+    const { chosenWeaponId, chosenAspectId } = props;
+    
+    const chosenWeapon = getWeaponFromId(chosenWeaponId);
+    const chosenAspect = chosenWeapon.aspects.find(x => x.id === chosenAspectId);
 
     return (
-        <h2>{chosenWeapon.name}, Aspect of {chosenWeapon.aspects[chosenAspectId]}</h2>
+        <div className="App_Weapon">
+            <img className="App_Weapon_Icon" src={chosenAspect?.iconPath} />
+            <div className="App_Weapon_Right">
+                <div className="App_Weapon_Name">{chosenWeapon.name}</div>
+                <div className="App_Weapon_Aspect">Aspect of {chosenAspect.name}</div>
+            </div>
+        </div>
     )    
 };
 
@@ -73,7 +42,9 @@ const App_Keepsakes = () => {
     const chosenKeepsake = keepsakes.find(keepsake => keepsake.id === chosenKeepsakeId);
 
     return (
-        <h2>Keepsake: {chosenKeepsake?.name} <img style={{ width: 32 }} src={chosenKeepsake?.iconPath}></img></h2>
+        <div className="App_Keepsake">
+            <img className="App_Keepsake_Icon" src={chosenKeepsake?.iconPath} />
+        </div>
     )    
 };
 
@@ -83,8 +54,7 @@ const App_MirrorTalents = () => {
     const talentConfig = [1, 1, 2, 1, 1, 2, 1, 1, 2, 0, 0, 0];
 
     return (
-        <>
-            <h2>Mirror talents</h2>
+        <div className="App_MirrorTalents">
             {talentLines.map((talentLine, talentLineIndex) => {
                 if (talentConfig[talentLineIndex] === 1) {
                     return <p key={talentLineIndex}><b>{talentLine[0].name}</b> - {talentLine[1].name}</p>
@@ -95,11 +65,14 @@ const App_MirrorTalents = () => {
                 
                 return <p key={talentLineIndex}>{talentLine[0].name} - {talentLine[1].name}</p>
             })}
-        </>
+        </div>
     );
 };
 
 const App = () => {
+    const chosenWeaponId = Weapon.Rail;
+    const chosenAspectId = Aspect_Rail.Eris;
+
     const [ collectedBoonIds, setCollectedBoonIds ] = useState([]);
 
     return (
@@ -115,12 +88,20 @@ const App = () => {
 
         </div>
         <div className="App_Content">
-            <App_Weapon />
-            <App_Keepsakes />
-            <App_MirrorTalents />
+            <div className="App_TopBar">
+                <App_Weapon chosenWeaponId={chosenWeaponId} chosenAspectId={chosenAspectId} />
+                <App_Keepsakes />
+                <App_MirrorTalents />
+            </div>
+
+            <h2>Daedalus Hammers</h2>
+            <div>
+                {getHammersForWeapon(chosenWeaponId, chosenAspectId).map(hammer => (
+                    <span><img style={{ width: 24 }} src={hammer.iconPath} /> {hammer.name} - </span>
+                ))}
+            </div>
             <h2>Collected boons</h2>
             <h2>Boon Dictionary</h2>
-
             {getAllGods().map(god => (
                 <BoonLine
                     boonIds={getSingleGodBoonIds(god)}

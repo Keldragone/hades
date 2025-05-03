@@ -13,3 +13,67 @@
 .App_Content {
   padding: 32px;
 }
+
+.App_TopBar {
+  display: flex;
+  flex-direction: row;
+}
+
+.App_Weapon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background-color: #111111;
+
+  padding: 0 16px;
+}
+
+.App_Weapon_Icon {
+  width: 64px;
+}
+
+.App_Weapon_Right {
+  display: flex;
+  flex-direction: column;
+  padding-left: 8px;
+}
+
+.App_Weapon_Name {
+  font-size: 1.35em;
+  font-weight: bold;
+  line-height: 1.35em;
+}
+
+.App_Weapon_Aspect {
+  font-size: 1em;
+  line-height: 1em;
+}
+
+.App_Keepsake {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background-color: #111111;
+
+  padding: 0 16px;
+
+  margin-left: 8px;
+}
+
+.App_Keepsake_Icon {
+  width: 32px;
+}
+
+.App_MirrorTalents {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background-color: #111111;
+
+  padding: 0 16px;
+
+  margin-left: 8px;
+}
