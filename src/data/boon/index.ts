@@ -1,4 +1,5 @@
 import { God } from "../god";
+import { RunState } from "../runState";
 
 import { BoonData_Aphrodite } from "./Aphrodite";
 import { BoonData_Ares } from "./Ares";
@@ -77,4 +78,16 @@ export const getDuoBoonIds = () => {
     const boonData = BoonData_Duo;
     
     return Object.keys(boonData);
+};
+
+export const getBoonLibrary = (runState: RunState) => {
+    const boonData = Object.values(BoonData);
+
+    return boonData.filter(boon => {
+        if (boon.testRunAvailability !== undefined) {
+            return boon.testRunAvailability(runState);
+        }
+
+        return true;
+    });
 };

@@ -1,11 +1,11 @@
-import { Aspect_Fists } from "../weapon";
+import { Aspect } from "../weapon";
 
 export const DaedalusHammers_Fists = [
     {
         id: 'BreachingCross',
         name: 'Breaching Cross',
         description: 'Your Dash-Strike pierces foes and deals +900% damage to Armor.',
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Talos, Aspect_Fists.Demeter, Aspect_Fists.Gilgamesh ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Talos, Aspect.Fists_Demeter, Aspect.Fists_Gilgamesh ],
         iconPath: './Icons/DaedalusHammer/Fists/BreachingCross.webp',
     },
     {
@@ -16,7 +16,7 @@ export const DaedalusHammers_Fists = [
             // Can't be combined with Heavy Knuckle.
             // Can't be taken with Gilgamesh.
         },
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Talos, Aspect_Fists.Demeter ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Talos, Aspect.Fists_Demeter ],
         iconPath: './Icons/DaedalusHammer/Fists/RollingKnuckle.webp',
     },
     {
@@ -26,21 +26,21 @@ export const DaedalusHammers_Fists = [
         availabilityTest: () => {
             // Can't be taken with Gilgamesh.
         },
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Talos, Aspect_Fists.Demeter ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Talos, Aspect.Fists_Demeter ],
         iconPath: './Icons/DaedalusHammer/Fists/LongKnuckle.webp',
     },
     {
         id: 'DrainingCutter',
         name: 'Draining Cutter',
         description: 'Whenever your Special slays foes, restore 2% [Health].',
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Talos, Aspect_Fists.Demeter, Aspect_Fists.Gilgamesh ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Talos, Aspect.Fists_Demeter, Aspect.Fists_Gilgamesh ],
         iconPath: './Icons/DaedalusHammer/Fists/DrainingCutter.webp',
     },
     {
         id: 'ConcentratedKnuckle',
         name: 'Concentrated Knuckle',
         description: 'Your Attack deals +5 base damage for each uninterrupted hit to a foe.',
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Talos, Aspect_Fists.Demeter, Aspect_Fists.Gilgamesh ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Talos, Aspect.Fists_Demeter, Aspect.Fists_Gilgamesh ],
         iconPath: './Icons/DaedalusHammer/Fists/ConcentratedKnuckle.webp',
     },
     {
@@ -50,7 +50,7 @@ export const DaedalusHammers_Fists = [
         availabilityTest: () => {
             // Can't be combined with Kinetic Launcher.
         },
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Talos, Aspect_Fists.Demeter, Aspect_Fists.Gilgamesh ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Talos, Aspect.Fists_Demeter, Aspect.Fists_Gilgamesh ],
         iconPath: './Icons/DaedalusHammer/Fists/ExplosiveUpper.webp',
     },
     {
@@ -61,7 +61,7 @@ export const DaedalusHammers_Fists = [
             // Can't be combined with Rush Kick or Kinetic Launcher.
             // Can't be taken with Talos.
         },
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Demeter, Aspect_Fists.Gilgamesh ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Demeter, Aspect.Fists_Gilgamesh ],
         iconPath: './Icons/DaedalusHammer/Fists/FlyingCutter.webp',
     },
     {
@@ -72,7 +72,7 @@ export const DaedalusHammers_Fists = [
             // Can't be combined with Flying Cutter or Kinetic Launcher.
             // Can't be taken with Talos.
         },
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Demeter, Aspect_Fists.Gilgamesh ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Demeter, Aspect.Fists_Gilgamesh ],
         iconPath: './Icons/DaedalusHammer/Fists/RushKick.webp',
     },
     {
@@ -83,7 +83,7 @@ export const DaedalusHammers_Fists = [
             // Can't be combined with Kinetic Launcher.
             // Can't be taken with Demeter.
         },
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Talos, Aspect_Fists.Gilgamesh ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Talos, Aspect.Fists_Gilgamesh ],
         iconPath: './Icons/DaedalusHammer/Fists/QuakeCutter.webp',
     },
     {
@@ -94,7 +94,7 @@ export const DaedalusHammers_Fists = [
             // Can't be combined with Rush Kick, Flying Cutter, Explosive Upper, or Quake Cutter.
             // Can't be taken with Talos or Gilgamesh.
         },
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Demeter ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Demeter ],
         iconPath: './Icons/DaedalusHammer/Fists/KineticLauncher.webp',
     },
     {
@@ -105,14 +105,14 @@ export const DaedalusHammers_Fists = [
             // Can't be combined with Rolling Knuckle.
             // Can't be taken with Gilgamesh.
         },
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Talos, Aspect_Fists.Demeter ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Talos, Aspect.Fists_Demeter ],
         iconPath: './Icons/DaedalusHammer/Fists/HeavyKnuckle.webp',
     },
     {
         id: 'ColossusKnuckle',
         name: 'Colossus Knuckle',
         description: 'While using your Attack or Special, you are Sturdy.',
-        aspects: [ Aspect_Fists.Zagreus, Aspect_Fists.Talos, Aspect_Fists.Demeter, Aspect_Fists.Gilgamesh ],
+        aspects: [ Aspect.Fists_Zagreus, Aspect.Fists_Talos, Aspect.Fists_Demeter, Aspect.Fists_Gilgamesh ],
         iconPath: './Icons/DaedalusHammer/Fists/ColossusKnuckle.webp',
     },
     {
@@ -122,7 +122,7 @@ export const DaedalusHammers_Fists = [
         availabilityTest: () => {
             // Can't ONLY be taken with Gilgamesh.
         },
-        aspects: [ Aspect_Fists.Gilgamesh ],
+        aspects: [ Aspect.Fists_Gilgamesh ],
         iconPath: './Icons/DaedalusHammer/Fists/RendingClaws.webp',
     },
 ]

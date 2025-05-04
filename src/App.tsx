@@ -2,21 +2,17 @@ import { useMemo, useState } from 'react';
 
 import { God, getAllGods } from './data/god';
 
-
 import BoonLine from './BoonLine';
 import BoonIcon from './BoonIcon';
 
 import './App.css'
-import { getSingleGodBoonIds, getDuoBoonIds } from './data/boon';
+import { getSingleGodBoonIds, getDuoBoonIds, getBoonLibrary } from './data/boon';
 import { getAllKeepsakes } from './data/keepsake';
 import { getAllMirrorTalents } from './data/mirror';
-import { Aspect_Rail, getWeaponFromId, Weapon } from './data/weapon';
+import { Aspect, getWeaponFromId, Weapon } from './data/weapon';
 import { getHammersForWeapon } from './data/DaedalusHammer';
-import { DaedalusHammers_Rail_Incompatible } from './data/DaedalusHammer/Rail';
-
-const boonClicked = (boonId: string): void => {
-    console.log(boonId);
-};
+import { RunState } from './data/runState';
+import { BoonRarityType } from './data/boonRarityType';
 
 const App_Weapon = (props) => {
     const { chosenWeaponId, chosenAspectId } = props;
@@ -49,22 +45,34 @@ const App_Keepsakes = () => {
     )    
 };
 
-const App_MirrorTalents = () => {
-    const talentLines = getAllMirrorTalents();
+const App_MirrorTalents = (props) => {
+    const { chosenMirrorTalentIds, onClick } = props;
 
-    const talentConfig = [1, 1, 2, 1, 1, 2, 1, 1, 2, 0, 0, 0];
+    const talentLines = getAllMirrorTalents();
 
     return (
         <div className="App_MirrorTalents">
-            {talentLines.map((talentLine, talentLineIndex) => {
-                if (talentConfig[talentLineIndex] === 1) {
-                    return <p key={talentLineIndex}><b>{talentLine[0].name}</b> - {talentLine[1].name}</p>
-                }
-                else if (talentConfig[talentLineIndex] === 2) {
-                    return <p key={talentLineIndex}>{talentLine[0].name} - <b>{talentLine[1].name}</b></p>
-                }
+            {talentLines.map(talentLine => {
+                const firstSelected = chosenMirrorTalentIds.includes(talentLine[0].id);
+                const secondSelected = chosenMirrorTalentIds.includes(talentLine[1].id);
+
+                let firstClassName = "App_MirrorTalents_Line_Item App_MirrorTalents_Line_ItemFirst";
+                let secondClassName = "App_MirrorTalents_Line_Item App_MirrorTalents_Line_ItemSecond";
                 
-                return <p key={talentLineIndex}>{talentLine[0].name} - {talentLine[1].name}</p>
+                if (firstSelected) {
+                    firstClassName += " App_MirrorTalents_Line_ItemFirst--Selected";
+                }
+
+                if (secondSelected) {
+                    secondClassName += " App_MirrorTalents_Line_ItemSecond--Selected";
+                }
+
+                return (
+                    <div className="App_MirrorTalents_Line">
+                        <button className={firstClassName} onClick={() => onClick(talentLine[0].id)} />
+                        <button className={secondClassName} onClick={() => onClick(talentLine[1].id)} />
+                    </div>
+                );
             })}
         </div>
     );
@@ -73,8 +81,14 @@ const App_MirrorTalents = () => {
 const App_DaedalusHammer = (props) => {
     const { hammerLibrary, collectedHammerIds, incompatibleHammerIds, onClick } = props;
 
+    const collectibleHammerIds = hammerLibrary.filter(hammer => !collectedHammerIds.includes(hammer.id) && !incompatibleHammerIds.includes(hammer.id))
+    
+    const probability = collectibleHammerIds.length <= 3 ? 1 : 3 / collectibleHammerIds.length;
+
     return (
         <div className="App_DaedalusHammer">
+            <p>Pool {collectibleHammerIds.length}</p>
+            <p>Probability {Math.trunc(probability * 100)}%</p>
             {hammerLibrary.map(hammer => {
                 const hammerIsCollected = collectedHammerIds.includes(hammer.id);
                 const hammerIsIncompatible = incompatibleHammerIds.includes(hammer.id);
@@ -104,10 +118,12 @@ const App_DaedalusHammer = (props) => {
 };
 
 const App = () => {
-    const [ chosenWeaponId, setChosenWeaponId ] = useState(Weapon.Rail);
-    const [ chosenAspectId, setChosenAspectId ] = useState(Aspect_Rail.Eris);
+    const [ chosenWeaponId, setChosenWeaponId ] = useState(Weapon.Shield);
+    const [ chosenAspectId, setChosenAspectId ] = useState(Aspect.Shield_Beowulf);
+    const [ chosenMirrorTalentIds, setChosenMirrorTalentIds ] = useState(['InfernalSoul']);
 
     const [ collectedHammerIds, setCollectedHammerIds ] = useState([]);
+    const [ collectedBoonIds, setCollectedBoonIds ] = useState([]);
 
     const chosenWeapon = useMemo(() => {
         return getWeaponFromId(chosenWeaponId);
@@ -120,6 +136,15 @@ const App = () => {
 
         return chosenWeapon.aspects.find(aspect => aspect.id === chosenAspectId);
     }, [ chosenWeaponId, chosenAspectId ]);
+
+    const runState: RunState = {
+        weapon: chosenWeaponId,
+        aspect: chosenAspectId,
+        keepsake: 'Sisyphus',
+        mirror: chosenMirrorTalentIds,
+        collectedBoonIds: collectedBoonIds,
+        collectedHammerIds: collectedHammerIds,
+    };
 
     const hammerLibrary = useMemo(() => {
         if (chosenWeapon === undefined || chosenAspect === undefined) {
@@ -135,7 +160,23 @@ const App = () => {
         return [...new Set(collectedHammers.flatMap(hammer => hammer.incompatible))];
     }, [ collectedHammerIds ]);
 
-    const [ collectedBoonIds, setCollectedBoonIds ] = useState([]);
+    const incompatibleBoonIds = useMemo(() => {
+        return [];
+    }, [ collectedBoonIds ]);
+
+    const boonLibrary = useMemo(() => {
+        return getBoonLibrary(runState);
+    }, [ chosenWeaponId, chosenAspectId, chosenMirrorTalentIds ]);
+
+    const onMirrorClick = (mirrorTalentId: string) => {
+        if (chosenMirrorTalentIds.includes(mirrorTalentId)) {
+            console.log(`Clicked selected mirror talent ${mirrorTalentId}`);
+            setChosenMirrorTalentIds(chosenMirrorTalentIds.filter(chosenMirrorTalentId => chosenMirrorTalentId !== mirrorTalentId));
+        } else {
+            console.log(`Clicked unselected mirror talent ${mirrorTalentId}`);
+            setChosenMirrorTalentIds([mirrorTalentId, ...chosenMirrorTalentIds]);
+        }
+    };
 
     const onDaedalusHammerClick = (hammerId: string) => {
         if (incompatibleHammerIds.includes(hammerId)) {
@@ -148,6 +189,23 @@ const App = () => {
             setCollectedHammerIds([hammerId, ...collectedHammerIds]);
         }
     };
+
+    const onBoonClick = (boonId: string): void => {
+        console.log(boonId);
+
+        if (collectedBoonIds.includes(boonId)) {
+            console.log(`Clicked collected boon ${boonId}`);
+            setCollectedBoonIds(collectedBoonIds.filter(collectedBoonId => collectedBoonId !== boonId));
+        } else {
+            console.log(`Clicked uncollected boon ${boonId}`);
+            setCollectedBoonIds([boonId, ...collectedBoonIds]);
+        }
+    };
+
+    const iconSizePx = 64;
+    const iconSpacingPx = 2;
+
+    console.log(boonLibrary);
 
     return (
         <div className="App">
@@ -164,7 +222,7 @@ const App = () => {
                 <div className="App_TopBar">
                     <App_Weapon chosenWeaponId={chosenWeaponId} chosenAspectId={chosenAspectId} />
                     <App_Keepsakes />
-                    <App_MirrorTalents />
+                    <App_MirrorTalents chosenMirrorTalentIds={chosenMirrorTalentIds} onClick={onMirrorClick} />
                 </div>
                 <div className="App_Lower">
                     <App_DaedalusHammer
@@ -176,20 +234,29 @@ const App = () => {
                     <div className="App_Right">
                         {getAllGods().map(god => (
                             <BoonLine
-                                boonIds={getSingleGodBoonIds(god)}
+                                boons={boonLibrary.filter(boon => boon.god === god)}
                                 collectedBoonIds={collectedBoonIds}
-                                onClick={boonClicked}
+                                incompatibleBoonIds={incompatibleBoonIds}
+                                onClick={onBoonClick}
+                                iconSizePx={iconSizePx}
+                                iconSpacingPx={iconSpacingPx}
                             />
                         ))}
                         <BoonLine
-                            boonIds={getSingleGodBoonIds(God.Hermes)}
+                            boons={boonLibrary.filter(boon => boon.god === God.Hermes)}
                             collectedBoonIds={collectedBoonIds}
-                            onClick={boonClicked}
+                            incompatibleBoonIds={incompatibleBoonIds}
+                            onClick={onBoonClick}
+                            iconSizePx={iconSizePx}
+                            iconSpacingPx={iconSpacingPx}
                         />
                         <BoonLine
-                            boonIds={getDuoBoonIds()}
+                            boons={boonLibrary.filter(boon => boon.rarityType === BoonRarityType.Duo)}
                             collectedBoonIds={collectedBoonIds}
-                            onClick={boonClicked}
+                            incompatibleBoonIds={incompatibleBoonIds}
+                            onClick={onBoonClick}
+                            iconSizePx={iconSizePx}
+                            iconSpacingPx={iconSpacingPx}
                         />
                     </div>
                 </div>

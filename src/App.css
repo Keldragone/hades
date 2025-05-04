@@ -80,6 +80,42 @@
     margin-left: 8px;
 }
 
+.App_MirrorTalents_Line {
+    display: flex;
+    flex-direction: column;
+}
+
+.App_MirrorTalents_Line + .App_MirrorTalents_Line {
+    margin-left: 2px;
+}
+
+.App_MirrorTalents_Line_Item {
+    width: 16px;
+    height: 16px;
+
+    border: 0;
+}
+
+.App_MirrorTalents_Line_Item + .App_MirrorTalents_Line_Item {
+    margin-top: 2px;
+}
+
+.App_MirrorTalents_Line_ItemFirst {
+    background-color: #302736;
+}
+
+.App_MirrorTalents_Line_ItemFirst--Selected {
+    background-color: #872bbd;
+}
+
+.App_MirrorTalents_Line_ItemSecond {
+    background-color: #2a361d;
+}
+
+.App_MirrorTalents_Line_ItemSecond--Selected {
+    background-color: #76bd2b;
+}
+
 .App_DaedalusHammer {}
 
 .App_DaedalusHammer_Item {

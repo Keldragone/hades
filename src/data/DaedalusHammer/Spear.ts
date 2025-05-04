@@ -1,11 +1,11 @@
-import { Aspect_Spear } from "../weapon";
+import { Aspect } from "../weapon";
 
 export const DaedalusHammers_Spear = [
     {
         id: 'ExtendingJab',
         name: 'Extending Jab',
         description: 'Your Attack has more range and deals +40% damage to distant foes.',
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Achilles, Aspect_Spear.Hades, Aspect_Spear.GuanYu ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Achilles, Aspect.Spear_Hades, Aspect.Spear_GuanYu ],
         iconPath: './Icons/DaedalusHammer/Spear/ExtendingJab.webp',
     },
     {
@@ -16,14 +16,14 @@ export const DaedalusHammers_Spear = [
             // Can't combine with Exploding Launcher
             // Can't be taken with Achilles or Guan Yu
         },
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Hades ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Hades ],
         iconPath: './Icons/DaedalusHammer/Spear/ChainSkewer.webp',
     },
     {
         id: 'BreachingSkewer',
         name: 'Breaching Skewer',
         description: 'Your Special deals +400% damage to Armor.',
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Achilles, Aspect_Spear.Hades, Aspect_Spear.GuanYu ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Achilles, Aspect.Spear_Hades, Aspect.Spear_GuanYu ],
         iconPath: './Icons/DaedalusHammer/Spear/BreachingSkewer.webp',
     },
     {
@@ -34,7 +34,7 @@ export const DaedalusHammers_Spear = [
             // Can't combine with Exploding Launcher
             // Can't be taken with Guan Yu
         },
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Achilles, Aspect_Spear.Hades ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Achilles, Aspect.Spear_Hades ],
         iconPath: './Icons/DaedalusHammer/Spear/ViciousSkewer.webp',
     },
     {
@@ -45,7 +45,7 @@ export const DaedalusHammers_Spear = [
             // Can't combine with Chain Skewer or Vicious Skewer
             // Can't be taken with Achilles or Guan Yu
         },
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Hades ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Hades ],
         iconPath: './Icons/DaedalusHammer/Spear/ExplodingLauncher.webp',
     },
     {
@@ -55,7 +55,7 @@ export const DaedalusHammers_Spear = [
         availabilityTest: () => {
             // Can't combine with Flurry Jab
         },
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Achilles, Aspect_Spear.Hades, Aspect_Spear.GuanYu ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Achilles, Aspect.Spear_Hades, Aspect.Spear_GuanYu ],
         iconPath: './Icons/DaedalusHammer/Spear/MassiveSpin.webp',
     },
     {
@@ -65,7 +65,7 @@ export const DaedalusHammers_Spear = [
         availabilityTest: () => {
             // Can't combine with Flurry Jab
         },
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Achilles, Aspect_Spear.Hades, Aspect_Spear.GuanYu ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Achilles, Aspect.Spear_Hades, Aspect.Spear_GuanYu ],
         iconPath: './Icons/DaedalusHammer/Spear/QuickSpin.webp',
     },
     {
@@ -76,7 +76,7 @@ export const DaedalusHammers_Spear = [
             // Can't combine with Flaring Spin, Massive Spin, or Quick Spin
             // Can't be taken with Hades or Guan Yu
         },
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Achilles ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Achilles ],
         iconPath: './Icons/DaedalusHammer/Spear/FlurryJab.webp',
     },
     {
@@ -86,7 +86,7 @@ export const DaedalusHammers_Spear = [
         availabilityTest: () => {
             // Can't be taken with Achilles
         },
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Hades, Aspect_Spear.GuanYu ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Hades, Aspect.Spear_GuanYu ],
         iconPath: './Icons/DaedalusHammer/Spear/ChargedSkewer.webp',
     },
     {
@@ -96,7 +96,7 @@ export const DaedalusHammers_Spear = [
         availabilityTest: () => {
             // Can't combine with Flurry Jab (wait what) I don't think this is true
         },
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Achilles, Aspect_Spear.Hades, Aspect_Spear.GuanYu ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Achilles, Aspect.Spear_Hades, Aspect.Spear_GuanYu ],
         iconPath: './Icons/DaedalusHammer/Spear/SerratedPoint.webp',
     },
     {
@@ -106,14 +106,14 @@ export const DaedalusHammers_Spear = [
         availabilityTest: () => {
             // Can't combine with Flurry Jab
         },
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Achilles, Aspect_Spear.Hades, Aspect_Spear.GuanYu ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Achilles, Aspect.Spear_Hades, Aspect.Spear_GuanYu ],
         iconPath: './Icons/DaedalusHammer/Spear/Flaring Spin.webp',
     },
     {
         id: 'TripleJab',
         name: 'Triple Jab',
         description: 'Your Attack strikes 3 times in a spread pattern.',
-        aspects: [ Aspect_Spear.Zagreus, Aspect_Spear.Achilles, Aspect_Spear.Hades, Aspect_Spear.GuanYu ],
+        aspects: [ Aspect.Spear_Zagreus, Aspect.Spear_Achilles, Aspect.Spear_Hades, Aspect.Spear_GuanYu ],
         iconPath: './Icons/DaedalusHammer/Spear/TripleJab.webp',
     },
     {
@@ -123,7 +123,7 @@ export const DaedalusHammers_Spear = [
         availabilityTest: () => {
             // Can ONLY take with Guan Yu
         },
-        aspects: [ Aspect_Spear.GuanYu ],
+        aspects: [ Aspect.Spear_GuanYu ],
         iconPath: './Icons/DaedalusHammer/Spear/WingedSerpent.webp',
     },
 ]

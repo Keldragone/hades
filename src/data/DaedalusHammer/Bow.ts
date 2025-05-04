@@ -1,4 +1,4 @@
-import { Aspect_Bow } from "../weapon";
+import { Aspect } from "../weapon";
 
 export const DaedalusHammers_Bow = [
     {
@@ -8,7 +8,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be combined with Triple Shot or Sniper Shot.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera, Aspect_Bow.Rama ], 
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera, Aspect.Bow_Rama ], 
         iconPath: './Icons/DaedalusHammer/Bow/TwinShot.webp',
     },
     {
@@ -18,7 +18,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be combined with Point-Blank Shot or Twin Shot.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera, Aspect_Bow.Rama ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera, Aspect.Bow_Rama ],
         iconPath: './Icons/DaedalusHammer/Bow/SniperShot.webp',
     },
     {
@@ -28,7 +28,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be combined with Flurry Shot or Chain Shot.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera, Aspect_Bow.Rama ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera, Aspect.Bow_Rama ],
         iconPath: './Icons/DaedalusHammer/Bow/ExplosiveShot.webp',
     },
     {
@@ -39,7 +39,7 @@ export const DaedalusHammers_Bow = [
             // Can't be combined with Perfect Shot or Explosive Shot.
             // Can't be taken with Rama.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera ],
         iconPath: './Icons/DaedalusHammer/Bow/FlurryShot.webp',
     },
     {
@@ -49,7 +49,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be taken with Rama.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera ],
         iconPath: './Icons/DaedalusHammer/Bow/PiercingVolley.webp',
     },
     {
@@ -59,7 +59,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be combined with Flurry Shot.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera, Aspect_Bow.Rama ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera, Aspect.Bow_Rama ],
         iconPath: './Icons/DaedalusHammer/Bow/PerfectShot.webp',
     },
     {
@@ -69,7 +69,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be combined with Charged Volley.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera, Aspect_Bow.Rama ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera, Aspect.Bow_Rama ],
         iconPath: './Icons/DaedalusHammer/Bow/RelentlessVolley.webp',
     },
     {
@@ -79,7 +79,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be combined with Twin Shot.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera, Aspect_Bow.Rama ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera, Aspect.Bow_Rama ],
         iconPath: './Icons/DaedalusHammer/Bow/TripleShot.webp',
     },
     {
@@ -90,7 +90,7 @@ export const DaedalusHammers_Bow = [
             // Can't be combined with Relentless Volley.
             // Can't be taken with Chiron or Rama.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Hera ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Hera ],
         iconPath: './Icons/DaedalusHammer/Bow/ChargedVolley.webp',
     },
     {
@@ -100,7 +100,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be combined with Explosive Shot.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera, Aspect_Bow.Rama ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera, Aspect.Bow_Rama ],
         iconPath: './Icons/DaedalusHammer/Bow/ChainShot.webp',
     },
     {
@@ -110,7 +110,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be combined with Sniper Shot.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera, Aspect_Bow.Rama ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera, Aspect.Bow_Rama ],
         iconPath: './Icons/DaedalusHammer/Bow/PointBlankShot.webp',
     },
     {
@@ -120,7 +120,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can't be taken with Rama.
         },
-        aspects: [ Aspect_Bow.Zagreus, Aspect_Bow.Chiron, Aspect_Bow.Hera ],
+        aspects: [ Aspect.Bow_Zagreus, Aspect.Bow_Chiron, Aspect.Bow_Hera ],
         iconPath: './Icons/DaedalusHammer/Bow/ConcentratedVolley.webp',
     },
     {
@@ -130,7 +130,7 @@ export const DaedalusHammers_Bow = [
         availabilityTest: () => {
             // Can ONLY be taken with Rama.
         },
-        aspects: [ Aspect_Bow.Rama ],
+        aspects: [ Aspect.Bow_Rama ],
         iconPath: './Icons/DaedalusHammer/Bow/RepulseShot.webp',
     },
 ]
