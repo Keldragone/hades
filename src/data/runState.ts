@@ -1,8 +1,7 @@
-import { Aspect, Weapon } from "./weapon"
+import { AspectId } from "./weapon"
 
 export interface RunState {
-    weapon: Weapon;
-    aspect: Aspect;
+    aspectId: AspectId;
     keepsake: string;
     mirror: Array<string>;
     collectedBoonIds: Array<string>;

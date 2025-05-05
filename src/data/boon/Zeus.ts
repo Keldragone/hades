@@ -6,7 +6,7 @@ import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { God } from '../god';
 import { RunState } from '../runState';
-import { Aspect } from '../weapon';
+import { AspectId } from '../weapon';
 
 export const BoonData_Zeus: { [ id: string ]: BoonInfo } = {
     Zeus_Attack: {
@@ -32,7 +32,7 @@ export const BoonData_Zeus: { [ id: string ]: BoonInfo } = {
         god: God.Zeus,
         slot: BoonSlot.Cast,
         testRunAvailability: (runState: RunState) => {
-            return runState.aspect !== Aspect.Shield_Beowulf;
+            return runState.aspectId !== AspectId.Shield_Beowulf;
         },
         iconPath: './BoonIcons/Zeus/Zeus_Cast.webp',
     },
@@ -43,7 +43,7 @@ export const BoonData_Zeus: { [ id: string ]: BoonInfo } = {
         god: God.Zeus,
         slot: BoonSlot.Cast,
         testRunAvailability: (runState: RunState) => {
-            return runState.aspect === Aspect.Shield_Beowulf;
+            return runState.aspectId === AspectId.Shield_Beowulf;
         },
         iconPath: './BoonIcons/Zeus/Zeus_Cast.webp',
     },

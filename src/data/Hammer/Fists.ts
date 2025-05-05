@@ -1,0 +1,105 @@
+import { AspectId } from '@/data/weapon';
+import { Hammer, HammerId } from './types';
+
+const Hammers_Fists: Array<Hammer> = [
+    {
+        id: HammerId.Fists_BreachingCross,
+        name: 'Breaching Cross',
+        description: 'Your Dash-Strike pierces foes and deals +900% damage to Armor.',
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Talos, AspectId.Fists_Demeter, AspectId.Fists_Gilgamesh ],
+        iconPath: './Icons/Hammer/Fists/BreachingCross.webp',
+    },
+    {
+        id: HammerId.Fists_RollingKnuckle,
+        name: 'Rolling Knuckle',
+        description: 'Your Dash-Strike deals +60% damage; added to Attack sequence.',
+        incompatible: [ HammerId.Fists_HeavyKnuckle ],
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Talos, AspectId.Fists_Demeter ],
+        iconPath: './Icons/Hammer/Fists/RollingKnuckle.webp',
+    },
+    {
+        id: HammerId.Fists_LongKnuckle,
+        name: 'Long Knuckle',
+        description: 'Your Attack has more range and deals +10% damage.',
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Talos, AspectId.Fists_Demeter ],
+        iconPath: './Icons/Hammer/Fists/LongKnuckle.webp',
+    },
+    {
+        id: HammerId.Fists_DrainingCutter,
+        name: 'Draining Cutter',
+        description: 'Whenever your Special slays foes, restore 2% [Health].',
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Talos, AspectId.Fists_Demeter, AspectId.Fists_Gilgamesh ],
+        iconPath: './Icons/Hammer/Fists/DrainingCutter.webp',
+    },
+    {
+        id: HammerId.Fists_ConcentratedKnuckle,
+        name: 'Concentrated Knuckle',
+        description: 'Your Attack deals +5 base damage for each uninterrupted hit to a foe.',
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Talos, AspectId.Fists_Demeter, AspectId.Fists_Gilgamesh ],
+        iconPath: './Icons/Hammer/Fists/ConcentratedKnuckle.webp',
+    },
+    {
+        id: HammerId.Fists_ExplosiveUpper,
+        name: 'Explosive Upper',
+        description: 'Your Dash-Upper deals +100% damage in an area.',
+        incompatible: [ HammerId.Fists_KineticLauncher ],
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Talos, AspectId.Fists_Demeter, AspectId.Fists_Gilgamesh ],
+        iconPath: './Icons/Hammer/Fists/ExplosiveUpper.webp',
+    },
+    {
+        id: HammerId.Fists_FlyingCutter,
+        name: 'Flying Cutter',
+        description: 'Hold Special for longer range and up to +100% base damage.',
+        incompatible: [ HammerId.Fists_RushKick, HammerId.Fists_KineticLauncher ],
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Demeter, AspectId.Fists_Gilgamesh ],
+        iconPath: './Icons/Hammer/Fists/FlyingCutter.webp',
+    },
+    {
+        id: HammerId.Fists_RushKick,
+        name: 'Rush Kick',
+        description: 'Your Special becomes an advancing kick that also deals 40 base damage twice.',
+        incompatible: [ HammerId.Fists_FlyingCutter, HammerId.Fists_KineticLauncher ],
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Demeter, AspectId.Fists_Gilgamesh ],
+        iconPath: './Icons/Hammer/Fists/RushKick.webp',
+    },
+    {
+        id: HammerId.Fists_QuakeCutter,
+        name: 'Quake Cutter',
+        description: 'After using your Special, deal 90 damage in an area where you land.',
+        incompatible: [ HammerId.Fists_KineticLauncher ],
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Talos, AspectId.Fists_Gilgamesh ],
+        iconPath: './Icons/Hammer/Fists/QuakeCutter.webp',
+    },
+    {
+        id: HammerId.Fists_KineticLauncher,
+        name: 'Kinetic Launcher',
+        description: 'Your Special becomes a charged ranged attack that deals 50 base damage.',
+        incompatible: [ HammerId.Fists_RushKick, HammerId.Fists_FlyingCutter, HammerId.Fists_ExplosiveUpper, HammerId.Fists_QuakeCutter ],
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Demeter ],
+        iconPath: './Icons/Hammer/Fists/KineticLauncher.webp',
+    },
+    {
+        id: HammerId.Fists_HeavyKnuckle,
+        name: 'Heavy Knuckle',
+        description: 'Your Attack becomes a slower 3-hit sequence, each deals 40 base damage.',
+        incompatible: [ HammerId.Fists_RollingKnuckle ],
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Talos, AspectId.Fists_Demeter ],
+        iconPath: './Icons/Hammer/Fists/HeavyKnuckle.webp',
+    },
+    {
+        id: HammerId.Fists_ColossusKnuckle,
+        name: 'Colossus Knuckle',
+        description: 'While using your Attack or Special, you are Sturdy.',
+        aspectIds: [ AspectId.Fists_Zagreus, AspectId.Fists_Talos, AspectId.Fists_Demeter, AspectId.Fists_Gilgamesh ],
+        iconPath: './Icons/Hammer/Fists/ColossusKnuckle.webp',
+    },
+    {
+        id: HammerId.Fists_RendingClaws,
+        name: 'Rending Claws',
+        description: 'Maim-afflicted foes take +25% damage and move 30% slower.',
+        aspectIds: [ AspectId.Fists_Gilgamesh ],
+        iconPath: './Icons/Hammer/Fists/RendingClaws.webp',
+    },
+];
+
+export default Hammers_Fists;

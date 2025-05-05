@@ -1,0 +1,108 @@
+import { AspectId } from '@/data/weapon';
+import { Hammer, HammerId } from './types';
+
+export const Hammers_Bow: Array<Hammer> = [
+    {
+        id: HammerId.Bow_TwinShot,
+        name: 'Twin Shot',
+        description: 'Your Attack fires 2 shots side-by-side, but has reduced range.',
+        incompatible: [ HammerId.Bow_TripleShot, HammerId.Bow_SniperShot ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera, AspectId.Bow_Rama ], 
+        iconPath: './Icons/Hammer/Bow/TwinShot.webp',
+    },
+    {
+        id: HammerId.Bow_SniperShot,
+        name: 'Sniper Shot',
+        description: 'Your Attack deals +200% damage to distant foes.',
+        incompatible: [ HammerId.Bow_PointBlankShot, HammerId.Bow_TwinShot ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera, AspectId.Bow_Rama ],
+        iconPath: './Icons/Hammer/Bow/SniperShot.webp',
+    },
+    {
+        id: HammerId.Bow_ExplosiveShot,
+        name: 'Explosive Shot',
+        description: 'Your Attack deals +300% damage in an area, but charges slower.',
+        incompatible: [ HammerId.Bow_FlurryShot, HammerId.Bow_ChainShot ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera, AspectId.Bow_Rama ],
+        iconPath: './Icons/Hammer/Bow/ExplosiveShot.webp',
+    },
+    {
+        id: HammerId.Bow_FlurryShot,
+        name: 'Flurry Shot',
+        description: 'Hold Attack to shoot rapidly, but you cannot Power Shot.',
+        incompatible: [ HammerId.Bow_PerfectShot, HammerId.Bow_ExplosiveShot ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera ],
+        iconPath: './Icons/Hammer/Bow/FlurryShot.webp',
+    },
+    {
+        id: HammerId.Bow_PiercingVolley,
+        name: 'Piercing Volley',
+        description: 'Your Special pierces foes and deals +400% damage to Armor.',
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera ],
+        iconPath: './Icons/Hammer/Bow/PiercingVolley.webp',
+    },
+    {
+        id: HammerId.Bow_PerfectShot,
+        name: 'Perfect Shot',
+        description: 'Your Power Shot is easier to execute and deals +150% damage.',
+        incompatible: [ HammerId.Bow_FlurryShot ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera, AspectId.Bow_Rama ],
+        iconPath: './Icons/Hammer/Bow/PerfectShot.webp',
+    },
+    {
+        id: HammerId.Bow_RelentlessVolley,
+        name: 'Relentless Volley',
+        description: 'Your Special shoots +4 shots.',
+        incompatible: [ HammerId.Bow_ChargedVolley ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera, AspectId.Bow_Rama ],
+        iconPath: './Icons/Hammer/Bow/RelentlessVolley.webp',
+    },
+    {
+        id: HammerId.Bow_TripleShot,
+        name: 'Triple Shot',
+        description: 'Your Attack fires 3 shots in a spread pattern.',
+        incompatible: [ HammerId.Bow_TwinShot ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera, AspectId.Bow_Rama ],
+        iconPath: './Icons/Hammer/Bow/TripleShot.webp',
+    },
+    {
+        id: HammerId.Bow_ChargedVolley,
+        name: 'Charged Volley',
+        description: 'Hold Special for up to 250% base damage; minimum range is reduced.',
+        incompatible: [ HammerId.Bow_RelentlessVolley ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Hera ],
+        iconPath: './Icons/Hammer/Bow/ChargedVolley.webp',
+    },
+    {
+        id: HammerId.Bow_ChainShot,
+        name: 'Chain Shot',
+        description: 'Your Attack bounces to up to 3 foes, dealing +15% damage for each.',
+        incompatible: [ HammerId.Bow_ExplosiveShot ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera, AspectId.Bow_Rama ],
+        iconPath: './Icons/Hammer/Bow/ChainShot.webp',
+    },
+    {
+        id: HammerId.Bow_PointBlankShot,
+        name: 'Point-Blank Shot',
+        description: 'Your Attack deals +150% damage to nearby foes.',
+        incompatible: [ HammerId.Bow_SniperShot ],
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera, AspectId.Bow_Rama ],
+        iconPath: './Icons/Hammer/Bow/PointBlankShot.webp',
+    },
+    {
+        id: HammerId.Bow_ConcentratedVolley,
+        name: 'Concentrated Volley',
+        description: 'Your Special deals +3 base damage for each consecutive hit to a foe.',
+        aspectIds: [ AspectId.Bow_Zagreus, AspectId.Bow_Chiron, AspectId.Bow_Hera ],
+        iconPath: './Icons/Hammer/Bow/ConcentratedVolley.webp',
+    },
+    {
+        id: HammerId.Bow_RepulseShot,
+        name: 'Repulse Shot',
+        description: 'Your Celestial Sharanga Attack creates a Blast Wave around you.',
+        aspectIds: [ AspectId.Bow_Rama ],
+        iconPath: './Icons/Hammer/Bow/RepulseShot.webp',
+    },
+];
+
+export default Hammers_Bow;

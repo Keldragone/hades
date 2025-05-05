@@ -1,0 +1,149 @@
+.Weapon {
+    position: relative;
+}
+
+.Weapon_Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: #111111;
+    border: 1px solid #111111;
+
+    padding: 0 16px;
+    border-radius: 8px;
+
+    font-family: inherit;
+    color: #dddddd;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.Weapon_Content:hover {
+    background-color: #222222;
+    border: 1px solid #555555;
+}
+
+.Weapon_Dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #111111;
+
+    padding: 16px;
+    margin-top: 2px;
+
+    z-index: 100;
+
+    border-radius: 8px;
+}
+
+.Weapon_Dropdown_Row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Weapon_Dropdown_Row + .Weapon_Dropdown_Row {
+    margin-top: 16px;
+}
+
+.Weapon_Dropdown_Row_WeaponName {
+    width: 160px;
+    font-size: 1em;
+}
+
+.Weapon_Dropdown_Row_Aspect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    background-color: transparent;
+
+    width: 64px;
+    height: 64px;
+}
+
+.Weapon_Dropdown_Row_Aspect + .Weapon_Dropdown_Row_Aspect {
+    margin-left: 8px;
+}
+
+.Weapon_Dropdown_Row_Aspect_Name {
+    position: absolute;
+    background-color: #222222;
+    color: #dddddd;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 8px;
+    bottom: 0;
+
+    z-index: 3;
+}
+
+.Weapon_Dropdown_Row_Aspect:hover .Weapon_Dropdown_Row_Aspect_Name {
+    background-color: #444444;
+}
+
+.Weapon_Dropdown_Row_Aspect--Selected:hover .Weapon_Dropdown_Row_Aspect_Name {
+    background-color: #fcba03;
+}
+
+.Weapon_Dropdown_Row_Aspect--Selected .Weapon_Dropdown_Row_Aspect_Name {
+    background-color: #fcba03;
+    color: #222222;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 8px;
+    bottom: 0;
+}
+
+.Weapon_Dropdown_Row_Aspect--Selected .Weapon_Dropdown_Row_Aspect_Name {
+    background-color: #fcba03;
+    color: #222222;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 8px;
+    bottom: 0;
+}
+
+.Weapon_Dropdown_Row_Aspect_BorderIcon {
+    position: absolute;
+    width: 64px;
+    
+    z-index: 2;
+
+    visibility: hidden;
+}
+
+.Weapon_Dropdown_Row_Aspect--Selected .Weapon_Dropdown_Row_Aspect_BorderIcon {
+    visibility: visible;
+}
+
+.Weapon_Dropdown_Row_Aspect_Icon {
+    position: absolute;
+    width: 64px;
+    left: 0;
+    right: 0;
+}
+
+.Weapon_Icon {
+    width: 64px;
+}
+
+.Weapon_Right {
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+}
+
+.Weapon_Name {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.2em;
+}
+
+.Weapon_Aspect {
+    font-size: 0.75em;
+    line-height: 1em;
+}

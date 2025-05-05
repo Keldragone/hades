@@ -1,0 +1,43 @@
+.Hammer {
+    display: flex;
+    flex-direction: column;
+}
+
+.Hammer_Item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+
+    background-color: #111111;
+    border: 1px solid #111111;
+    color: #ffffff;
+
+    padding: 2px 16px 2px 8px;
+}
+
+.Hammer_Item + .Hammer_Item {
+    margin-top: 4px;
+}
+
+.Hammer_Item--Collectable:hover {
+    background-color: #222222;
+    border: 1px solid #555555;
+}
+
+button.Hammer_Item--Collected {
+    background-color: #332d1e;
+    border: 1px solid #fcba03;
+}
+
+.Hammer_Item_Icon {
+    width: 32px;
+}
+
+.Hammer_Item--Incompatible .Hammer_Item_Icon {
+    filter: grayscale(0);
+}
+
+.Hammer_Item_Text {
+    margin-left: 8px;
+}

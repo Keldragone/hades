@@ -1,0 +1,48 @@
+.MirrorTalents {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: #111111;
+
+    padding: 0 16px;
+
+    margin-left: 8px;
+    border-radius: 8px;
+}
+
+.MirrorTalents_Line {
+    display: flex;
+    flex-direction: column;
+}
+
+.MirrorTalents_Line + .MirrorTalents_Line {
+    margin-left: 2px;
+}
+
+.MirrorTalents_Line_Item {
+    width: 16px;
+    height: 16px;
+
+    border: 0;
+}
+
+.MirrorTalents_Line_Item + .MirrorTalents_Line_Item {
+    margin-top: 2px;
+}
+
+.MirrorTalents_Line_ItemFirst {
+    background-color: #302736;
+}
+
+.MirrorTalents_Line_ItemFirst--Selected {
+    background-color: #872bbd;
+}
+
+.MirrorTalents_Line_ItemSecond {
+    background-color: #2a361d;
+}
+
+.MirrorTalents_Line_ItemSecond--Selected {
+    background-color: #76bd2b;
+}

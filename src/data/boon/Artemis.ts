@@ -5,7 +5,7 @@ import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { God } from '../god';
 import { RunState } from '../runState';
-import { Aspect } from '../weapon';
+import { AspectId } from '../weapon';
 
 export const BoonData_Artemis: { [ id: string ]: BoonInfo } = {
     Artemis_Attack: {
@@ -31,7 +31,7 @@ export const BoonData_Artemis: { [ id: string ]: BoonInfo } = {
         god: God.Artemis,
         slot: BoonSlot.Cast,
         testRunAvailability: (runState: RunState) => {
-            return runState.aspect !== Aspect.Shield_Beowulf;
+            return runState.aspectId !== AspectId.Shield_Beowulf;
         },
         iconPath: './BoonIcons/Artemis/Artemis_Cast.webp',
     },
@@ -42,7 +42,7 @@ export const BoonData_Artemis: { [ id: string ]: BoonInfo } = {
         god: God.Artemis,
         slot: BoonSlot.Cast,
         testRunAvailability: (runState: RunState) => {
-            return runState.aspect === Aspect.Shield_Beowulf;
+            return runState.aspectId === AspectId.Shield_Beowulf;
         },
         iconPath: './BoonIcons/Artemis/Artemis_Cast.webp',
     },
@@ -53,7 +53,7 @@ export const BoonData_Artemis: { [ id: string ]: BoonInfo } = {
         god: God.Artemis,
         slot: BoonSlot.Dash,
         testRunAvailability: (runState: RunState) => {
-            return runState.aspect !== Aspect.Rail_Lucifer;
+            return runState.aspectId !== AspectId.Rail_Lucifer;
         },
         iconPath: './BoonIcons/Artemis/Artemis_Dash.webp',
         // NO LUCIFER
@@ -83,7 +83,7 @@ export const BoonData_Artemis: { [ id: string ]: BoonInfo } = {
             doesNotHaveAnyOf([ 'Demeter_Cast', 'Ares_Cast', 'Dionysus_Cast' ]),
         ]),
         testRunAvailability: (runState: RunState) => {
-            return runState.aspect !== Aspect.Shield_Beowulf;
+            return runState.aspectId !== AspectId.Shield_Beowulf;
         },
         iconPath: './BoonIcons/Artemis/Artemis_ExitWounds.webp',
     },

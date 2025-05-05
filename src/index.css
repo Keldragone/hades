@@ -34,3 +34,28 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+button {
+  background-color: #111111;
+  border: 1px solid #111111;
+  cursor: pointer;
+  border-radius: 8px;
+
+  font-size: 1em;
+  font-family: inherit;
+  text-align: left;
+
+  transition: border-color 0.25s;
+}
+
+button:hover:enabled {
+  background-color: #222222;
+  border: 1px solid #555555;
+}
+
+button:disabled {
+  background-color: #222222;
+  border: 1px solid #111111;
+  cursor: default;
+  color: #888888;
+}

@@ -5,7 +5,7 @@ import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { God } from '../god';
 import { RunState } from '../runState';
-import { Aspect } from '../weapon';
+import { AspectId } from '../weapon';
 
 export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
     Dionysus_Attack: {
@@ -32,8 +32,8 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         slot: BoonSlot.Cast,
         testRunAvailability: (runState: RunState) => {
             return (
-                runState.aspect !== Aspect.Shield_Beowulf
-                && runState.aspect !== Aspect.Bow_Hera
+                runState.aspectId !== AspectId.Shield_Beowulf
+                && runState.aspectId !== AspectId.Bow_Hera
             );
         },
         iconPath: './BoonIcons/Dionysus/Dionysus_Cast.webp',
@@ -46,8 +46,8 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         slot: BoonSlot.Cast,
         testRunAvailability: (runState: RunState) => {
             return (
-                runState.aspect === Aspect.Shield_Beowulf
-                || runState.aspect === Aspect.Bow_Hera
+                runState.aspectId === AspectId.Shield_Beowulf
+                || runState.aspectId === AspectId.Bow_Hera
             );
         },
         iconPath: './BoonIcons/Dionysus/Dionysus_Cast.webp',

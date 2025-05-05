@@ -5,7 +5,7 @@ import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { God } from '../god';
 import { RunState } from '../runState';
-import { Aspect } from '../weapon';
+import { AspectId } from '../weapon';
 
 export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
     Hermes_SwiftStrike: {
@@ -31,9 +31,9 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         god: God.Hermes,
         pommable: false, 
         testRunAvailability: (runState: RunState) => {
-            const aspectCompatabile = (
-                runState.aspect !== Aspect.Shield_Beowulf
-                && runState.aspect !== Aspect.Bow_Hera
+            const aspectIdCompatabile = (
+                runState.aspectId !== AspectId.Shield_Beowulf
+                && runState.aspectId !== AspectId.Bow_Hera
             );
 
             const mirrorCompatible = (
@@ -41,7 +41,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
                 // qq what if this talent is disabled (i.e. not taken or removed by heat)?
             );
 
-            return aspectCompatabile && mirrorCompatible;
+            return aspectIdCompatabile && mirrorCompatible;
         },
         iconPath: './BoonIcons/Hermes/Hermes_FlurryCast.webp',
     },
@@ -111,8 +111,8 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         pommable: false,
         requirementTest: doesNotHaveAnyOf([ 'Demeter_Cast', 'Duo_Ares_Poseidon', 'Ares_Cast', 'Dionysus_Cast' ]),
         testRunAvailability: (runState: RunState) => {
-            const aspectCompatabile = (
-                runState.aspect !== Aspect.Shield_Beowulf
+            const aspectIdCompatabile = (
+                runState.aspectId !== AspectId.Shield_Beowulf
             );
 
             const mirrorCompatible = (
@@ -120,7 +120,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
                 // qq what if this talent is disabled (i.e. not taken or removed by heat)?
             );
 
-            return aspectCompatabile && mirrorCompatible;
+            return aspectIdCompatabile && mirrorCompatible;
         },
         iconPath: './BoonIcons/Hermes/Hermes_QuickReload.webp',
     },
