@@ -15,7 +15,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Your Attack deals more damage and knocks foes away.',
         god: God.Poseidon,
         slot: BoonSlot.Attack,
-        iconPath: './BoonIcons/Poseidon/Poseidon_Attack.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_Attack.webp',
     },
     Poseidon_Special: {
         id: 'Poseidon_Special',
@@ -23,7 +23,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Your Special deals more damage and knocks foes away.',
         god: God.Poseidon,
         slot: BoonSlot.Special,
-        iconPath: './BoonIcons/Poseidon/Poseidon_Special.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_Special.webp',
     },
     Poseidon_Cast: {
         id: 'Poseidon_Cast',
@@ -34,7 +34,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Poseidon/Poseidon_Cast.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_Cast.webp',
     },
     Poseidon_CastAlternate: {
         id: 'Poseidon_CastAlternate',
@@ -45,7 +45,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId === AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Poseidon/Poseidon_Cast.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_Cast.webp',
     },
     Poseidon_Dash: {
         id: 'Poseidon_Dash',
@@ -53,7 +53,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Your Dash damages foes in an area and knocks them away.',
         god: God.Poseidon,
         slot: BoonSlot.Dash,
-        iconPath: './BoonIcons/Poseidon/Poseidon_Dash.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_Dash.webp',
     },
     Poseidon_Aid: {
         id: 'Poseidon_Aid',
@@ -61,7 +61,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Your Call makes you surge into foes while Impervious for 1.2 Sec.',
         god: God.Poseidon,
         slot: BoonSlot.Aid,
-        iconPath: './BoonIcons/Poseidon/Poseidon_Aid.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_Aid.webp',
     },
     Poseidon_TyphoonsFury: {
         id: 'Poseidon_TyphoonsFury',
@@ -69,14 +69,14 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'You deal more damage when slamming foes into barriers.',
         god: God.Poseidon,
         requirementTest: hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
-        iconPath: './BoonIcons/Poseidon/Poseidon_TyphoonsFury.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_TyphoonsFury.webp',
     },
     Poseidon_HydraulicMight: {
         id: 'Poseidon_HydraulicMight',
         name: 'Hydraulic Might',
         description: 'Your Attack and Special are stronger the first 10 Sec. in Encounter(s).',
         god: God.Poseidon,
-        iconPath: './BoonIcons/Poseidon/Poseidon_HydraulicMight.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_HydraulicMight.webp',
     },
     Poseidon_OceansBounty: {
         id: 'Poseidon_OceansBounty',
@@ -84,7 +84,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Any [Gemstone], [Darkness] or [Obols] chamber rewards are worth more.',
         god: God.Poseidon,
         pommable: false,
-        iconPath: './BoonIcons/Poseidon/Poseidon_OceansBounty.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_OceansBounty.webp',
     },
     Poseidon_SunkenTreasure: {
         id: 'Poseidon_SunkenTreasure',
@@ -92,7 +92,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Gain an assortment of [Gemstone], [Darkness], [Obols] and [Heal].',
         god: God.Poseidon,
         pommable: false,
-        iconPath: './BoonIcons/Poseidon/Poseidon_SunkenTreasure.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_SunkenTreasure.webp',
         // Can get this MULTIPLE TIMES?!?!
     },
     Poseidon_RazorShoals: {
@@ -101,7 +101,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Using knock-away effects also Rupture foes.',
         god: God.Poseidon,
         requirementTest: hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
-        iconPath: './BoonIcons/Poseidon/Poseidon_RazorShoals.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_RazorShoals.webp',
     },
     Poseidon_BoilingPoint: {
         id: 'Poseidon_BoilingPoint',
@@ -109,7 +109,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Your God Gauge charges faster when you take damage.',
         god: God.Poseidon,
         requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        iconPath: './BoonIcons/Poseidon/Poseidon_BoilingPoint.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_BoilingPoint.webp',
     },
     Poseidon_BreakingWave: {
         id: 'Poseidon_BreakingWave',
@@ -117,7 +117,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Slamming foes into walls or corners creates a watery blast in the area.',
         god: God.Poseidon,
         requirementTest: hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
-        iconPath: './BoonIcons/Poseidon/Poseidon_BreakingWave.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_BreakingWave.webp',
     },
     Poseidon_WavePounding: {
         id: 'Poseidon_WavePounding',
@@ -125,7 +125,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Your boons with Knock-Away effects deal bonus damage to bosses.',
         god: God.Poseidon,
         requirementTest: hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
-        iconPath: './BoonIcons/Poseidon/Poseidon_WavePounding.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_WavePounding.webp',
     },
     Poseidon_RipCurrent: {
         id: 'Poseidon_RipCurrent',
@@ -133,7 +133,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         description: 'Your Call pulls in foes and the effect lasts longer.',
         god: God.Poseidon,
         requirementTest: hasAtLeastOneOf([ 'Poseidon_Aid' ]),
-        iconPath: './BoonIcons/Poseidon/Poseidon_RipCurrent.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_RipCurrent.webp',
     },
     Poseidon_Legendary_HugeCatch: {
         id: 'Poseidon_Legendary_HugeCatch',
@@ -143,7 +143,7 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
         rarityType: BoonRarityType.Legendary,
         pommable: false,
         requirementTest: hasAtLeastXOf(2, [ 'Poseidon_OceansBounty', 'Poseidon_SunkenTreasure' ]), // or conch shell equipped...
-        iconPath: './BoonIcons/Poseidon/Poseidon_Legendary_HugeCatch.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_Legendary_HugeCatch.webp',
     },
     Poseidon_Legendary_SecondWave: {
         id: 'Poseidon_Legendary_SecondWave',
@@ -156,6 +156,6 @@ export const BoonData_Poseidon: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Poseidon_BreakingWave', 'Poseidon_TyphoonsFury' ]),
             hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Poseidon/Poseidon_Legendary_SecondWave.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_Legendary_SecondWave.webp',
     },
 };

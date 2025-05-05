@@ -1,4 +1,4 @@
-import { BoonData } from "../data/boon";
+import { BoonData } from "../data/Boon";
 
 export class BoonState {
     collectedBoonIds: Array<string> = [ "Artemis_Attack", "Dionysus_Special", "Artemis_PressurePoints" ];

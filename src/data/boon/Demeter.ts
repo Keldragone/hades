@@ -15,7 +15,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         description: 'Your Attack is stronger and inflicts Chill.',
         god: God.Demeter,
         slot: BoonSlot.Attack,
-        iconPath: './BoonIcons/Demeter/Demeter_Attack.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_Attack.webp',
     },
     Demeter_Special: {
         id: 'Demeter_Special',
@@ -23,7 +23,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         description: 'Your Special is stronger and inflicts Chill.',
         god: God.Demeter,
         slot: BoonSlot.Special,
-        iconPath: './BoonIcons/Demeter/Demeter_Special.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_Special.webp',
     },
     Demeter_Cast: {
         id: 'Demeter_Cast',
@@ -34,7 +34,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Demeter/Demeter_Cast.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_Cast.webp',
     },
     Demeter_CastAlternate: {
         id: 'Demeter_CastAlternate',
@@ -45,7 +45,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId === AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Demeter/Demeter_Cast.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_Cast.webp',
     },
     Demeter_Dash: {
         id: 'Demeter_Dash',
@@ -53,7 +53,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         description: 'Your Dash shoots a gust ahead that inflicts Chill.',
         god: God.Demeter,
         slot: BoonSlot.Dash,
-        iconPath: './BoonIcons/Demeter/Demeter_Dash.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_Dash.webp',
     },
     Demeter_Aid: {
         id: 'Demeter_Aid',
@@ -61,14 +61,14 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         description: 'Your Call creates a winter vortex for 5 Sec., deals damage every 0.25 Sec inflicting Chill.',
         god: God.Demeter,
         slot: BoonSlot.Aid,
-        iconPath: './BoonIcons/Demeter/Demeter_Aid.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_Aid.webp',
     },
     Demeter_FrozenTouch: {
         id: 'Demeter_FrozenTouch',
         name: 'Frozen Touch',
         description: 'After you take damage, damage and completely Chill your foe.',
         god: God.Demeter,
-        iconPath: './BoonIcons/Demeter/Demeter_FrozenTouch.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_FrozenTouch.webp',
     },
     Demeter_RareCrop: {
         id: 'Demeter_RareCrop',
@@ -76,7 +76,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         description: 'Your Boons become Common, then gain Rarity every 3 Encounter(s).',
         god: God.Demeter,
         pommable: false,
-        iconPath: './BoonIcons/Demeter/Demeter_RareCrop.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_RareCrop.webp',
         // Can't PURGE, can't EXCHANGE, can't UPGRADE via Eurydice
     },
     Demeter_RavenousWill: {
@@ -85,7 +85,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         description: 'While you have no [Cast], take 10% less damage and deal more.',
         god: God.Demeter,
         pommable: false,
-        iconPath: './BoonIcons/Demeter/Demeter_RavenousWill.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_RavenousWill.webp',
     },
     Demeter_NourishedSoul: {
         id: 'Demeter_NourishedSoul',
@@ -93,7 +93,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         description: 'Any [Heal] effects are more potent. Restore +30% now.',
         god: God.Demeter,
         pommable: false,
-        iconPath: './BoonIcons/Demeter/Demeter_NourishedSoul.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_NourishedSoul.webp',
         // Can't PURGE
     },
     Demeter_SnowBurst: {
@@ -101,7 +101,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         name: 'Snow Burst',
         description: 'Whenever you Cast, damage nearby foes and inflict Chill.',
         god: God.Demeter,
-        iconPath: './BoonIcons/Demeter/Demeter_SnowBurst.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_SnowBurst.webp',
     },
     Demeter_ArcticBlast: {
         id: 'Demeter_ArcticBlast',
@@ -110,7 +110,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         god: God.Demeter,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid', 'Demeter_SnowBurst' ]),
-        iconPath: './BoonIcons/Demeter/Demeter_ArcticBlast.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_ArcticBlast.webp',
     },
     Demeter_KillingFreeze: {
         id: 'Demeter_KillingFreeze',
@@ -119,7 +119,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         god: God.Demeter,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid', 'Demeter_SnowBurst' ]),
-        iconPath: './BoonIcons/Demeter/Demeter_KillingFreeze.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_KillingFreeze.webp',
     },
     Demeter_GlacialGlare: {
         id: 'Demeter_GlacialGlare',
@@ -130,7 +130,7 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Demeter/Demeter_GlacialGlare.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_GlacialGlare.webp',
     },
     Demeter_Legendary: {
         id: 'Demeter_Legendary',
@@ -140,6 +140,6 @@ export const BoonData_Demeter: { [ id: string ]: BoonInfo } = {
         rarityType: BoonRarityType.Legendary,
         pommable: false,
         requirementTest: hasAtLeastXOf(2, [ 'Demeter_RavenousWill', 'Demeter_ArcticBlast', 'Demeter_KillingFreeze' ]),
-        iconPath: './BoonIcons/Demeter/Demeter_Legendary.webp',
+        iconPath: './Icons/Boon/Demeter/Demeter_Legendary.webp',
     },
 };

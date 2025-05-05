@@ -1,5 +1,5 @@
 import './BoonLine.css'
-import { BoonData } from './data/boon';
+import { BoonData } from './data/Boon';
 
 const BoonIcon = (props) => {
   const { iconSizePx, boonId } = props;

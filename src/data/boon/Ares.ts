@@ -15,7 +15,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         description: 'Your Attack inflicts Doom.',
         god: God.Ares,
         slot: BoonSlot.Attack,
-        iconPath: './BoonIcons/Ares/Ares_Attack.webp',
+        iconPath: './Icons/Boon/Ares/Ares_Attack.webp',
     },
     Ares_Special: {
         id: 'Ares_Special',
@@ -23,7 +23,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         description: 'Your Special inflicts Doom.',
         god: God.Ares,
         slot: BoonSlot.Special,
-        iconPath: './BoonIcons/Ares/Ares_Special.webp',
+        iconPath: './Icons/Boon/Ares/Ares_Special.webp',
     },
     Ares_Cast: {
         id: 'Ares_Cast',
@@ -34,7 +34,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Ares/Ares_Cast.webp',
+        iconPath: './Icons/Boon/Ares/Ares_Cast.webp',
     },
     Ares_CastAlternate: {
         id: 'Ares_CastAlternate',
@@ -45,7 +45,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId === AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Ares/Ares_Cast.webp',
+        iconPath: './Icons/Boon/Ares/Ares_Cast.webp',
     },
     Ares_Dash: {
         id: 'Ares_Dash',
@@ -53,7 +53,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         description: 'Your Dash creates a Blade Rift where you started.',
         god: God.Ares,
         slot: BoonSlot.Dash,
-        iconPath: './BoonIcons/Ares/Ares_Dash.webp',
+        iconPath: './Icons/Boon/Ares/Ares_Dash.webp',
     },
     Ares_Aid: {
         id: 'Ares_Aid',
@@ -61,28 +61,28 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         description: 'Your Call turns you into an Impervious Blade Rift for 1.2 Sec.',
         god: God.Ares,
         slot: BoonSlot.Aid,
-        iconPath: './BoonIcons/Ares/Ares_Aid.webp',
+        iconPath: './Icons/Boon/Ares/Ares_Aid.webp',
     },
     Ares_CurseOfVengeance: {
         id: 'Ares_CurseOfVengeance',
         name: 'Curse of Vengeance',
         description: 'After you take damage, inflict Doom on surrounding foes.',
         god: God.Ares,
-        iconPath: './BoonIcons/Ares/Ares_CurseOfVengeance.webp',
+        iconPath: './Icons/Boon/Ares/Ares_CurseOfVengeance.webp',
     },
     Ares_UrgeToKill: {
         id: 'Ares_UrgeToKill',
         name: 'Urge to Kill',
         description: 'Your Attack, Special, and Cast deal more damage.',
         god: God.Ares,
-        iconPath: './BoonIcons/Ares/Ares_UrgeToKill.webp',
+        iconPath: './Icons/Boon/Ares/Ares_UrgeToKill.webp',
     },
     Ares_BattleRage: {
         id: 'Ares_BattleRage',
         name: 'Battle Rage',
         description: 'After slaying a foe, your next Attack or Special deals more damage.',
         god: God.Ares,
-        iconPath: './BoonIcons/Ares/Ares_BattleRage.webp',
+        iconPath: './Icons/Boon/Ares/Ares_BattleRage.webp',
     },
     Ares_BloodFrenzy: {
         id: 'Ares_BloodFrenzy',
@@ -90,7 +90,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         description: 'After using Death Defiance, deal more damage that encounter.',
         god: God.Ares,
         pommable: false,
-        iconPath: './BoonIcons/Ares/Ares_BloodFrenzy.webp',
+        iconPath: './Icons/Boon/Ares/Ares_BloodFrenzy.webp',
     },
     Ares_BlackMetal: {
         id: 'Ares_BlackMetal',
@@ -98,7 +98,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         description: 'Your Blade Rift powers deal damage in a wider area.',
         god: God.Ares,
         requirementTest: hasAtLeastOneOf([ 'Ares_Cast', 'Ares_Dash', 'Ares_Aid' ]),
-        iconPath: './BoonIcons/Ares/Ares_BlackMetal.webp',
+        iconPath: './Icons/Boon/Ares/Ares_BlackMetal.webp',
     },
     Ares_EngulfingVortex: {
         id: 'Ares_EngulfingVortex',
@@ -107,7 +107,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         god: God.Ares,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Ares_Cast', 'Ares_Dash', 'Ares_Aid' ]),
-        iconPath: './BoonIcons/Ares/Ares_EngulfingVortex.webp',
+        iconPath: './Icons/Boon/Ares/Ares_EngulfingVortex.webp',
     },
     Ares_DireMisfortune: {
         id: 'Ares_DireMisfortune',
@@ -116,7 +116,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         god: God.Ares,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special' ]),
-        iconPath: './BoonIcons/Ares/Ares_DireMisfortune.webp',
+        iconPath: './Icons/Boon/Ares/Ares_DireMisfortune.webp',
     },
     Ares_ImpendingDoom: {
         id: 'Ares_ImpendingDoom',
@@ -124,7 +124,7 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         description: 'Your Doom effects deal more damage, but take +0.5 Sec. to activate.',
         god: God.Ares,
         requirementTest: hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special', 'Ares_CurseOfVengeance' ]),
-        iconPath: './BoonIcons/Ares/Ares_ImpendingDoom.webp',
+        iconPath: './Icons/Boon/Ares/Ares_ImpendingDoom.webp',
     },
     Ares_Legendary: {
         id: 'Ares_Legendary',
@@ -134,6 +134,6 @@ export const BoonData_Ares: { [ id: string ]: BoonInfo } = {
         rarityType: BoonRarityType.Legendary,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Ares_BlackMetal', 'Ares_EngulfingVortex' ]),
-        iconPath: './BoonIcons/Ares/Ares_Legendary.webp',
+        iconPath: './Icons/Boon/Ares/Ares_Legendary.webp',
     },
 };

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 import './Weapon.css'
-import { Aspect, getAllWeapons, getAspectFromId, getWeaponFromId, Weapon } from '@/data/weapon';
+import { AspectId, getAllWeapons, getAspectFromId, getWeaponFromId, WeaponId } from '@/data/weapon';
 
 interface Component_Weapon_Props {
-    chosenWeaponId: Weapon;
-    chosenAspectId: Aspect;
-    onClickAspect: (aspectId: Aspect) => void;
+    chosenWeaponId: WeaponId;
+    chosenAspectId: AspectId;
+    onClickAspect: (aspectId: AspectId) => void;
 };
 
 const Component_Weapon = (props: Component_Weapon_Props) => {
@@ -44,8 +44,8 @@ const Component_Weapon = (props: Component_Weapon_Props) => {
                             }
 
                             return (
-                                <button className={aspectClassName} onClick={() => onClickAspect(aspect.id)}>
-                                    <img className="Weapon_Dropdown_Row_Aspect_BorderIcon" src="./BoonIcons/border_hollow.png" />
+                                <button className={aspectClassName} onClick={() => onClickAspect(aspectId)}>
+                                    <img className="Weapon_Dropdown_Row_Aspect_BorderIcon" src="./Icons/Boon/border_hollow.png" />
                                     <img className="Weapon_Dropdown_Row_Aspect_Icon" src={aspect.iconPath} />
                                     <div className="Weapon_Dropdown_Row_Aspect_Name">{aspect.name}</div>
                                 </button>

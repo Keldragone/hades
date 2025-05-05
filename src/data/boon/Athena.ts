@@ -15,7 +15,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'Your Attack is stronger, and can Deflect.',
         god: God.Athena,
         slot: BoonSlot.Attack,
-        iconPath: './BoonIcons/Athena/Athena_Attack.webp',
+        iconPath: './Icons/Boon/Athena/Athena_Attack.webp',
     },
     Athena_Special: {
         id: 'Athena_Special',
@@ -23,7 +23,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'Your Special is stronger, and can Deflect.',
         god: God.Athena,
         slot: BoonSlot.Special,
-        iconPath: './BoonIcons/Athena/Athena_Special.webp',
+        iconPath: './Icons/Boon/Athena/Athena_Special.webp',
     },
     Athena_Cast: {
         id: 'Athena_Cast',
@@ -34,7 +34,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Athena/Athena_Cast.webp',
+        iconPath: './Icons/Boon/Athena/Athena_Cast.webp',
     },
     Athena_CastAlternate: {
         id: 'Athena_CastAlternate',
@@ -45,7 +45,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId === AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Athena/Athena_Cast.webp',
+        iconPath: './Icons/Boon/Athena/Athena_Cast.webp',
     },
     Athena_Dash: {
         id: 'Athena_Dash',
@@ -53,7 +53,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'Your Dash deals damage and can Deflect.',
         god: God.Athena,
         slot: BoonSlot.Dash,
-        iconPath: './BoonIcons/Athena/Athena_Dash.webp',
+        iconPath: './Icons/Boon/Athena/Athena_Dash.webp',
     },
     Athena_Aid: {
         id: 'Athena_Aid',
@@ -61,21 +61,21 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'Your Call briefly makes you Invulnerable and Deflect all attacks.',
         god: God.Athena,
         slot: BoonSlot.Aid,
-        iconPath: './BoonIcons/Athena/Athena_Aid.webp',
+        iconPath: './Icons/Boon/Athena/Athena_Aid.webp',
     },
     Athena_HolyShield: {
         id: 'Athena_HolyShield',
         name: 'Holy Shield',
         description: 'After you take damage, damage nearby foes and briefly Deflect.',
         god: God.Athena,
-        iconPath: './BoonIcons/Athena/Athena_HolyShield.webp',
+        iconPath: './Icons/Boon/Athena/Athena_HolyShield.webp',
     },
     Athena_BronzeSkin: {
         id: 'Athena_BronzeSkin',
         name: 'Bronze Skin',
         description: 'Resist damage from foes\' attacks.',
         god: God.Athena,
-        iconPath: './BoonIcons/Athena/Athena_BronzeSkin.webp',
+        iconPath: './Icons/Boon/Athena/Athena_BronzeSkin.webp',
     },
     Athena_SureFooting: {
         id: 'Athena_SureFooting',
@@ -83,7 +83,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'Resist damage from Traps.',
         god: God.Athena,
         pommable: false,
-        iconPath: './BoonIcons/Athena/Athena_SureFooting.webp',
+        iconPath: './Icons/Boon/Athena/Athena_SureFooting.webp',
     },
     Athena_ProudBearing: {
         id: 'Athena_ProudBearing',
@@ -91,7 +91,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'You begin each Encounter with your God Gauge partly full.',
         god: God.Athena,
         requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        iconPath: './BoonIcons/Athena/Athena_ProudBearing.webp',
+        iconPath: './Icons/Boon/Athena/Athena_ProudBearing.webp',
     },
     Athena_BlindingFlash: {
         id: 'Athena_BlindingFlash',
@@ -99,7 +99,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'Your abilities that can Deflect also make foes Exposed.',
         god: God.Athena,
         requirementTest: hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash' ]),
-        iconPath: './BoonIcons/Athena/Athena_BlindingFlash.webp',
+        iconPath: './Icons/Boon/Athena/Athena_BlindingFlash.webp',
     },
     Athena_BrilliantRiposte: {
         id: 'Athena_BrilliantRiposte',
@@ -107,7 +107,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'When you Deflect attacks, they deal more damage.',
         god: God.Athena,
         requirementTest: hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Dash', 'Athena_HolyShield' ]),
-        iconPath: './BoonIcons/Athena/Athena_BrilliantRiposte.webp',
+        iconPath: './Icons/Boon/Athena/Athena_BrilliantRiposte.webp',
     },
     Athena_DeathlessStand: {
         id: 'Athena_DeathlessStand',
@@ -115,7 +115,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'Death Defiance makes you Impervious longer. Replenish 1 charge now.',
         god: God.Athena,
         requirementTest: hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash' ]),
-        iconPath: './BoonIcons/Athena/Athena_DeathlessStand.webp',
+        iconPath: './Icons/Boon/Athena/Athena_DeathlessStand.webp',
     },
     Athena_LastStand: {
         id: 'Athena_LastStand',
@@ -123,7 +123,7 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         description: 'Death Defiance restores more [Health] than usual. Replenish 1 charge now.',
         god: God.Athena,
         requirementTest: hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash' ]),
-        iconPath: './BoonIcons/Athena/Athena_LastStand.webp',
+        iconPath: './Icons/Boon/Athena/Athena_LastStand.webp',
     },
     Athena_Legendary: {
         id: 'Athena_Legendary',
@@ -133,6 +133,6 @@ export const BoonData_Athena: { [ id: string ]: BoonInfo } = {
         rarityType: BoonRarityType.Legendary,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Athena_BrilliantRiposte' ]),
-        iconPath: './BoonIcons/Athena/Athena_Legendary.webp',
+        iconPath: './Icons/Boon/Athena/Athena_Legendary.webp',
     },
 };

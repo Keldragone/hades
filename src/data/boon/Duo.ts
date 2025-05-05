@@ -19,7 +19,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
             hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Aphrodite_Ares.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Ares.webp',
     },
     Duo_Aphrodite_Artemis: {
         id: 'Duo_Aphrodite_Artemis',
@@ -32,7 +32,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
             hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Aphrodite_Artemis.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Artemis.webp',
     },
     Duo_Aphrodite_Athena: {
         id: 'Duo_Aphrodite_Athena',
@@ -49,7 +49,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Duo/Duo_Aphrodite_Athena.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Athena.webp',
     },
     Duo_Aphrodite_Demeter: {
         id: 'Duo_Aphrodite_Demeter',
@@ -66,7 +66,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Duo/Duo_Aphrodite_Demeter.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Demeter.webp',
     },
     Duo_Aphrodite_Dionysus: {
         id: 'Duo_Aphrodite_Dionysus',
@@ -79,7 +79,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
             hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Aphrodite_Dionysus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Dionysus.webp',
     },
     Duo_Aphrodite_Poseidon: {
         id: 'Duo_Aphrodite_Poseidon',
@@ -92,7 +92,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash', 'Aphrodite_Aid' ]),
             hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Aphrodite_Poseidon.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Poseidon.webp',
     },
     Duo_Aphrodite_Zeus: {
         id: 'Duo_Aphrodite_Zeus',
@@ -105,7 +105,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash', 'Aphrodite_Aid' ]),
             hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Cast', 'Zeus_Dash', 'Zeus_Aid' ]),
         ]), // BUT NOT SIGIL OF THE DEAD (HADES KEEPSAKE)
-        iconPath: './BoonIcons/Duo/Duo_Aphrodite_Zeus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Zeus.webp',
     },
     Duo_Ares_Artemis: {
         id: 'Duo_Ares_Artemis',
@@ -122,7 +122,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Duo/Duo_Ares_Artemis.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Ares_Artemis.webp',
     },
     Duo_Ares_Athena: {
         id: 'Duo_Ares_Athena',
@@ -135,7 +135,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special' ]),
             hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Ares_Athena.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Ares_Athena.webp',
     },
     Duo_Ares_Demeter: {
         id: 'Duo_Ares_Demeter',
@@ -149,7 +149,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Ares_Cast' ]),
             hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Ares_Demeter.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Ares_Demeter.webp',
     },
     Duo_Ares_Dionysus: {
         id: 'Duo_Ares_Dionysus',
@@ -162,7 +162,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special', 'Ares_CurseOfVengeance' ]),
             hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Ares_Dionysus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Ares_Dionysus.webp',
     },
     Duo_Ares_Poseidon: {
         id: 'Duo_Ares_Poseidon',
@@ -179,7 +179,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Bow_Hera;
         },
-        iconPath: './BoonIcons/Duo/Duo_Ares_Poseidon.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Ares_Poseidon.webp',
     },
     Duo_Ares_Zeus: {
         id: 'Duo_Ares_Zeus',
@@ -193,7 +193,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Cast', 'Zeus_Dash', 'Zeus_Aid' ]),
             hasAtLeastOneOf([ 'Aphrodite_WaveOfDespair', 'Ares_CurseOfVengeance', 'Athena_HolyShield', 'Demeter_FrozenTouch', 'Zeus_HeavensVengeance' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Ares_Zeus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Ares_Zeus.webp',
     },
     Duo_Artemis_Athena: {
         id: 'Duo_Artemis_Athena',
@@ -206,7 +206,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Aid' ]),
             hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Artemis_Athena.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Artemis_Athena.webp',
     },
     Duo_Artemis_Demeter: {
         id: 'Duo_Artemis_Demeter',
@@ -223,7 +223,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Duo/Duo_Artemis_Demeter.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Artemis_Demeter.webp',
     },
     Duo_Artemis_Dionysus: {
         id: 'Duo_Artemis_Dionysus',
@@ -236,7 +236,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Aid' ]),
             hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Artemis_Dionysus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Artemis_Dionysus.webp',
     },
     Duo_Artemis_Poseidon: {
         id: 'Duo_Artemis_Poseidon',
@@ -250,7 +250,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Aid' ]),
             hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Artemis_Poseidon.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Artemis_Poseidon.webp',
     },
     Duo_Artemis_Zeus: {
         id: 'Duo_Artemis_Zeus',
@@ -266,7 +266,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.mirror.includes('InfernalSoul');
         },
-        iconPath: './BoonIcons/Duo/Duo_Artemis_Zeus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Artemis_Zeus.webp',
     },
     Duo_Athena_Demeter: {
         id: 'Duo_Athena_Demeter',
@@ -279,7 +279,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash', 'Athena_Aid' ]),
             hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Cast', 'Demeter_Dash', 'Demeter_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Athena_Demeter.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Athena_Demeter.webp',
     },
     Duo_Athena_Dionysus: {
         id: 'Duo_Athena_Dionysus',
@@ -292,7 +292,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Dash', 'Athena_Aid' ]),
             hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Athena_Dionysus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Athena_Dionysus.webp',
     },
     Duo_Athena_Poseidon: {
         id: 'Duo_Athena_Poseidon',
@@ -305,7 +305,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash', 'Athena_Aid' ]),
             hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Athena_Poseidon.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Athena_Poseidon.webp',
     },
     Duo_Athena_Zeus: {
         id: 'Duo_Athena_Zeus',
@@ -321,7 +321,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Duo/Duo_Athena_Zeus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Athena_Zeus.webp',
     },
     Duo_Demeter_Dionysus: {
         id: 'Duo_Demeter_Dionysus',
@@ -335,7 +335,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid' ]),
             hasAtLeastOneOf([ 'Dionysus_Cast' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Demeter_Dionysus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Demeter_Dionysus.webp',
     },
     Duo_Demeter_Poseidon: {
         id: 'Duo_Demeter_Poseidon',
@@ -352,7 +352,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
-        iconPath: './BoonIcons/Duo/Duo_Demeter_Poseidon.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Demeter_Poseidon.webp',
     },
     Duo_Demeter_Zeus: {
         id: 'Duo_Demeter_Zeus',
@@ -365,7 +365,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid' ]),
             hasAtLeastOneOf([ 'Zeus_StaticDischarge' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Demeter_Zeus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Demeter_Zeus.webp',
     },
     Duo_Dionysus_Poseidon: {
         id: 'Duo_Dionysus_Poseidon',
@@ -378,7 +378,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Cast', 'Dionysus_Dash', 'Dionysus_Aid' ]),
             hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Dionysus_Poseidon.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Dionysus_Poseidon.webp',
     },
     Duo_Dionysus_Zeus: {
         id: 'Duo_Dionysus_Zeus',
@@ -391,7 +391,7 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Dionysus_Cast' ]),
             hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Dash', 'Zeus_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Dionysus_Zeus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Dionysus_Zeus.webp',
     },
     Duo_Poseidon_Zeus: {
         id: 'Duo_Poseidon_Zeus',
@@ -404,6 +404,6 @@ export const BoonData_Duo: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Aid' ]),
             hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Cast', 'Zeus_Dash', 'Zeus_Aid' ]),
         ]),
-        iconPath: './BoonIcons/Duo/Duo_Poseidon_Zeus.webp',
+        iconPath: './Icons/Boon/Duo/Duo_Poseidon_Zeus.webp',
     },
 };

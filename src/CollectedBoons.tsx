@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './BoonLine.css'
-import { BoonData } from './data/boon';
+import { BoonData } from './data/Boon';
 
 const BoonLine_Item = (props) => {
   const { boonNumber, iconSizePx, iconSpacingPx, boonId } = props;
@@ -17,7 +17,7 @@ const BoonLine_Item = (props) => {
 
   return (
     <div className="BoonLine_Item" style={appliedStyle}>
-      <img className="BoonLine_Item_iconBorder" src="./BoonIcons/border_hollow.png" style={{ width: iconSizePx }} />
+      <img className="BoonLine_Item_iconBorder" src="./Icons/Boon/border_hollow.png" style={{ width: iconSizePx }} />
       <img className="BoonLine_Item_icon" src={BoonData[boonId].iconPath} style={{ width: iconSizePx }} />
     </div>
   )

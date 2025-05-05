@@ -14,7 +14,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         description: 'Your Attack is +X% faster.',
         god: God.Hermes,
         pommable: false,
-        iconPath: './BoonIcons/Hermes/Hermes_SwiftStrike.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_SwiftStrike.webp',
     },
     Hermes_SwiftFlourish: {
         id: 'Hermes_SwiftFlourish',
@@ -22,7 +22,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         description: 'Your Special is +X% faster.',
         god: God.Hermes,
         pommable: false,
-        iconPath: './BoonIcons/Hermes/Hermes_SwiftFlourish.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_SwiftFlourish.webp',
     },
     Hermes_FlurryCast: {
         id: 'Hermes_FlurryCast',
@@ -43,7 +43,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
 
             return aspectIdCompatabile && mirrorCompatible;
         },
-        iconPath: './BoonIcons/Hermes/Hermes_FlurryCast.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_FlurryCast.webp',
     },
     Hermes_QuickFavor: {
         id: 'Hermes_QuickFavor',
@@ -52,7 +52,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         god: God.Hermes,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        iconPath: './BoonIcons/Hermes/Hermes_QuickFavor.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_QuickFavor.webp',
     },
     Hermes_HyperSprint: {
         id: 'Hermes_HyperSprint',
@@ -60,7 +60,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         description: 'For X seconds after you Dash, become Sturdy and run +100% faster.',
         god: God.Hermes,
         pommable: false,
-        iconPath: './BoonIcons/Hermes/Hermes_HyperSprint.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_HyperSprint.webp',
     },
     Hermes_GreaterHaste: {
         id: 'Hermes_GreaterHaste',
@@ -68,7 +68,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         description: 'You move X% faster.',
         god: God.Hermes,
         pommable: false,
-        iconPath: './BoonIcons/Hermes/Hermes_GreaterHaste.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_GreaterHaste.webp',
     },
     Hermes_QuickRecovery: {
         id: 'Hermes_QuickRecovery',
@@ -76,7 +76,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         description: 'After you take damage, quickly Dash to recover up to X% [Health] lost.',
         god: God.Hermes,
         pommable: false,
-        iconPath: './BoonIcons/Hermes/Hermes_QuickRecovery.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_QuickRecovery.webp',
     },
     Hermes_GreaterEvasion: {
         id: 'Hermes_GreaterEvasion',
@@ -84,7 +84,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         description: 'You have +X% chance to Dodge.',
         god: God.Hermes,
         pommable: false,
-        iconPath: './BoonIcons/Hermes/Hermes_GreaterEvasion.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_GreaterEvasion.webp',
     },
     Hermes_GreatestReflex: {
         id: 'Hermes_GreatestReflex',
@@ -92,7 +92,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         description: 'You can Dash +X more time(s) in a row.',
         god: God.Hermes,
         pommable: false,
-        iconPath: './BoonIcons/Hermes/Hermes_GreatestReflex.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_GreatestReflex.webp',
     },
     Hermes_SecondWind: {
         id: 'Hermes_SecondWind',
@@ -101,7 +101,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         god: God.Hermes,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        iconPath: './BoonIcons/Hermes/Hermes_SecondWind.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_SecondWind.webp',
     },
     Hermes_QuickReload: {
         id: 'Hermes_QuickReload',
@@ -122,7 +122,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
 
             return aspectIdCompatabile && mirrorCompatible;
         },
-        iconPath: './BoonIcons/Hermes/Hermes_QuickReload.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_QuickReload.webp',
     },
     Hermes_SideHustle: {
         id: 'Hermes_SideHustle',
@@ -130,7 +130,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         description: 'Each time you enter a Chamber, gain a bit of wealth.',
         god: God.Hermes,
         pommable: false,
-        iconPath: './BoonIcons/Hermes/Hermes_SideHustle.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_SideHustle.webp',
     },
     Hermes_RushDelivery: {
         id: 'Hermes_RushDelivery',
@@ -139,7 +139,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
         god: God.Hermes,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Hermes_GreaterHaste', 'Hermes_HyperSprint' ]), // and lambent plume (hermes keepsake)
-        iconPath: './BoonIcons/Hermes/Hermes_RushDelivery.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_RushDelivery.webp',
     },
     Hermes_AutoReload: {
         id: 'Hermes_AutoReload',
@@ -151,7 +151,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
             return runState.mirror.includes('StygianSoul');
             // qq what if this talent is disabled (i.e. not taken or removed by heat)?
         },
-        iconPath: './BoonIcons/Hermes/Hermes_AutoReload.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_AutoReload.webp',
     },
     Hermes_Legendary_GreaterRecall: {
         id: 'Hermes_Legendary_GreaterRecall',
@@ -165,7 +165,7 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
             return runState.mirror.includes('InfernalSoul');
             // qq what if this talent is disabled (i.e. not taken or removed by heat)?
         },
-        iconPath: './BoonIcons/Hermes/Hermes_Legendary_GreaterRecall.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_Legendary_GreaterRecall.webp',
     },
     Hermes_Legendary_BadNews: {
         id: 'Hermes_Legendary_BadNews',
@@ -179,6 +179,6 @@ export const BoonData_Hermes: { [ id: string ]: BoonInfo } = {
             return runState.mirror.includes('StygianSoul');
             // qq what if this talent is disabled (i.e. not taken or removed by heat)?
         },
-        iconPath: './BoonIcons/Hermes/Hermes_Legendary_BadNews.webp',
+        iconPath: './Icons/Boon/Hermes/Hermes_Legendary_BadNews.webp',
     },
 };

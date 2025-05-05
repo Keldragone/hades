@@ -5,7 +5,7 @@ interface Component_Hammer_Props {
     hammerLibrary: Array<Hammer>;
     collectedHammerIds: Array<HammerId>;
     incompatibleHammerIds: Array<HammerId>;
-    onClick: (mirrorTalentId: string) => void;
+    onClick: (hammerId: HammerId) => void;
 };
 
 const Component_Hammer = (props: Component_Hammer_Props) => {

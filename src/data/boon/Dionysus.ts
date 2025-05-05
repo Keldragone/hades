@@ -14,7 +14,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Your Attack inflicts Hangover.',
         god: God.Dionysus,
         slot: BoonSlot.Attack,
-        iconPath: './BoonIcons/Dionysus/Dionysus_Attack.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_Attack.webp',
     },
     Dionysus_Special: {
         id: 'Dionysus_Special',
@@ -22,7 +22,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Your Special inflicts Hangover.',
         god: God.Dionysus,
         slot: BoonSlot.Special,
-        iconPath: './BoonIcons/Dionysus/Dionysus_Special.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_Special.webp',
     },
     Dionysus_Cast: {
         id: 'Dionysus_Cast',
@@ -36,7 +36,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
                 && runState.aspectId !== AspectId.Bow_Hera
             );
         },
-        iconPath: './BoonIcons/Dionysus/Dionysus_Cast.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_Cast.webp',
     },
     Dionysus_CastAlternate: {
         id: 'Dionysus_CastAlternate',
@@ -50,7 +50,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
                 || runState.aspectId === AspectId.Bow_Hera
             );
         },
-        iconPath: './BoonIcons/Dionysus/Dionysus_Cast.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_Cast.webp',
     },
     Dionysus_Dash: {
         id: 'Dionysus_Dash',
@@ -58,7 +58,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Your Dash inflicts foes near you with Hangover.',
         god: God.Dionysus,
         slot: BoonSlot.Dash,
-        iconPath: './BoonIcons/Dionysus/Dionysus_Dash.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_Dash.webp',
     },
     Dionysus_Aid: {
         id: 'Dionysus_Aid',
@@ -66,7 +66,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Your Call inflicts Hangover to foes all around you for 1.5 Sec.',
         god: God.Dionysus,
         slot: BoonSlot.Aid,
-        iconPath: './BoonIcons/Dionysus/Dionysus_Aid.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_Aid.webp',
     },
     Dionysus_AfterParty: {
         id: 'Dionysus_AfterParty',
@@ -74,14 +74,14 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'If your [Health] is low after Encounters, restore to the threshold.',
         god: God.Dionysus,
         pommable: false,
-        iconPath: './BoonIcons/Dionysus/Dionysus_AfterParty.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_AfterParty.webp',
     },
     Dionysus_PositiveOutlook: {
         id: 'Dionysus_PositiveOutlook',
         name: 'Positive Outlook',
         description: 'Take less damage while at 40% [Health] or below.',
         god: God.Dionysus,
-        iconPath: './BoonIcons/Dionysus/Dionysus_PositiveOutlook.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_PositiveOutlook.webp',
     },
     Dionysus_PremiumVintage: {
         id: 'Dionysus_PremiumVintage',
@@ -89,7 +89,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Gain [Max Health] when you pick up [Nectar]. Receive 1 [Nectar] now.',
         god: God.Dionysus,
         pommable: false,
-        iconPath: './BoonIcons/Dionysus/Dionysus_PremiumVintage.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_PremiumVintage.webp',
         // Can't PURGE
     },
     Dionysus_StrongDrink: {
@@ -98,7 +98,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Using a Fountain restores all [Health] and gives you bonus damage.',
         god: God.Dionysus,
         pommable: false,
-        iconPath: './BoonIcons/Dionysus/Dionysus_StrongDrink.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_StrongDrink.webp',
     },
     Dionysus_BadInfluence: {
         id: 'Dionysus_BadInfluence',
@@ -106,7 +106,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Deal more damage while 3 foes are Hangover-afflicted.',
         god: God.Dionysus,
         requirementTest: hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
-        iconPath: './BoonIcons/Dionysus/Dionysus_BadInfluence.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_BadInfluence.webp',
     },
     Dionysus_NumbingSensation: {
         id: 'Dionysus_NumbingSensation',
@@ -114,7 +114,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Your Hangover effects also make foes move slower.',
         god: God.Dionysus,
         requirementTest: hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
-        iconPath: './BoonIcons/Dionysus/Dionysus_NumbingSensation.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_NumbingSensation.webp',
     },
     Dionysus_PeerPressure: {
         id: 'Dionysus_PeerPressure',
@@ -122,7 +122,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Hangover-afflicted foes contaminate other nearby foes every 4 Sec.',
         god: God.Dionysus,
         requirementTest: hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash' ]),
-        iconPath: './BoonIcons/Dionysus/Dionysus_PeerPressure.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_PeerPressure.webp',
     },
     Dionysus_HighTolerance: {
         id: 'Dionysus_HighTolerance',
@@ -130,7 +130,7 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
         description: 'Take less damage while standing in Festive Fog.',
         god: God.Dionysus,
         requirementTest: hasAtLeastOneOf([ 'Dionysus_Cast' ]),
-        iconPath: './BoonIcons/Dionysus/Dionysus_HighTolerance.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_HighTolerance.webp',
     },
     Dionysus_Legendary: {
         id: 'Dionysus_Legendary',
@@ -143,6 +143,6 @@ export const BoonData_Dionysus: { [ id: string ]: BoonInfo } = {
             hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
             hasAtLeastOneOf([ 'Dionysus_Cast' ]),
         ]),
-        iconPath: './BoonIcons/Dionysus/Dionysus_Legendary.webp',
+        iconPath: './Icons/Boon/Dionysus/Dionysus_Legendary.webp',
     },
 };

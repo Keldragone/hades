@@ -6,7 +6,7 @@ import BoonLine from './BoonLine';
 import BoonIcon from './BoonIcon';
 
 import './App.css'
-import { getSingleGodBoonIds, getDuoBoonIds, getBoonLibrary } from './data/boon';
+import { getSingleGodBoonIds, getDuoBoonIds, getBoonLibrary } from './data/Boon';
 import { getAllKeepsakes } from './data/keepsake';
 import { getAllMirrorTalents } from './data/mirror';
 import { AspectId, getAllWeapons, getAspectFromId, getWeaponFromId, WeaponId } from './data/weapon';
