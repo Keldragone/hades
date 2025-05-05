@@ -1,36 +1,57 @@
-export type BoonRequirementsTest = ( currentBoonIds: Array<string> ) => boolean;
+import { KeepsakeId } from '@/data/keepsake';
+import { RunState } from '@/data/runState';
+import { BoonId } from './types';
+import { MirrorTalentId } from '@/data/mirror';
+import { AspectId } from '@/data/weapon';
 
-export const hasAtLeastOneOf = ( requiredBoonIds: Array<string> ): BoonRequirementsTest => {
-    return ( currentBoonIds: Array<string> ) => (
-        currentBoonIds.some( currentBoonId => (
-            requiredBoonIds.includes(currentBoonId)
-        ))
-    );
+export type BoonRequirementsTest = (runState: RunState) => boolean;
+
+export const hasBoon = (boonId: BoonId): BoonRequirementsTest => {
+    return (runState: RunState) => runState.collectedBoonIds.includes(boonId);
 };
 
-export const hasAtLeastXOf = ( x: number, requiredBoonIds: Array<string> ): BoonRequirementsTest => {
-    return ( currentBoonIds: Array<string> ) => {
-        // Test each required boon ID, to see whether it is collected (maps ID to true/false).
-        const requiredBoonTests = requiredBoonIds.map(requiredBoonId => currentBoonIds.includes(requiredBoonId));
+export const doesNotHaveBoon = (boonId: BoonId): BoonRequirementsTest => {
+    return (runState: RunState) => !runState.collectedBoonIds.includes(boonId);
+};
 
-        // Count the number of true values.
-        const numberOfRequiredBoonsCollected = requiredBoonTests.filter(x => x).length;
+export const usingKeepsake = (keepsakeId: KeepsakeId): BoonRequirementsTest => {
+    return (runState: RunState) => runState.keepsakeId === keepsakeId;
+};
 
-        // If the number of true values is greater than or equal to the given X, return true.
-        return numberOfRequiredBoonsCollected >= x;
+export const notUsingKeepsake = (keepsakeId: KeepsakeId): BoonRequirementsTest => {
+    return (runState: RunState) => runState.keepsakeId !== keepsakeId;
+};
+
+export const hasMirrorTalent = (mirrorTalentId: MirrorTalentId): BoonRequirementsTest => {
+    return (runState: RunState) => runState.mirrorTalentIds.includes(mirrorTalentId);
+};
+
+export const usingAspect = (aspectId: AspectId): BoonRequirementsTest => {
+    return (runState: RunState) => runState.aspectId === aspectId;
+};
+
+export const notUsingAspect = (aspectId: AspectId): BoonRequirementsTest => {
+    return (runState: RunState) => runState.aspectId !== aspectId;
+};
+
+export const oneOrMoreOf = (tests: Array<BoonRequirementsTest>): BoonRequirementsTest => {
+    return (runState: RunState) => tests.some(test => test(runState));
+};
+
+export const xOrMoreOf = (x: number, tests: Array<BoonRequirementsTest>): BoonRequirementsTest => {
+    return (runState: RunState) => {
+        const testResults = tests.map(test => test(runState));
+
+        const numberOfPassedTests = testResults.filter(testResult => testResult).length;
+    
+        return numberOfPassedTests >= x;
     };
 };
 
-export const doesNotHaveAnyOf = ( incompatibleBoonIds: Array<string> ): BoonRequirementsTest => {
-    return ( currentBoonIds: Array<string> ) => (
-        !currentBoonIds.some( currentBoonId => (
-            incompatibleBoonIds.includes(currentBoonId)
-        ))
-    );
+export const allOf = (tests: Array<BoonRequirementsTest>): BoonRequirementsTest => {
+    return (runState: RunState) => tests.every(test => test(runState));
 };
 
-export const satisfiesAllOf = ( requirementsTests: Array<BoonRequirementsTest> ): BoonRequirementsTest => {
-    return ( currentBoonIds: Array<string> ) => (
-        requirementsTests.every(requirementsTest => requirementsTest(currentBoonIds))
-    );
+export const noneOf = (tests: Array<BoonRequirementsTest>): BoonRequirementsTest => {
+    return (runState: RunState) => !tests.some(test => test(runState));
 };

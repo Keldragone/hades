@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 
-import { getAllGodIds } from './data/god';
+import { getGodFromId, GodId } from './data/god';
 
 import './App.css'
 import { getBoonLibrary } from './data/Boon';
@@ -12,10 +12,14 @@ import Component_Hammer from './components/Hammer';
 import Component_Keepsake from './components/Keepsake';
 import Component_MirrorTalents from './components/MirrorTalents';
 import Component_Weapon from './components/Weapon';
+import { KeepsakeId } from './data/keepsake';
+import { MirrorTalentId } from './data/mirror';
+import { HammerId } from './data/Hammer/types';
+import { BoonId } from './data/Boon/types';
 
 const App = () => {
     const [ chosenAspectId, setChosenAspectId ] = useState(AspectId.Shield_Beowulf);
-    const [ chosenMirrorTalentIds, setChosenMirrorTalentIds ] = useState(['InfernalSoul']);
+    const [ chosenMirrorTalentIds, setChosenMirrorTalentIds ] = useState([ MirrorTalentId.InfernalSoul ]);
 
     const [ collectedHammerIds, setCollectedHammerIds ] = useState([]);
     const [ collectedBoonIds, setCollectedBoonIds ] = useState([]);
@@ -34,8 +38,8 @@ const App = () => {
 
     const runState: RunState = {
         aspectId: chosenAspectId,
-        keepsake: 'Sisyphus',
-        mirror: chosenMirrorTalentIds,
+        keepsakeId: KeepsakeId.Sisyphus,
+        mirrorTalentIds: chosenMirrorTalentIds,
         collectedBoonIds: collectedBoonIds,
         collectedHammerIds: collectedHammerIds,
     };
@@ -62,7 +66,7 @@ const App = () => {
         return getBoonLibrary(runState);
     }, [ chosenWeaponId, chosenAspectId, chosenMirrorTalentIds ]);
 
-    const onMirrorClick = (mirrorTalentId: string): void => {
+    const onMirrorClick = (mirrorTalentId: MirrorTalentId): void => {
         if (chosenMirrorTalentIds.includes(mirrorTalentId)) {
             console.log(`Clicked selected mirror talent ${mirrorTalentId}`);
             setChosenMirrorTalentIds(chosenMirrorTalentIds.filter(chosenMirrorTalentId => chosenMirrorTalentId !== mirrorTalentId));
@@ -72,7 +76,7 @@ const App = () => {
         }
     };
 
-    const onHammerClick = (hammerId: string): void => {
+    const onHammerClick = (hammerId: HammerId): void => {
         if (incompatibleHammerIds.includes(hammerId)) {
             console.log(`Clicked incompatible hammer ${hammerId}`);
         } else if (collectedHammerIds.includes(hammerId)) {
@@ -84,7 +88,7 @@ const App = () => {
         }
     };
 
-    const onBoonClick = (boonId: string): void => {
+    const onBoonClick = (boonId: BoonId): void => {
         console.log(boonId);
 
         if (collectedBoonIds.includes(boonId)) {
@@ -100,11 +104,6 @@ const App = () => {
         console.log(`Clicked aspect ${aspectId}`);
         setChosenAspectId(aspectId);
     };
-
-    const iconSizePx = 64;
-    const iconSpacingPx = 2;
-
-    console.log(boonLibrary);
 
     return (
         <div className="App">
@@ -129,8 +128,9 @@ const App = () => {
                         onClick={onHammerClick}
                     />
                     <div className="App_Right">
-                        {getAllGodIds().map(godId => (
+                        {[ GodId.Aphrodite, GodId.Ares, GodId.Artemis, GodId.Athena, GodId.Demeter, GodId.Dionysus, GodId.Poseidon, GodId.Zeus, GodId.Hermes ].map(godId => (
                             <div className="App_GodBoons">
+                                {getGodFromId(godId).name}
                                 {boonLibrary.filter(boon => boon.godId === godId).map(boon => (
                                     <button className="App_GodBoons_Item">{boon.name}</button>
                                 ))}

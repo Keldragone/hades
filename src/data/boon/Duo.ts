@@ -1,10 +1,11 @@
-import { doesNotHaveAnyOf, hasAtLeastOneOf, satisfiesAllOf } from './requirementsTests';
+import { allOf, doesNotHaveBoon, hasBoon, hasMirrorTalent, notUsingAspect, notUsingKeepsake, oneOrMoreOf } from './requirementsTests';
 import { Boon, BoonId } from './types';
 
 import { BoonRarityType } from '../boonRarityType';
 import { GodId } from '../god';
-import { RunState } from '../runState';
 import { AspectId } from '../weapon';
+import { KeepsakeId } from '../keepsake';
+import { MirrorTalentId } from '../mirror';
 
 const Boons_Duo: Array<Boon> = [
     {
@@ -14,9 +15,18 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Aphrodite, GodId.Ares ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
-            hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Ares_Attack),
+                hasBoon(BoonId.Ares_Special),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Aphrodite_Dash),
+                hasBoon(BoonId.Aphrodite_Cast),
+                hasBoon(BoonId.Aphrodite_Attack),
+                hasBoon(BoonId.Aphrodite_Special),
+                hasBoon(BoonId.Aphrodite_CastAlternate),
+            ])
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Ares.webp',
     },
@@ -27,9 +37,20 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Aphrodite, GodId.Artemis ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
-            hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Artemis_Attack),
+                hasBoon(BoonId.Artemis_Special),
+                hasBoon(BoonId.Artemis_Cast),
+                hasBoon(BoonId.Artemis_CastAlternate),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Aphrodite_Dash),
+                hasBoon(BoonId.Aphrodite_Cast),
+                hasBoon(BoonId.Aphrodite_Attack),
+                hasBoon(BoonId.Aphrodite_Special),
+                hasBoon(BoonId.Aphrodite_CastAlternate),
+            ])
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Artemis.webp',
     },
@@ -40,14 +61,24 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Aphrodite, GodId.Athena ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            doesNotHaveAnyOf([ 'Dionysus_Cast' ]),
-            hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash', 'Aphrodite_Aid' ]),
-            hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash', 'Athena_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Athena_Attack),
+                hasBoon(BoonId.Athena_Cast),
+                hasBoon(BoonId.Athena_Special),
+                hasBoon(BoonId.Athena_Dash),
+                hasBoon(BoonId.Athena_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Aphrodite_Dash),
+                hasBoon(BoonId.Aphrodite_Cast),
+                hasBoon(BoonId.Aphrodite_Attack),
+                hasBoon(BoonId.Aphrodite_Special),
+                hasBoon(BoonId.Aphrodite_Aid),
+            ])
         ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
+        // qq apparently ALSO not allowed to have dionysus cast; test this
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Athena.webp',
     },
     {
@@ -57,14 +88,18 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Aphrodite, GodId.Demeter ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            doesNotHaveAnyOf([ 'Duo_Artemis_Demeter' ]),
-            hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Dash', 'Aphrodite_Aid' ]),
-            hasAtLeastOneOf([ 'Demeter_Cast' ]),
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Artemis_Demeter),
+            hasBoon(BoonId.Demeter_Cast),
+            oneOrMoreOf([
+                hasBoon(BoonId.Aphrodite_Attack),
+                hasBoon(BoonId.Aphrodite_Dash),
+                hasBoon(BoonId.Aphrodite_Special),
+                hasBoon(BoonId.Aphrodite_Aid),
+            ])
         ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
+        // qq test cant get art-dem duo and also this
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Demeter.webp',
     },
     {
@@ -74,9 +109,20 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Aphrodite, GodId.Dionysus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
-            hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Dionysus_Attack),
+                hasBoon(BoonId.Dionysus_Special),
+                hasBoon(BoonId.Dionysus_Dash),
+                hasBoon(BoonId.Dionysus_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Aphrodite_Dash),
+                hasBoon(BoonId.Aphrodite_Cast),
+                hasBoon(BoonId.Aphrodite_Attack),
+                hasBoon(BoonId.Aphrodite_Special),
+                hasBoon(BoonId.Aphrodite_CastAlternate),
+            ])
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Dionysus.webp',
     },
@@ -87,9 +133,23 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Aphrodite, GodId.Poseidon ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash', 'Aphrodite_Aid' ]),
-            hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Poseidon_Attack),
+                hasBoon(BoonId.Poseidon_Special),
+                hasBoon(BoonId.Poseidon_Cast),
+                hasBoon(BoonId.Poseidon_CastAlternate),
+                hasBoon(BoonId.Poseidon_Dash),
+                hasBoon(BoonId.Poseidon_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Aphrodite_Dash),
+                hasBoon(BoonId.Aphrodite_Cast),
+                hasBoon(BoonId.Aphrodite_Attack),
+                hasBoon(BoonId.Aphrodite_Special),
+                hasBoon(BoonId.Aphrodite_Aid),
+                hasBoon(BoonId.Aphrodite_CastAlternate),
+            ])
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Poseidon.webp',
     },
@@ -100,10 +160,26 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Aphrodite, GodId.Zeus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash', 'Aphrodite_Aid' ]),
-            hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Cast', 'Zeus_Dash', 'Zeus_Aid' ]),
-        ]), // BUT NOT SIGIL OF THE DEAD (HADES KEEPSAKE)
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Aphrodite_Attack),
+                hasBoon(BoonId.Aphrodite_Special),
+                hasBoon(BoonId.Aphrodite_Cast),
+                hasBoon(BoonId.Aphrodite_Dash),
+                hasBoon(BoonId.Aphrodite_Aid),
+                hasBoon(BoonId.Aphrodite_CastAlternate),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Zeus_Attack),
+                hasBoon(BoonId.Zeus_Dash),
+                hasBoon(BoonId.Zeus_Special),
+                hasBoon(BoonId.Zeus_Cast),
+                hasBoon(BoonId.Zeus_CastAlternate),
+                hasBoon(BoonId.Zeus_Aid),
+            ]),
+            notUsingKeepsake(KeepsakeId.Hades),
+        ]),
+        // qq test can't get this with hades keepsake (aid)
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Zeus.webp',
     },
     {
@@ -113,14 +189,17 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Ares, GodId.Artemis ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            doesNotHaveAnyOf([ 'Duo_Ares_Demeter' ]),
-            hasAtLeastOneOf([ 'Ares_Cast' ]),
-            hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Dash', 'Artemis_Aid' ]),
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Ares_Demeter),
+            hasBoon(BoonId.Ares_Cast),
+            oneOrMoreOf([
+                hasBoon(BoonId.Artemis_Attack),
+                hasBoon(BoonId.Artemis_Special),
+                hasBoon(BoonId.Artemis_Dash),
+                hasBoon(BoonId.Artemis_Aid),
+            ]),
         ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
         iconPath: './Icons/Boon/Duo/Duo_Ares_Artemis.webp',
     },
     {
@@ -130,9 +209,16 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Ares, GodId.Athena ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special' ]),
-            hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special' ]),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Ares_Artemis),
+            oneOrMoreOf([
+                hasBoon(BoonId.Ares_Attack),
+                hasBoon(BoonId.Ares_Special),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Athena_Attack),
+                hasBoon(BoonId.Athena_Special),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Ares_Athena.webp',
     },
@@ -143,10 +229,18 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Ares, GodId.Demeter ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            doesNotHaveAnyOf([ 'Duo_Ares_Artemis' ]),
-            hasAtLeastOneOf([ 'Ares_Cast' ]),
-            hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid' ]),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Ares_Artemis),
+            oneOrMoreOf([
+                hasBoon(BoonId.Ares_Cast),
+                hasBoon(BoonId.Ares_CastAlternate),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Demeter_Attack),
+                hasBoon(BoonId.Demeter_Dash),
+                hasBoon(BoonId.Demeter_Special),
+                hasBoon(BoonId.Demeter_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Ares_Demeter.webp',
     },
@@ -157,9 +251,18 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Ares, GodId.Dionysus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special', 'Ares_CurseOfVengeance' ]),
-            hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Ares_Attack),
+                hasBoon(BoonId.Ares_Special),
+                hasBoon(BoonId.Ares_CurseOfVengeance),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Dionysus_Attack),
+                hasBoon(BoonId.Dionysus_Dash),
+                hasBoon(BoonId.Dionysus_Special),
+                hasBoon(BoonId.Dionysus_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Ares_Dionysus.webp',
     },
@@ -170,14 +273,21 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Ares, GodId.Poseidon ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            doesNotHaveAnyOf([ 'Duo_Artemis_Poseidon', 'Duo_Demeter_Poseidon' ]),
-            hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special', 'Ares_Dash', 'Ares_Aid' ]),
-            hasAtLeastOneOf([ 'Poseidon_Cast' ]),
+        testRunAvailability: notUsingAspect(AspectId.Bow_Hera),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Artemis_Poseidon),
+            doesNotHaveBoon(BoonId.Duo_Demeter_Poseidon),
+            oneOrMoreOf([
+                hasBoon(BoonId.Ares_Attack),
+                hasBoon(BoonId.Ares_Special),
+                hasBoon(BoonId.Ares_Dash),
+                hasBoon(BoonId.Ares_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Poseidon_Cast),
+                hasBoon(BoonId.Poseidon_CastAlternate),
+            ]),
         ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Bow_Hera;
-        },
         iconPath: './Icons/Boon/Duo/Duo_Ares_Poseidon.webp',
     },
     {
@@ -187,10 +297,30 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Ares, GodId.Zeus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special', 'Ares_Cast', 'Ares_Dash', 'Ares_Aid' ]),
-            hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Cast', 'Zeus_Dash', 'Zeus_Aid' ]),
-            hasAtLeastOneOf([ 'Aphrodite_WaveOfDespair', 'Ares_CurseOfVengeance', 'Athena_HolyShield', 'Demeter_FrozenTouch', 'Zeus_HeavensVengeance' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Zeus_Attack),
+                hasBoon(BoonId.Zeus_Special),
+                hasBoon(BoonId.Zeus_Cast),
+                hasBoon(BoonId.Zeus_Dash),
+                hasBoon(BoonId.Zeus_Aid),
+                hasBoon(BoonId.Zeus_CastAlternate),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Ares_Attack),
+                hasBoon(BoonId.Ares_Special),
+                hasBoon(BoonId.Ares_Cast),
+                hasBoon(BoonId.Ares_Dash),
+                hasBoon(BoonId.Ares_Aid),
+                hasBoon(BoonId.Ares_CastAlternate),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Ares_CurseOfVengeance),
+                hasBoon(BoonId.Zeus_HeavensVengeance),
+                hasBoon(BoonId.Athena_HolyShield),
+                hasBoon(BoonId.Aphrodite_WaveOfDespair),
+                hasBoon(BoonId.Demeter_FrozenTouch),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Ares_Zeus.webp',
     },
@@ -201,9 +331,18 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Artemis, GodId.Athena ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Aid' ]),
-            hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Artemis_Attack),
+                hasBoon(BoonId.Artemis_Special),
+                hasBoon(BoonId.Artemis_Cast),
+                hasBoon(BoonId.Artemis_CastAlternate),
+                hasBoon(BoonId.Artemis_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Athena_Attack),
+                hasBoon(BoonId.Athena_Special),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Artemis_Athena.webp',
     },
@@ -214,14 +353,18 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Artemis, GodId.Demeter ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            doesNotHaveAnyOf([ 'Duo_Aphrodite_Demeter' ]),
-            hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Dash', 'Artemis_Aid' ]),
-            hasAtLeastOneOf([ 'Demeter_Cast' ]),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Aphrodite_Demeter),
+            oneOrMoreOf([
+                hasBoon(BoonId.Artemis_Attack),
+                hasBoon(BoonId.Artemis_Special),
+                hasBoon(BoonId.Artemis_Dash),
+                hasBoon(BoonId.Artemis_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Demeter_Cast),
+            ]),
         ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
         iconPath: './Icons/Boon/Duo/Duo_Artemis_Demeter.webp',
     },
     {
@@ -231,9 +374,19 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Artemis, GodId.Dionysus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Aid' ]),
-            hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Dionysus_Attack),
+                hasBoon(BoonId.Dionysus_Dash),
+                hasBoon(BoonId.Dionysus_Special),
+                hasBoon(BoonId.Dionysus_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Artemis_Attack),
+                hasBoon(BoonId.Artemis_Special),
+                hasBoon(BoonId.Artemis_Cast),
+                hasBoon(BoonId.Artemis_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Artemis_Dionysus.webp',
     },
@@ -244,10 +397,23 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Artemis, GodId.Poseidon ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            doesNotHaveAnyOf([ 'Duo_Ares_Poseidon' ]),
-            hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Aid' ]),
-            hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Ares_Poseidon),
+            oneOrMoreOf([
+                hasBoon(BoonId.Artemis_Attack),
+                hasBoon(BoonId.Artemis_Special),
+                hasBoon(BoonId.Artemis_Cast),
+                hasBoon(BoonId.Artemis_CastAlternate),
+                hasBoon(BoonId.Artemis_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Poseidon_Attack),
+                hasBoon(BoonId.Poseidon_Special),
+                hasBoon(BoonId.Poseidon_Cast),
+                hasBoon(BoonId.Poseidon_CastAlternate),
+                hasBoon(BoonId.Poseidon_Dash),
+                hasBoon(BoonId.Poseidon_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Artemis_Poseidon.webp',
     },
@@ -258,13 +424,25 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Artemis, GodId.Zeus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Dash', 'Artemis_Aid' ]),
-            hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Cast', 'Zeus_Dash', 'Zeus_Aid' ]),
+        testRunAvailability: hasMirrorTalent(MirrorTalentId.InfernalSoul),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Artemis_Attack),
+                hasBoon(BoonId.Artemis_Special),
+                hasBoon(BoonId.Artemis_Cast),
+                hasBoon(BoonId.Artemis_CastAlternate),
+                hasBoon(BoonId.Artemis_Dash),
+                hasBoon(BoonId.Artemis_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Zeus_Attack),
+                hasBoon(BoonId.Zeus_Dash),
+                hasBoon(BoonId.Zeus_Special),
+                hasBoon(BoonId.Zeus_Cast),
+                hasBoon(BoonId.Zeus_CastAlternate),
+                hasBoon(BoonId.Zeus_Aid),
+            ]),
         ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.mirror.includes('InfernalSoul');
-        },
         iconPath: './Icons/Boon/Duo/Duo_Artemis_Zeus.webp',
     },
     {
@@ -274,9 +452,23 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Athena, GodId.Demeter ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash', 'Athena_Aid' ]),
-            hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Cast', 'Demeter_Dash', 'Demeter_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Athena_Attack),
+                hasBoon(BoonId.Athena_Special),
+                hasBoon(BoonId.Athena_Cast),
+                hasBoon(BoonId.Athena_CastAlternate),
+                hasBoon(BoonId.Athena_Dash),
+                hasBoon(BoonId.Athena_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Demeter_Attack),
+                hasBoon(BoonId.Demeter_Dash),
+                hasBoon(BoonId.Demeter_Special),
+                hasBoon(BoonId.Demeter_Cast),
+                hasBoon(BoonId.Demeter_CastAlternate),
+                hasBoon(BoonId.Demeter_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Athena_Demeter.webp',
     },
@@ -287,9 +479,19 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Athena, GodId.Dionysus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Dash', 'Athena_Aid' ]),
-            hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Dash', 'Dionysus_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Athena_Attack),
+                hasBoon(BoonId.Athena_Special),
+                hasBoon(BoonId.Athena_Dash),
+                hasBoon(BoonId.Athena_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Dionysus_Attack),
+                hasBoon(BoonId.Dionysus_Special),
+                hasBoon(BoonId.Dionysus_Dash),
+                hasBoon(BoonId.Dionysus_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Athena_Dionysus.webp',
     },
@@ -300,9 +502,21 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Athena, GodId.Poseidon ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash', 'Athena_Aid' ]),
-            hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Athena_Attack),
+                hasBoon(BoonId.Athena_Special),
+                hasBoon(BoonId.Athena_Cast),
+                hasBoon(BoonId.Athena_CastAlternate),
+                hasBoon(BoonId.Athena_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Poseidon_Attack),
+                hasBoon(BoonId.Poseidon_Special),
+                hasBoon(BoonId.Poseidon_Cast),
+                hasBoon(BoonId.Poseidon_CastAlternate),
+                hasBoon(BoonId.Poseidon_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Athena_Poseidon.webp',
     },
@@ -313,13 +527,16 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Athena, GodId.Zeus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Athena_Cast' ]),
-            hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Dash', 'Zeus_Aid' ]),
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Zeus_Attack),
+                hasBoon(BoonId.Zeus_Special),
+                hasBoon(BoonId.Zeus_Dash),
+                hasBoon(BoonId.Zeus_Aid),
+            ]),
+            hasBoon(BoonId.Athena_Cast),
         ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
         iconPath: './Icons/Boon/Duo/Duo_Athena_Zeus.webp',
     },
     {
@@ -329,10 +546,18 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Demeter, GodId.Dionysus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            doesNotHaveAnyOf([ 'Duo_Demeter_Poseidon' ]),
-            hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid' ]),
-            hasAtLeastOneOf([ 'Dionysus_Cast' ]),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Demeter_Poseidon),
+            oneOrMoreOf([
+                hasBoon(BoonId.Demeter_Attack),
+                hasBoon(BoonId.Demeter_Special),
+                hasBoon(BoonId.Demeter_Dash),
+                hasBoon(BoonId.Demeter_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Dionysus_Cast),
+                hasBoon(BoonId.Dionysus_CastAlternate),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Demeter_Dionysus.webp',
     },
@@ -343,14 +568,18 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Demeter, GodId.Poseidon ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            doesNotHaveAnyOf([ 'Duo_Ares_Poseidon', 'Duo_Demeter_Dionysus' ]),
-            hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid' ]),
-            hasAtLeastOneOf([ 'Poseidon_Cast' ]),
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Ares_Poseidon),
+            doesNotHaveBoon(BoonId.Duo_Demeter_Dionysus),
+            oneOrMoreOf([
+                hasBoon(BoonId.Demeter_Attack),
+                hasBoon(BoonId.Demeter_Special),
+                hasBoon(BoonId.Demeter_Dash),
+                hasBoon(BoonId.Demeter_Aid),
+            ]),
+            hasBoon(BoonId.Poseidon_Cast),
         ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
         iconPath: './Icons/Boon/Duo/Duo_Demeter_Poseidon.webp',
     },
     {
@@ -360,9 +589,14 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Demeter, GodId.Zeus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid' ]),
-            hasAtLeastOneOf([ 'Zeus_StaticDischarge' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Demeter_Attack),
+                hasBoon(BoonId.Demeter_Special),
+                hasBoon(BoonId.Demeter_Dash),
+                hasBoon(BoonId.Demeter_Aid),
+            ]),
+            hasBoon(BoonId.Zeus_StaticDischarge),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Demeter_Zeus.webp',
     },
@@ -373,9 +607,24 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Dionysus, GodId.Poseidon ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Dionysus_Attack', 'Dionysus_Special', 'Dionysus_Cast', 'Dionysus_Dash', 'Dionysus_Aid' ]),
-            hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
+        testRequirements: allOf([
+            doesNotHaveBoon(BoonId.Duo_Demeter_Poseidon),
+            oneOrMoreOf([
+                hasBoon(BoonId.Poseidon_Attack),
+                hasBoon(BoonId.Poseidon_Special),
+                hasBoon(BoonId.Poseidon_Cast),
+                hasBoon(BoonId.Poseidon_CastAlternate),
+                hasBoon(BoonId.Poseidon_Dash),
+                hasBoon(BoonId.Poseidon_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Dionysus_Attack),
+                hasBoon(BoonId.Dionysus_Special),
+                hasBoon(BoonId.Dionysus_Cast),
+                hasBoon(BoonId.Dionysus_CastAlternate),
+                hasBoon(BoonId.Dionysus_Dash),
+                hasBoon(BoonId.Dionysus_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Dionysus_Poseidon.webp',
     },
@@ -386,9 +635,14 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Dionysus, GodId.Zeus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Dionysus_Cast' ]),
-            hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Dash', 'Zeus_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Zeus_Attack),
+                hasBoon(BoonId.Zeus_Special),
+                hasBoon(BoonId.Zeus_Dash),
+                hasBoon(BoonId.Zeus_Aid),
+            ]),
+            hasBoon(BoonId.Dionysus_Cast),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Dionysus_Zeus.webp',
     },
@@ -399,9 +653,22 @@ const Boons_Duo: Array<Boon> = [
         rarityType: BoonRarityType.Duo,
         godId: [ GodId.Poseidon, GodId.Zeus ],
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Aid' ]),
-            hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Cast', 'Zeus_Dash', 'Zeus_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Poseidon_Attack),
+                hasBoon(BoonId.Poseidon_Special),
+                hasBoon(BoonId.Poseidon_Cast),
+                hasBoon(BoonId.Poseidon_CastAlternate),
+                hasBoon(BoonId.Poseidon_Aid),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Zeus_Attack),
+                hasBoon(BoonId.Zeus_Special),
+                hasBoon(BoonId.Zeus_Cast),
+                hasBoon(BoonId.Zeus_CastAlternate),
+                hasBoon(BoonId.Zeus_Dash),
+                hasBoon(BoonId.Zeus_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Duo/Duo_Poseidon_Zeus.webp',
     },

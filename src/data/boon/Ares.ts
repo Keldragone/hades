@@ -1,11 +1,10 @@
-import { hasAtLeastOneOf } from './requirementsTests';
+import { hasBoon, notUsingAspect, oneOrMoreOf, usingAspect } from './requirementsTests';
 
 import { Boon, BoonId } from './types';
 
 import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { GodId } from '../god';
-import { RunState } from '../runState';
 import { AspectId } from '../weapon';
 
 const Boons_Ares: Array<Boon> = [
@@ -31,9 +30,7 @@ const Boons_Ares: Array<Boon> = [
         description: 'Your Cast sends a Blade Rift hurling ahead.',
         godId: GodId.Ares,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Ares/Ares_Cast.webp',
     },
     {
@@ -42,9 +39,7 @@ const Boons_Ares: Array<Boon> = [
         description: 'Your Cast sends a large Blade Rift hurling ahead for a brief time.',
         godId: GodId.Ares,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId === AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: usingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Ares/Ares_Cast.webp',
     },
     {
@@ -78,13 +73,6 @@ const Boons_Ares: Array<Boon> = [
         iconPath: './Icons/Boon/Ares/Ares_UrgeToKill.webp',
     },
     {
-        id: BoonId.Ares_BattleRage,
-        name: 'Battle Rage',
-        description: 'After slaying a foe, your next Attack or Special deals more damage.',
-        godId: GodId.Ares,
-        iconPath: './Icons/Boon/Ares/Ares_BattleRage.webp',
-    },
-    {
         id: BoonId.Ares_BloodFrenzy,
         name: 'Blood Frenzy',
         description: 'After using Death Defiance, deal more damage that encounter.',
@@ -93,11 +81,23 @@ const Boons_Ares: Array<Boon> = [
         iconPath: './Icons/Boon/Ares/Ares_BloodFrenzy.webp',
     },
     {
+        id: BoonId.Ares_BattleRage,
+        name: 'Battle Rage',
+        description: 'After slaying a foe, your next Attack or Special deals more damage.',
+        godId: GodId.Ares,
+        iconPath: './Icons/Boon/Ares/Ares_BattleRage.webp',
+    },
+    {
         id: BoonId.Ares_BlackMetal,
         name: 'Black Metal',
         description: 'Your Blade Rift powers deal damage in a wider area.',
         godId: GodId.Ares,
-        requirementTest: hasAtLeastOneOf([ 'Ares_Cast', 'Ares_Dash', 'Ares_Aid' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Ares_Cast),
+            hasBoon(BoonId.Ares_CastAlternate),
+            hasBoon(BoonId.Ares_Dash),
+            hasBoon(BoonId.Ares_Aid),
+        ]),
         iconPath: './Icons/Boon/Ares/Ares_BlackMetal.webp',
     },
     {
@@ -106,7 +106,12 @@ const Boons_Ares: Array<Boon> = [
         description: 'Your Blade Rift effects last longer and pull foes in.',
         godId: GodId.Ares,
         pommable: false,
-        requirementTest: hasAtLeastOneOf([ 'Ares_Cast', 'Ares_Dash', 'Ares_Aid' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Ares_Cast),
+            hasBoon(BoonId.Ares_CastAlternate),
+            hasBoon(BoonId.Ares_Dash),
+            hasBoon(BoonId.Ares_Aid),
+        ]),
         iconPath: './Icons/Boon/Ares/Ares_EngulfingVortex.webp',
     },
     {
@@ -115,7 +120,10 @@ const Boons_Ares: Array<Boon> = [
         description: 'Your Doom effects deal more damage when applied multiple times.',
         godId: GodId.Ares,
         pommable: false,
-        requirementTest: hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Ares_Attack),
+            hasBoon(BoonId.Ares_Special),
+        ]),
         iconPath: './Icons/Boon/Ares/Ares_DireMisfortune.webp',
     },
     {
@@ -123,7 +131,11 @@ const Boons_Ares: Array<Boon> = [
         name: 'Impending Doom',
         description: 'Your Doom effects deal more damage, but take +0.5 Sec. to activate.',
         godId: GodId.Ares,
-        requirementTest: hasAtLeastOneOf([ 'Ares_Attack', 'Ares_Special', 'Ares_CurseOfVengeance' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Ares_Attack),
+            hasBoon(BoonId.Ares_Special),
+            hasBoon(BoonId.Ares_CurseOfVengeance),
+        ]),
         iconPath: './Icons/Boon/Ares/Ares_ImpendingDoom.webp',
     },
     {
@@ -133,7 +145,10 @@ const Boons_Ares: Array<Boon> = [
         godId: GodId.Ares,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
-        requirementTest: hasAtLeastOneOf([ 'Ares_BlackMetal', 'Ares_EngulfingVortex' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Ares_BlackMetal),
+            hasBoon(BoonId.Ares_EngulfingVortex),
+        ]),
         iconPath: './Icons/Boon/Ares/Ares_Legendary.webp',
     },
 ];

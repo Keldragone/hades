@@ -1,11 +1,10 @@
-import { hasAtLeastOneOf, satisfiesAllOf } from './requirementsTests';
+import { allOf, hasBoon, notUsingAspect, oneOrMoreOf, usingAspect } from './requirementsTests';
 
 import { Boon, BoonId } from './types';
 
 import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { GodId } from '../god';
-import { RunState } from '../runState';
 import { AspectId } from '../weapon';
 
 const Boons_Aphrodite: Array<Boon> = [
@@ -31,9 +30,7 @@ const Boons_Aphrodite: Array<Boon> = [
         description: 'Your Cast is a wide, short-range blast that inflicts Weak.',
         godId: GodId.Aphrodite,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Cast.webp',
     },
     {
@@ -42,9 +39,7 @@ const Boons_Aphrodite: Array<Boon> = [
         description: 'Your Cast damages foes around you and inflicts Weak.',
         godId: GodId.Aphrodite,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId === AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: usingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Cast.webp',
     },
     {
@@ -78,13 +73,6 @@ const Boons_Aphrodite: Array<Boon> = [
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_WaveOfDespair.webp',
     },
     {
-        id: BoonId.Aphrodite_DifferentLeague,
-        name: 'Different League',
-        description: 'Resist some damage from nearby foes\' attacks.',
-        godId: GodId.Aphrodite,
-        iconPath: './Icons/Boon/Aphrodite/Aphrodite_DifferentLeague.webp',
-    },
-    {
         id: BoonId.Aphrodite_LifeAffirmation,
         name: 'Life Affirmation',
         description: 'Any [Max Health] chamber rewards are worth more.',
@@ -93,20 +81,25 @@ const Boons_Aphrodite: Array<Boon> = [
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_LifeAffirmation.webp',
     },
     {
+        id: BoonId.Aphrodite_DifferentLeague,
+        name: 'Different League',
+        description: 'Resist some damage from nearby foes\' attacks.',
+        godId: GodId.Aphrodite,
+        iconPath: './Icons/Boon/Aphrodite/Aphrodite_DifferentLeague.webp',
+    },
+    {
         id: BoonId.Aphrodite_EmptyInside,
         name: 'Empty Inside',
         description: 'Your Weak effects have a longer duration.',
         godId: GodId.Aphrodite,
-        requirementTest: hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Aphrodite_Attack),
+            hasBoon(BoonId.Aphrodite_Special),
+            hasBoon(BoonId.Aphrodite_Cast),
+            hasBoon(BoonId.Aphrodite_CastAlternate),
+            hasBoon(BoonId.Aphrodite_Dash),
+        ]),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_EmptyInside.webp',
-    },
-    {
-        id: BoonId.Aphrodite_SweetSurrender,
-        name: 'Sweet Surrender',
-        description: 'Weak-afflicted foes are also more susceptible to damage.',
-        godId: GodId.Aphrodite,
-        requirementTest: hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
-        iconPath: './Icons/Boon/Aphrodite/Aphrodite_SweetSurrender.webp',
     },
     {
         id: BoonId.Aphrodite_BrokenResolve,
@@ -114,7 +107,13 @@ const Boons_Aphrodite: Array<Boon> = [
         description: 'Your Weak effects are more potent.',
         godId: GodId.Aphrodite,
         pommable: false,
-        requirementTest: hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Aphrodite_Attack),
+            hasBoon(BoonId.Aphrodite_Special),
+            hasBoon(BoonId.Aphrodite_Cast),
+            hasBoon(BoonId.Aphrodite_CastAlternate),
+            hasBoon(BoonId.Aphrodite_Dash),
+        ]),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_BrokenResolve.webp',
     },
     {
@@ -123,9 +122,25 @@ const Boons_Aphrodite: Array<Boon> = [
         description: 'Your Cast shoots farther and is stronger against undamaged foes.',
         godId: GodId.Aphrodite,
         pommable: false,
-        requirementTest: hasAtLeastOneOf([ 'Aphrodite_Cast' ]),
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Aphrodite_Cast),
+        ]),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_BlownKiss.webp',
-        // Can you get this with beo cast?
+    },
+    {
+        id: BoonId.Aphrodite_SweetSurrender,
+        name: 'Sweet Surrender',
+        description: 'Weak-afflicted foes are also more susceptible to damage.',
+        godId: GodId.Aphrodite,
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Aphrodite_Attack),
+            hasBoon(BoonId.Aphrodite_Special),
+            hasBoon(BoonId.Aphrodite_Cast),
+            hasBoon(BoonId.Aphrodite_CastAlternate),
+            hasBoon(BoonId.Aphrodite_Dash),
+        ]),
+        iconPath: './Icons/Boon/Aphrodite/Aphrodite_SweetSurrender.webp',
     },
     {
         id: BoonId.Aphrodite_Legendary,
@@ -134,9 +149,19 @@ const Boons_Aphrodite: Array<Boon> = [
         godId: GodId.Aphrodite,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
-            hasAtLeastOneOf([ 'Aphrodite_EmptyInside', 'Aphrodite_SweetSurrender', 'Aphrodite_BrokenResolve' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Aphrodite_Attack),
+                hasBoon(BoonId.Aphrodite_Special),
+                hasBoon(BoonId.Aphrodite_Cast),
+                hasBoon(BoonId.Aphrodite_CastAlternate),
+                hasBoon(BoonId.Aphrodite_Dash),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Aphrodite_EmptyInside),
+                hasBoon(BoonId.Aphrodite_SweetSurrender),
+                hasBoon(BoonId.Aphrodite_BrokenResolve),
+            ]),
         ]),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Legendary.webp',
     },

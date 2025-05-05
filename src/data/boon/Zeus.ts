@@ -1,11 +1,10 @@
-import { hasAtLeastOneOf, hasAtLeastXOf, satisfiesAllOf } from './requirementsTests';
+import { hasBoon, notUsingAspect, oneOrMoreOf, usingAspect } from './requirementsTests';
 
 import { Boon, BoonId } from './types';
 
 import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { GodId } from '../god';
-import { RunState } from '../runState';
 import { AspectId } from '../weapon';
 
 const Boons_Zeus: Array<Boon> = [
@@ -31,9 +30,7 @@ const Boons_Zeus: Array<Boon> = [
         description: 'Your Cast is a burst of chain-lightning that bounces between foes.',
         godId: GodId.Zeus,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Zeus/Zeus_Cast.webp',
     },
     {
@@ -42,9 +39,7 @@ const Boons_Zeus: Array<Boon> = [
         description: 'Your Cast causes a lightning bolt to strike nearby foes.',
         godId: GodId.Zeus,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId === AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: usingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Zeus/Zeus_Cast.webp',
     },
     {
@@ -64,11 +59,12 @@ const Boons_Zeus: Array<Boon> = [
         iconPath: './Icons/Boon/Zeus/Zeus_Aid.webp',
     },
     {
-        id: BoonId.Zeus_HeavensVengeance,
-        name: 'Heaven\'s Vengeance',
-        description: 'After you take damage, your foe is struck by lightning.',
+        id: BoonId.Zeus_BillowingStrength,
+        name: 'Billowing Strength',
+        description: 'After using Call, you deal more damage for 15 Sec.',
         godId: GodId.Zeus,
-        iconPath: './Icons/Boon/Zeus/Zeus_HeavensVengeance.webp',
+        iconPath: './Icons/Boon/Zeus/Zeus_BillowingStrength.webp',
+        // qq need aid for this?
     },
     {
         id: BoonId.Zeus_LightningReflexes,
@@ -78,19 +74,31 @@ const Boons_Zeus: Array<Boon> = [
         iconPath: './Icons/Boon/Zeus/Zeus_LightningReflexes.webp',
     },
     {
-        id: BoonId.Zeus_StormLightning,
-        name: 'Storm Lightning',
-        description: 'Your chain-lightning effects bounce more times before expiring.',
+        id: BoonId.Zeus_HeavensVengeance,
+        name: 'Heaven\'s Vengeance',
+        description: 'After you take damage, your foe is struck by lightning.',
         godId: GodId.Zeus,
-        requirementTest: hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Cast' ]),
-        iconPath: './Icons/Boon/Zeus/Zeus_StormLightning.webp',
+        iconPath: './Icons/Boon/Zeus/Zeus_HeavensVengeance.webp',
+    },
+    {
+        id: BoonId.Zeus_CloudedJudgment,
+        name: 'Clouded Judgment',
+        description: 'Your GodId Gauge charges faster when you deal or take damage.',
+        godId: GodId.Zeus,
+        iconPath: './Icons/Boon/Zeus/Zeus_CloudedJudgment.webp',
+        // qq need aid for this?
     },
     {
         id: BoonId.Zeus_HighVoltage,
         name: 'High Voltage',
         description: 'Your lightning bolt effects deal damage in a larger area.',
         godId: GodId.Zeus,
-        requirementTest: hasAtLeastOneOf([ 'Zeus_Special', 'Zeus_Dash', 'Zeus_Aid' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Zeus_Special),
+            hasBoon(BoonId.Zeus_Aid),
+            hasBoon(BoonId.Zeus_Dash),
+            hasBoon(BoonId.Zeus_CastAlternate),
+        ]),
         iconPath: './Icons/Boon/Zeus/Zeus_HighVoltage.webp',
     },
     {
@@ -98,32 +106,41 @@ const Boons_Zeus: Array<Boon> = [
         name: 'Double Strike',
         description: 'Your lightning bolt effects have a chance to strike twice.',
         godId: GodId.Zeus,
-        requirementTest: hasAtLeastOneOf([ 'Zeus_Special', 'Zeus_Dash', 'Zeus_Aid' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Zeus_Special),
+            hasBoon(BoonId.Zeus_Aid),
+            hasBoon(BoonId.Zeus_Dash),
+            hasBoon(BoonId.Zeus_CastAlternate),
+        ]),
         iconPath: './Icons/Boon/Zeus/Zeus_DoubleStrike.webp',
+    },
+    {
+        id: BoonId.Zeus_StormLightning,
+        name: 'Storm Lightning',
+        description: 'Your chain-lightning effects bounce more times before expiring.',
+        godId: GodId.Zeus,
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Zeus_Attack),
+            hasBoon(BoonId.Zeus_Cast),
+        ]),
+        iconPath: './Icons/Boon/Zeus/Zeus_StormLightning.webp',
     },
     {
         id: BoonId.Zeus_StaticDischarge,
         name: 'Static Discharge',
         description: 'Your lightning effects also make foes Jolted.',
         godId: GodId.Zeus,
-        requirementTest: hasAtLeastOneOf([ 'Zeus_Attack', 'Zeus_Special', 'Zeus_Cast', 'Zeus_Dash', 'Zeus_Aid', 'Zeus_HeavensVengeance', 'Zeus_LightningReflexes' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Zeus_Special),
+            hasBoon(BoonId.Zeus_Aid),
+            hasBoon(BoonId.Zeus_Dash),
+            hasBoon(BoonId.Zeus_HeavensVengeance),
+            hasBoon(BoonId.Zeus_Attack),
+            hasBoon(BoonId.Zeus_Cast),
+            hasBoon(BoonId.Zeus_LightningReflexes),
+            hasBoon(BoonId.Zeus_CastAlternate),
+        ]),
         iconPath: './Icons/Boon/Zeus/Zeus_StaticDischarge.webp',
-    },
-    {
-        id: BoonId.Zeus_CloudedJudgment,
-        name: 'Clouded Judgment',
-        description: 'Your GodId Gauge charges faster when you deal or take damage.',
-        godId: GodId.Zeus,
-        requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        iconPath: './Icons/Boon/Zeus/Zeus_CloudedJudgment.webp',
-    },
-    {
-        id: BoonId.Zeus_BillowingStrength,
-        name: 'Billowing Strength',
-        description: 'After using Call, you deal more damage for 15 Sec.',
-        godId: GodId.Zeus,
-        requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        iconPath: './Icons/Boon/Zeus/Zeus_BillowingStrength.webp',
     },
     {
         id: BoonId.Zeus_Legendary,
@@ -132,7 +149,11 @@ const Boons_Zeus: Array<Boon> = [
         godId: GodId.Zeus,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
-        requirementTest: hasAtLeastOneOf([ 'Zeus_StormLightning', 'Zeus_HighVoltage', 'Zeus_DoubleStrike' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Zeus_StormLightning),
+            hasBoon(BoonId.Zeus_HighVoltage),
+            hasBoon(BoonId.Zeus_DoubleStrike),
+        ]),
         iconPath: './Icons/Boon/Zeus/Zeus_Legendary.webp',
     },
 ];

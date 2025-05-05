@@ -1,11 +1,10 @@
-import { hasAtLeastOneOf } from './requirementsTests';
+import { hasBoon, notUsingAspect, oneOrMoreOf, usingAspect } from './requirementsTests';
 
 import { Boon, BoonId } from './types';
 
 import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { GodId } from '../god';
-import { RunState } from '../runState';
 import { AspectId } from '../weapon';
 
 const Boons_Athena: Array<Boon> = [
@@ -31,9 +30,7 @@ const Boons_Athena: Array<Boon> = [
         description: 'Your Cast damages foes in a small area, and can Deflect.',
         godId: GodId.Athena,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Athena/Athena_Cast.webp',
     },
     {
@@ -42,9 +39,7 @@ const Boons_Athena: Array<Boon> = [
         description: 'Your Cast damages foes around you, and can Deflect.',
         godId: GodId.Athena,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId === AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: usingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Athena/Athena_Cast.webp',
     },
     {
@@ -78,6 +73,40 @@ const Boons_Athena: Array<Boon> = [
         iconPath: './Icons/Boon/Athena/Athena_BronzeSkin.webp',
     },
     {
+        id: BoonId.Athena_DeathlessStand,
+        name: 'Deathless Stand',
+        description: 'Death Defiance makes you Impervious longer. Replenish 1 charge now.',
+        godId: GodId.Athena,
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Athena_Attack),
+            hasBoon(BoonId.Athena_Cast),
+            hasBoon(BoonId.Athena_Dash),
+            hasBoon(BoonId.Athena_Special),
+        ]),
+        iconPath: './Icons/Boon/Athena/Athena_DeathlessStand.webp',
+    },
+    {
+        id: BoonId.Athena_LastStand,
+        name: 'Last Stand',
+        description: 'Death Defiance restores more [Health] than usual. Replenish 1 charge now.',
+        godId: GodId.Athena,
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Athena_Attack),
+            hasBoon(BoonId.Athena_Cast),
+            hasBoon(BoonId.Athena_Dash),
+            hasBoon(BoonId.Athena_Special),
+        ]),
+        iconPath: './Icons/Boon/Athena/Athena_LastStand.webp',
+    },
+    {
+        id: BoonId.Athena_ProudBearing,
+        name: 'Proud Bearing',
+        description: 'You begin each Encounter with your GodId Gauge partly full.',
+        godId: GodId.Athena,
+        iconPath: './Icons/Boon/Athena/Athena_ProudBearing.webp',
+        // qq does this require an aid?? probably??
+    },
+    {
         id: BoonId.Athena_SureFooting,
         name: 'Sure Footing',
         description: 'Resist damage from Traps.',
@@ -86,19 +115,17 @@ const Boons_Athena: Array<Boon> = [
         iconPath: './Icons/Boon/Athena/Athena_SureFooting.webp',
     },
     {
-        id: BoonId.Athena_ProudBearing,
-        name: 'Proud Bearing',
-        description: 'You begin each Encounter with your GodId Gauge partly full.',
-        godId: GodId.Athena,
-        requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        iconPath: './Icons/Boon/Athena/Athena_ProudBearing.webp',
-    },
-    {
         id: BoonId.Athena_BlindingFlash,
         name: 'Blinding Flash',
         description: 'Your abilities that can Deflect also make foes Exposed.',
         godId: GodId.Athena,
-        requirementTest: hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Athena_Attack),
+            hasBoon(BoonId.Athena_Cast),
+            hasBoon(BoonId.Athena_CastAlternate),
+            hasBoon(BoonId.Athena_Dash),
+            hasBoon(BoonId.Athena_Special),
+        ]),
         iconPath: './Icons/Boon/Athena/Athena_BlindingFlash.webp',
     },
     {
@@ -106,24 +133,13 @@ const Boons_Athena: Array<Boon> = [
         name: 'Brilliant Riposte',
         description: 'When you Deflect attacks, they deal more damage.',
         godId: GodId.Athena,
-        requirementTest: hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Dash', 'Athena_HolyShield' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Athena_Attack),
+            hasBoon(BoonId.Athena_Dash),
+            hasBoon(BoonId.Athena_HolyShield),
+            hasBoon(BoonId.Athena_Special),
+        ]),
         iconPath: './Icons/Boon/Athena/Athena_BrilliantRiposte.webp',
-    },
-    {
-        id: BoonId.Athena_DeathlessStand,
-        name: 'Deathless Stand',
-        description: 'Death Defiance makes you Impervious longer. Replenish 1 charge now.',
-        godId: GodId.Athena,
-        requirementTest: hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash' ]),
-        iconPath: './Icons/Boon/Athena/Athena_DeathlessStand.webp',
-    },
-    {
-        id: BoonId.Athena_LastStand,
-        name: 'Last Stand',
-        description: 'Death Defiance restores more [Health] than usual. Replenish 1 charge now.',
-        godId: GodId.Athena,
-        requirementTest: hasAtLeastOneOf([ 'Athena_Attack', 'Athena_Special', 'Athena_Cast', 'Athena_Dash' ]),
-        iconPath: './Icons/Boon/Athena/Athena_LastStand.webp',
     },
     {
         id: BoonId.Athena_Legendary,
@@ -132,7 +148,7 @@ const Boons_Athena: Array<Boon> = [
         godId: GodId.Athena,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
-        requirementTest: hasAtLeastOneOf([ 'Athena_BrilliantRiposte' ]),
+        testRequirements: hasBoon(BoonId.Athena_BrilliantRiposte),
         iconPath: './Icons/Boon/Athena/Athena_Legendary.webp',
     },
 ];

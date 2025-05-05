@@ -180,7 +180,7 @@ export interface Boon {
     slot?: BoonSlot;
     rarityType?: BoonRarityType;
     pommable?: boolean;
-    requirementTest?: BoonRequirementsTest;
-    testRunAvailability?: (runState: RunState) => {};
+    testRunAvailability?: (runState: RunState) => boolean;
+    testRequirements?: (runState: RunState) => boolean;
     iconPath: string;
 };

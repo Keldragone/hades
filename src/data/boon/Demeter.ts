@@ -1,11 +1,10 @@
-import { hasAtLeastOneOf, hasAtLeastXOf } from './requirementsTests';
+import { hasBoon, notUsingAspect, oneOrMoreOf, usingAspect, xOrMoreOf } from './requirementsTests';
 
 import { Boon, BoonId } from './types';
 
 import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { GodId } from '../god';
-import { RunState } from '../runState';
 import { AspectId } from '../weapon';
 
 const Boons_Demeter: Array<Boon> = [
@@ -31,9 +30,7 @@ const Boons_Demeter: Array<Boon> = [
         description: 'Your Cast drops a crystal that fires a beam straight ahead for 5 Sec.',
         godId: GodId.Demeter,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Demeter/Demeter_Cast.webp',
     },
     {
@@ -42,9 +39,7 @@ const Boons_Demeter: Array<Boon> = [
         description: 'Your Cast damages foes around you and inflicts Chill.',
         godId: GodId.Demeter,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId === AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: usingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Demeter/Demeter_Cast.webp',
     },
     {
@@ -64,6 +59,13 @@ const Boons_Demeter: Array<Boon> = [
         iconPath: './Icons/Boon/Demeter/Demeter_Aid.webp',
     },
     {
+        id: BoonId.Demeter_SnowBurst,
+        name: 'Snow Burst',
+        description: 'Whenever you Cast, damage nearby foes and inflict Chill.',
+        godId: GodId.Demeter,
+        iconPath: './Icons/Boon/Demeter/Demeter_SnowBurst.webp',
+    },
+    {
         id: BoonId.Demeter_FrozenTouch,
         name: 'Frozen Touch',
         description: 'After you take damage, damage and completely Chill your foe.',
@@ -80,14 +82,6 @@ const Boons_Demeter: Array<Boon> = [
         // Can't PURGE, can't EXCHANGE, can't UPGRADE via Eurydice
     },
     {
-        id: BoonId.Demeter_RavenousWill,
-        name: 'Ravenous Will',
-        description: 'While you have no [Cast], take 10% less damage and deal more.',
-        godId: GodId.Demeter,
-        pommable: false,
-        iconPath: './Icons/Boon/Demeter/Demeter_RavenousWill.webp',
-    },
-    {
         id: BoonId.Demeter_NourishedSoul,
         name: 'Nourished Soul',
         description: 'Any [Heal] effects are more potent. Restore +30% now.',
@@ -97,11 +91,21 @@ const Boons_Demeter: Array<Boon> = [
         // Can't PURGE
     },
     {
-        id: BoonId.Demeter_SnowBurst,
-        name: 'Snow Burst',
-        description: 'Whenever you Cast, damage nearby foes and inflict Chill.',
+        id: BoonId.Demeter_RavenousWill,
+        name: 'Ravenous Will',
+        description: 'While you have no [Cast], take 10% less damage and deal more.',
         godId: GodId.Demeter,
-        iconPath: './Icons/Boon/Demeter/Demeter_SnowBurst.webp',
+        pommable: false,
+        iconPath: './Icons/Boon/Demeter/Demeter_RavenousWill.webp',
+    },
+    {
+        id: BoonId.Demeter_GlacialGlare,
+        name: 'Glacial Glare',
+        description: 'Your Cast fires longer and inflicts Chill.',
+        godId: GodId.Demeter,
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
+        testRequirements: hasBoon(BoonId.Demeter_Cast),
+        iconPath: './Icons/Boon/Demeter/Demeter_GlacialGlare.webp',
     },
     {
         id: BoonId.Demeter_ArcticBlast,
@@ -109,7 +113,14 @@ const Boons_Demeter: Array<Boon> = [
         description: 'Applying 10 stacks of Chill causes a blast, clearing the effect.',
         godId: GodId.Demeter,
         pommable: false,
-        requirementTest: hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid', 'Demeter_SnowBurst' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Demeter_Attack),
+            hasBoon(BoonId.Demeter_Special),
+            hasBoon(BoonId.Demeter_Dash),
+            hasBoon(BoonId.Demeter_Aid),
+            hasBoon(BoonId.Demeter_CastAlternate),
+            hasBoon(BoonId.Demeter_SnowBurst),
+        ]),
         iconPath: './Icons/Boon/Demeter/Demeter_ArcticBlast.webp',
     },
     {
@@ -118,19 +129,15 @@ const Boons_Demeter: Array<Boon> = [
         description: 'When all foes are Chill afflicted, they become Slow and Decay.',
         godId: GodId.Demeter,
         pommable: false,
-        requirementTest: hasAtLeastOneOf([ 'Demeter_Attack', 'Demeter_Special', 'Demeter_Dash', 'Demeter_Aid', 'Demeter_SnowBurst' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Demeter_Attack),
+            hasBoon(BoonId.Demeter_Special),
+            hasBoon(BoonId.Demeter_Dash),
+            hasBoon(BoonId.Demeter_Aid),
+            hasBoon(BoonId.Demeter_CastAlternate),
+            hasBoon(BoonId.Demeter_SnowBurst),
+        ]),
         iconPath: './Icons/Boon/Demeter/Demeter_KillingFreeze.webp',
-    },
-    {
-        id: BoonId.Demeter_GlacialGlare,
-        name: 'Glacial Glare',
-        description: 'Your Cast fires longer and inflicts Chill.',
-        godId: GodId.Demeter,
-        requirementTest: hasAtLeastOneOf([ 'Demeter_Cast' ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
-        iconPath: './Icons/Boon/Demeter/Demeter_GlacialGlare.webp',
     },
     {
         id: BoonId.Demeter_Legendary,
@@ -139,7 +146,11 @@ const Boons_Demeter: Array<Boon> = [
         godId: GodId.Demeter,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
-        requirementTest: hasAtLeastXOf(2, [ 'Demeter_RavenousWill', 'Demeter_ArcticBlast', 'Demeter_KillingFreeze' ]),
+        testRequirements: xOrMoreOf(2, [
+            hasBoon(BoonId.Demeter_ArcticBlast),
+            hasBoon(BoonId.Demeter_KillingFreeze),
+            hasBoon(BoonId.Demeter_RavenousWill),
+        ]),
         iconPath: './Icons/Boon/Demeter/Demeter_Legendary.webp',
     },
 ];

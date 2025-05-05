@@ -1,12 +1,12 @@
-import { hasAtLeastOneOf, hasAtLeastXOf, satisfiesAllOf } from './requirementsTests';
+import { allOf, hasBoon, usingKeepsake, notUsingAspect, oneOrMoreOf, usingAspect, xOrMoreOf } from './requirementsTests';
 
 import { Boon, BoonId } from './types';
 
-import { BoonRarityType } from '../boonRarityType';
-import { BoonSlot } from '../boonSlot';
-import { GodId } from '../god';
-import { RunState } from '../runState';
-import { AspectId } from '../weapon';
+import { BoonRarityType } from '@/data/boonRarityType';
+import { BoonSlot } from '@/data/boonSlot';
+import { GodId } from '@/data/god';
+import { AspectId } from '@/data/weapon';
+import { KeepsakeId } from '@/data/keepsake';
 
 const Boons_Poseidon: Array<Boon> = [
     {
@@ -31,9 +31,7 @@ const Boons_Poseidon: Array<Boon> = [
         description: 'Your Cast damages foes in an area and knocks them away.',
         godId: GodId.Poseidon,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Poseidon/Poseidon_Cast.webp',
     },
     {
@@ -42,9 +40,7 @@ const Boons_Poseidon: Array<Boon> = [
         description: 'Your Cast damages foes around you and knocks them away.',
         godId: GodId.Poseidon,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId === AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: usingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Poseidon/Poseidon_Cast.webp',
     },
     {
@@ -64,12 +60,12 @@ const Boons_Poseidon: Array<Boon> = [
         iconPath: './Icons/Boon/Poseidon/Poseidon_Aid.webp',
     },
     {
-        id: BoonId.Poseidon_TyphoonsFury,
-        name: 'Typhoon\'s Fury',
-        description: 'You deal more damage when slamming foes into barriers.',
+        id: BoonId.Poseidon_BoilingPoint,
+        name: 'Boiling Point',
+        description: 'Your GodId Gauge charges faster when you take damage.',
         godId: GodId.Poseidon,
-        requirementTest: hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
-        iconPath: './Icons/Boon/Poseidon/Poseidon_TyphoonsFury.webp',
+        iconPath: './Icons/Boon/Poseidon/Poseidon_BoilingPoint.webp',
+        // qq do you need an aid? probably!!
     },
     {
         id: BoonId.Poseidon_HydraulicMight,
@@ -77,14 +73,6 @@ const Boons_Poseidon: Array<Boon> = [
         description: 'Your Attack and Special are stronger the first 10 Sec. in Encounter(s).',
         godId: GodId.Poseidon,
         iconPath: './Icons/Boon/Poseidon/Poseidon_HydraulicMight.webp',
-    },
-    {
-        id: BoonId.Poseidon_OceansBounty,
-        name: 'Ocean\'s Bounty',
-        description: 'Any [Gemstone], [Darkness] or [Obols] chamber rewards are worth more.',
-        godId: GodId.Poseidon,
-        pommable: false,
-        iconPath: './Icons/Boon/Poseidon/Poseidon_OceansBounty.webp',
     },
     {
         id: BoonId.Poseidon_SunkenTreasure,
@@ -96,35 +84,41 @@ const Boons_Poseidon: Array<Boon> = [
         // Can get this MULTIPLE TIMES?!?!
     },
     {
-        id: BoonId.Poseidon_RazorShoals,
-        name: 'Razor Shoals',
-        description: 'Using knock-away effects also Rupture foes.',
+        id: BoonId.Poseidon_OceansBounty,
+        name: 'Ocean\'s Bounty',
+        description: 'Any [Gemstone], [Darkness] or [Obols] chamber rewards are worth more.',
         godId: GodId.Poseidon,
-        requirementTest: hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
-        iconPath: './Icons/Boon/Poseidon/Poseidon_RazorShoals.webp',
+        pommable: false,
+        iconPath: './Icons/Boon/Poseidon/Poseidon_OceansBounty.webp',
     },
     {
-        id: BoonId.Poseidon_BoilingPoint,
-        name: 'Boiling Point',
-        description: 'Your GodId Gauge charges faster when you take damage.',
+        id: BoonId.Poseidon_TyphoonsFury,
+        name: 'Typhoon\'s Fury',
+        description: 'You deal more damage when slamming foes into barriers.',
         godId: GodId.Poseidon,
-        requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        iconPath: './Icons/Boon/Poseidon/Poseidon_BoilingPoint.webp',
-    },
-    {
-        id: BoonId.Poseidon_BreakingWave,
-        name: 'Breaking Wave',
-        description: 'Slamming foes into walls or corners creates a watery blast in the area.',
-        godId: GodId.Poseidon,
-        requirementTest: hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
-        iconPath: './Icons/Boon/Poseidon/Poseidon_BreakingWave.webp',
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Poseidon_Attack),
+            hasBoon(BoonId.Poseidon_Dash),
+            hasBoon(BoonId.Poseidon_Cast),
+            hasBoon(BoonId.Poseidon_CastAlternate),
+            hasBoon(BoonId.Poseidon_Special),
+            hasBoon(BoonId.Poseidon_Aid),
+        ]),
+        iconPath: './Icons/Boon/Poseidon/Poseidon_TyphoonsFury.webp',
     },
     {
         id: BoonId.Poseidon_WavePounding,
         name: 'Wave Pounding',
         description: 'Your boons with Knock-Away effects deal bonus damage to bosses.',
         godId: GodId.Poseidon,
-        requirementTest: hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Poseidon_Attack),
+            hasBoon(BoonId.Poseidon_Dash),
+            hasBoon(BoonId.Poseidon_Cast),
+            hasBoon(BoonId.Poseidon_CastAlternate),
+            hasBoon(BoonId.Poseidon_Special),
+            hasBoon(BoonId.Poseidon_Aid),
+        ]),
         iconPath: './Icons/Boon/Poseidon/Poseidon_WavePounding.webp',
     },
     {
@@ -132,18 +126,38 @@ const Boons_Poseidon: Array<Boon> = [
         name: 'Rip Current',
         description: 'Your Call pulls in foes and the effect lasts longer.',
         godId: GodId.Poseidon,
-        requirementTest: hasAtLeastOneOf([ 'Poseidon_Aid' ]),
+        testRequirements: hasBoon(BoonId.Poseidon_Aid),
         iconPath: './Icons/Boon/Poseidon/Poseidon_RipCurrent.webp',
     },
     {
-        id: BoonId.Poseidon_Legendary_HugeCatch,
-        name: 'Huge Catch',
-        description: 'You have a greater chance to find Fishing Point in each Chamber.',
+        id: BoonId.Poseidon_BreakingWave,
+        name: 'Breaking Wave',
+        description: 'Slamming foes into walls or corners creates a watery blast in the area.',
         godId: GodId.Poseidon,
-        rarityType: BoonRarityType.Legendary,
-        pommable: false,
-        requirementTest: hasAtLeastXOf(2, [ 'Poseidon_OceansBounty', 'Poseidon_SunkenTreasure' ]), // or conch shell equipped...
-        iconPath: './Icons/Boon/Poseidon/Poseidon_Legendary_HugeCatch.webp',
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Poseidon_Attack),
+            hasBoon(BoonId.Poseidon_Dash),
+            hasBoon(BoonId.Poseidon_Cast),
+            hasBoon(BoonId.Poseidon_CastAlternate),
+            hasBoon(BoonId.Poseidon_Special),
+            hasBoon(BoonId.Poseidon_Aid),
+        ]),
+        iconPath: './Icons/Boon/Poseidon/Poseidon_BreakingWave.webp',
+    },
+    {
+        id: BoonId.Poseidon_RazorShoals,
+        name: 'Razor Shoals',
+        description: 'Using knock-away effects also Rupture foes.',
+        godId: GodId.Poseidon,
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Poseidon_Attack),
+            hasBoon(BoonId.Poseidon_Dash),
+            hasBoon(BoonId.Poseidon_Cast),
+            hasBoon(BoonId.Poseidon_CastAlternate),
+            hasBoon(BoonId.Poseidon_Special),
+            hasBoon(BoonId.Poseidon_Aid),
+        ]),
+        iconPath: './Icons/Boon/Poseidon/Poseidon_RazorShoals.webp',
     },
     {
         id: BoonId.Poseidon_Legendary_SecondWave,
@@ -152,11 +166,34 @@ const Boons_Poseidon: Array<Boon> = [
         godId: GodId.Poseidon,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Poseidon_BreakingWave', 'Poseidon_TyphoonsFury' ]),
-            hasAtLeastOneOf([ 'Poseidon_Attack', 'Poseidon_Special', 'Poseidon_Cast', 'Poseidon_Dash', 'Poseidon_Aid' ]),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Poseidon_TyphoonsFury),
+                hasBoon(BoonId.Poseidon_BreakingWave),
+            ]),
+            oneOrMoreOf([
+                hasBoon(BoonId.Poseidon_Attack),
+                hasBoon(BoonId.Poseidon_Dash),
+                hasBoon(BoonId.Poseidon_Cast),
+                hasBoon(BoonId.Poseidon_Special),
+                hasBoon(BoonId.Poseidon_Aid),
+            ]),
         ]),
         iconPath: './Icons/Boon/Poseidon/Poseidon_Legendary_SecondWave.webp',
+    },
+    {
+        id: BoonId.Poseidon_Legendary_HugeCatch,
+        name: 'Huge Catch',
+        description: 'You have a greater chance to find Fishing Point in each Chamber.',
+        godId: GodId.Poseidon,
+        rarityType: BoonRarityType.Legendary,
+        pommable: false,
+        testRequirements: xOrMoreOf(2, [
+            usingKeepsake(KeepsakeId.Poseidon),
+            hasBoon(BoonId.Poseidon_OceansBounty),
+            hasBoon(BoonId.Poseidon_SunkenTreasure),
+        ]),
+        iconPath: './Icons/Boon/Poseidon/Poseidon_Legendary_HugeCatch.webp',
     },
 ];
 

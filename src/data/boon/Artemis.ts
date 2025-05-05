@@ -1,10 +1,9 @@
 import { Boon, BoonId } from './types';
-import { doesNotHaveAnyOf, hasAtLeastOneOf, hasAtLeastXOf, satisfiesAllOf } from './requirementsTests';
+import { hasBoon, notUsingAspect, oneOrMoreOf, usingAspect, xOrMoreOf } from './requirementsTests';
 
 import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { GodId } from '../god';
-import { RunState } from '../runState';
 import { AspectId } from '../weapon';
 
 const Boons_Artemis: Array<Boon> = [
@@ -30,9 +29,7 @@ const Boons_Artemis: Array<Boon> = [
         description: 'Your Cast seeks foes, with a 10% chance to deal Critical damage.',
         godId: GodId.Artemis,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Artemis/Artemis_Cast.webp',
     },
     {
@@ -41,9 +38,7 @@ const Boons_Artemis: Array<Boon> = [
         description: 'Your Cast damages foes around you, with a 10% Critical chance.',
         godId: GodId.Artemis,
         slot: BoonSlot.Cast,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId === AspectId.Shield_Beowulf;
-        },
+        testRunAvailability: usingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Artemis/Artemis_Cast.webp',
     },
     {
@@ -52,9 +47,7 @@ const Boons_Artemis: Array<Boon> = [
         description: 'Your Dash-Strike deals more damage.',
         godId: GodId.Artemis,
         slot: BoonSlot.Dash,
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Rail_Lucifer;
-        },
+        testRunAvailability: notUsingAspect(AspectId.Rail_Lucifer),
         iconPath: './Icons/Boon/Artemis/Artemis_Dash.webp',
     },
     {
@@ -77,37 +70,73 @@ const Boons_Artemis: Array<Boon> = [
         name: 'Exit Wounds',
         description: 'Your foes take damage when your [Cast] stuck in them in dislodged.',
         godId: GodId.Artemis,
-        requirementTest: satisfiesAllOf([
-            hasAtLeastOneOf([ 'Aphrodite_Cast', 'Artemis_Cast', 'Athena_Cast', 'Poseidon_Cast', 'Zeus_Cast' ]),
-            doesNotHaveAnyOf([ 'Demeter_Cast', 'Ares_Cast', 'Dionysus_Cast' ]),
+        testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Artemis_Cast),
+            hasBoon(BoonId.Poseidon_Cast),
+            hasBoon(BoonId.Poseidon_CastAlternate),
+            hasBoon(BoonId.Zeus_Cast),
+            hasBoon(BoonId.Aphrodite_Cast),
+            hasBoon(BoonId.Athena_Cast),
         ]),
-        testRunAvailability: (runState: RunState) => {
-            return runState.aspectId !== AspectId.Shield_Beowulf;
-        },
         iconPath: './Icons/Boon/Artemis/Artemis_ExitWounds.webp',
-    },
-    {
-        id: BoonId.Artemis_HideBreaker,
-        name: 'Hide Breaker',
-        description: 'Your Critical effects deal even more damage to Armor.',
-        godId: GodId.Artemis,
-        requirementTest: hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Aid', 'Artemis_PressurePoints' ]),
-        iconPath: './Icons/Boon/Artemis/Artemis_HideBreaker.webp',
     },
     {
         id: BoonId.Artemis_CleanKill,
         name: 'Clean Kill',
         description: 'Your Critical effects deal even more damage.',
         godId: GodId.Artemis,
-        requirementTest: hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Aid', 'Artemis_PressurePoints' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Artemis_Attack),
+            hasBoon(BoonId.Artemis_Special),
+            hasBoon(BoonId.Artemis_Cast),
+            hasBoon(BoonId.Artemis_Aid),
+            hasBoon(BoonId.Artemis_PressurePoints),
+        ]),
         iconPath: './Icons/Boon/Artemis/Artemis_CleanKill.webp',
+    },
+    {
+        id: BoonId.Artemis_SupportFire,
+        name: 'Support Fire',
+        description: 'After you Cast, or hit with an Attack or Special, fire a seeking arrow.',
+        godId: GodId.Artemis,
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Artemis_Attack),
+            hasBoon(BoonId.Artemis_Special),
+            hasBoon(BoonId.Artemis_Cast),
+            hasBoon(BoonId.Artemis_CastAlternate),
+            hasBoon(BoonId.Artemis_Dash),
+            hasBoon(BoonId.Artemis_Aid),
+            hasBoon(BoonId.Artemis_PressurePoints),
+        ]),
+        iconPath: './Icons/Boon/Artemis/Artemis_SupportFire.webp',
+    },
+    {
+        id: BoonId.Artemis_HideBreaker,
+        name: 'Hide Breaker',
+        description: 'Your Critical effects deal even more damage to Armor.',
+        godId: GodId.Artemis,
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Artemis_Attack),
+            hasBoon(BoonId.Artemis_Special),
+            hasBoon(BoonId.Artemis_Cast),
+            hasBoon(BoonId.Artemis_Aid),
+            hasBoon(BoonId.Artemis_PressurePoints),
+        ]),
+        iconPath: './Icons/Boon/Artemis/Artemis_HideBreaker.webp',
     },
     {
         id: BoonId.Artemis_HunterInstinct,
         name: 'Hunter Instinct',
-        description: 'Your GodId Guage charges faster when you deal Critical damage.',
+        description: 'Your God Gauge charges faster when you deal Critical damage.',
         godId: GodId.Artemis,
-        requirementTest: hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_PressurePoints' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Artemis_Attack),
+            hasBoon(BoonId.Artemis_Special),
+            hasBoon(BoonId.Artemis_Cast),
+            hasBoon(BoonId.Artemis_PressurePoints),
+        ]),
+        // qq Do you need an aid for this??
         iconPath: './Icons/Boon/Artemis/Artemis_HunterInstinct.webp',
     },
     {
@@ -115,16 +144,14 @@ const Boons_Artemis: Array<Boon> = [
         name: 'Hunter\'s Mark',
         description: 'After you deal Critical damage to a foe, a foe near it is Marked.',
         godId: GodId.Artemis,
-        requirementTest: hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Aid', 'Artemis_PressurePoints' ]),
+        testRequirements: oneOrMoreOf([
+            hasBoon(BoonId.Artemis_Attack),
+            hasBoon(BoonId.Artemis_Special),
+            hasBoon(BoonId.Artemis_Cast),
+            hasBoon(BoonId.Artemis_Aid),
+            hasBoon(BoonId.Artemis_PressurePoints),
+        ]),
         iconPath: './Icons/Boon/Artemis/Artemis_HuntersMark.webp',
-    },
-    {
-        id: BoonId.Artemis_SupportFire,
-        name: 'Support Fire',
-        description: 'After you Cast, or hit with an Attack or Special, fire a seeking arrow.',
-        godId: GodId.Artemis,
-        requirementTest: hasAtLeastOneOf([ 'Artemis_Attack', 'Artemis_Special', 'Artemis_Cast', 'Artemis_Dash', 'Artemis_Aid', 'Artemis_PressurePoints' ]),
-        iconPath: './Icons/Boon/Artemis/Artemis_SupportFire.webp',
     },
     {
         id: BoonId.Artemis_Legendary,
@@ -133,7 +160,11 @@ const Boons_Artemis: Array<Boon> = [
         godId: GodId.Artemis,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
-        requirementTest: hasAtLeastXOf(2, [ 'Artemis_ExitWounds', 'Artemis_PressurePoints', 'Artemis_SupportFire' ]),
+        testRequirements: xOrMoreOf(2, [
+            hasBoon(BoonId.Artemis_SupportFire),
+            hasBoon(BoonId.Artemis_PressurePoints),
+            hasBoon(BoonId.Artemis_ExitWounds),
+        ]),
         iconPath: './Icons/Boon/Artemis/Artemis_Legendary.webp',
     },
 ];
