@@ -1,137 +1,137 @@
 import { hasAtLeastOneOf, satisfiesAllOf } from './requirementsTests';
 
-import { BoonInfo } from './types';
+import { Boon, BoonId } from './types';
 
 import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
-import { God } from '../god';
+import { GodId } from '../god';
 import { RunState } from '../runState';
 import { AspectId } from '../weapon';
 
-export const BoonData_Aphrodite: { [ id: string ]: BoonInfo } = {
-    Aphrodite_Attack: {
-        id: 'Aphrodite_Attack',
+const Boons_Aphrodite: Array<Boon> = [
+    {
+        id: BoonId.Aphrodite_Attack,
         name: 'Heartbreak Strike',
         description: 'Your Attack deals more damage and inflicts Weak.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         slot: BoonSlot.Attack,
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Attack.webp',
     },
-    Aphrodite_Special: {
-        id: 'Aphrodite_Special',
+    {
+        id: BoonId.Aphrodite_Special,
         name: 'Heartbreak Flourish',
         description: 'Your Special deals more damage and inflicts Weak.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         slot: BoonSlot.Special,
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Special.webp',
     },
-    Aphrodite_Cast: {
-        id: 'Aphrodite_Cast',
+    {
+        id: BoonId.Aphrodite_Cast,
         name: 'Crush Shot',
         description: 'Your Cast is a wide, short-range blast that inflicts Weak.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         slot: BoonSlot.Cast,
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId !== AspectId.Shield_Beowulf;
         },
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Cast.webp',
     },
-    Aphrodite_CastAlternate: {
-        id: 'Aphrodite_CastAlternate',
+    {
+        id: BoonId.Aphrodite_CastAlternate,
         name: 'Passion Flare',
         description: 'Your Cast damages foes around you and inflicts Weak.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         slot: BoonSlot.Cast,
         testRunAvailability: (runState: RunState) => {
             return runState.aspectId === AspectId.Shield_Beowulf;
         },
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Cast.webp',
     },
-    Aphrodite_Dash: {
-        id: 'Aphrodite_Dash',
+    {
+        id: BoonId.Aphrodite_Dash,
         name: 'Passion Dash',
         description: 'Your Dash inflicts damage where you end up, inflicting Weak.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         slot: BoonSlot.Dash,
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Dash.webp',
     },
-    Aphrodite_Aid: {
-        id: 'Aphrodite_Aid',
+    {
+        id: BoonId.Aphrodite_Aid,
         name: 'Aphrodite\'s Aid',
         description: 'Your Call fires a seeking projectile that inflicts Charm.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         slot: BoonSlot.Aid,
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Aid.webp',
     },
-    Aphrodite_DyingLament: {
-        id: 'Aphrodite_DyingLament',
+    {
+        id: BoonId.Aphrodite_DyingLament,
         name: 'Dying Lament',
         description: 'When foes are slain, they damage nearby foes and inflict Weak.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_DyingLament.webp',
     },
-    Aphrodite_WaveOfDespair: {
-        id: 'Aphrodite_WaveOfDespair',
+    {
+        id: BoonId.Aphrodite_WaveOfDespair,
         name: 'Wave of Despair',
         description: 'After you take damage, damage nearby foes and inflict Weak.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_WaveOfDespair.webp',
     },
-    Aphrodite_DifferentLeague: {
-        id: 'Aphrodite_DifferentLeague',
+    {
+        id: BoonId.Aphrodite_DifferentLeague,
         name: 'Different League',
         description: 'Resist some damage from nearby foes\' attacks.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_DifferentLeague.webp',
     },
-    Aphrodite_LifeAffirmation: {
-        id: 'Aphrodite_LifeAffirmation',
+    {
+        id: BoonId.Aphrodite_LifeAffirmation,
         name: 'Life Affirmation',
         description: 'Any [Max Health] chamber rewards are worth more.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         pommable: false,
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_LifeAffirmation.webp',
     },
-    Aphrodite_EmptyInside: {
-        id: 'Aphrodite_EmptyInside',
+    {
+        id: BoonId.Aphrodite_EmptyInside,
         name: 'Empty Inside',
         description: 'Your Weak effects have a longer duration.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         requirementTest: hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_EmptyInside.webp',
     },
-    Aphrodite_SweetSurrender: {
-        id: 'Aphrodite_SweetSurrender',
+    {
+        id: BoonId.Aphrodite_SweetSurrender,
         name: 'Sweet Surrender',
         description: 'Weak-afflicted foes are also more susceptible to damage.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         requirementTest: hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_SweetSurrender.webp',
     },
-    Aphrodite_BrokenResolve: {
-        id: 'Aphrodite_BrokenResolve',
+    {
+        id: BoonId.Aphrodite_BrokenResolve,
         name: 'Broken Resolve',
         description: 'Your Weak effects are more potent.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Aphrodite_Attack', 'Aphrodite_Special', 'Aphrodite_Cast', 'Aphrodite_Dash' ]),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_BrokenResolve.webp',
     },
-    Aphrodite_BlownKiss: {
-        id: 'Aphrodite_BlownKiss',
+    {
+        id: BoonId.Aphrodite_BlownKiss,
         name: 'Blown Kiss',
         description: 'Your Cast shoots farther and is stronger against undamaged foes.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         pommable: false,
         requirementTest: hasAtLeastOneOf([ 'Aphrodite_Cast' ]),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_BlownKiss.webp',
         // Can you get this with beo cast?
     },
-    Aphrodite_Legendary: {
-        id: 'Aphrodite_Legendary',
+    {
+        id: BoonId.Aphrodite_Legendary,
         name: 'Unhealthy Fixation',
         description: 'Your Weak effects also have a 15% chance to Charm foes.',
-        god: God.Aphrodite,
+        godId: GodId.Aphrodite,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
         requirementTest: satisfiesAllOf([
@@ -140,4 +140,6 @@ export const BoonData_Aphrodite: { [ id: string ]: BoonInfo } = {
         ]),
         iconPath: './Icons/Boon/Aphrodite/Aphrodite_Legendary.webp',
     },
-};
+];
+
+export default Boons_Aphrodite;

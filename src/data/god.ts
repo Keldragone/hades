@@ -1,17 +1,17 @@
-export enum God {
+export enum GodId {
     Aphrodite, Ares, Artemis, Athena, Demeter, Dionysus, Hermes, Poseidon, Zeus
 };
 
-export const getAllGods = (): Array<God> => {
+export const getAllGodIds = (): Array<GodId> => {
     // this feels... wrong
     return [
-        God.Aphrodite,
-        God.Ares,
-        God.Artemis,
-        God.Athena,
-        God.Demeter,
-        God.Dionysus,
-        God.Poseidon,
-        God.Zeus,
+        GodId.Aphrodite,
+        GodId.Ares,
+        GodId.Artemis,
+        GodId.Athena,
+        GodId.Demeter,
+        GodId.Dionysus,
+        GodId.Poseidon,
+        GodId.Zeus,
     ];
 };

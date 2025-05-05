@@ -1,18 +1,12 @@
 import { useMemo, useState } from 'react';
 
-import { God, getAllGods } from './data/god';
-
-import BoonLine from './BoonLine';
-import BoonIcon from './BoonIcon';
+import { getAllGodIds } from './data/god';
 
 import './App.css'
-import { getSingleGodBoonIds, getDuoBoonIds, getBoonLibrary } from './data/Boon';
-import { getAllKeepsakes } from './data/keepsake';
-import { getAllMirrorTalents } from './data/mirror';
-import { AspectId, getAllWeapons, getAspectFromId, getWeaponFromId, WeaponId } from './data/weapon';
+import { getBoonLibrary } from './data/Boon';
+import { AspectId, getAspectFromId, getWeaponFromId } from './data/weapon';
 import { getHammersForWeapon } from './data/Hammer';
 import { RunState } from './data/runState';
-import { BoonRarityType } from './data/boonRarityType';
 
 import Component_Hammer from './components/Hammer';
 import Component_Keepsake from './components/Keepsake';
@@ -114,15 +108,6 @@ const App = () => {
 
     return (
         <div className="App">
-            {/* <div className="App_Sidebar">
-                <BoonIcon boonId="Dionysus_Attack" iconSizePx={120} />
-                <BoonIcon boonId="Dionysus_Special" iconSizePx={120} />
-                <BoonIcon boonId="Dionysus_Cast" iconSizePx={120} />
-                <BoonIcon boonId="Dionysus_Dash" iconSizePx={120} />
-                <BoonIcon boonId="Dionysus_Aid" iconSizePx={120} />
-                <BoonLine boonIds={collectedBoonIds} collectedBoonIds={[]} />
-                <p>Collected Boon IDs: {collectedBoonIds.join(' | ')}</p>
-            </div> */}
             <div className="App_Content">
                 <div className="App_TopBar">
                     <Component_Weapon
@@ -144,32 +129,13 @@ const App = () => {
                         onClick={onHammerClick}
                     />
                     <div className="App_Right">
-                        {getAllGods().map(god => (
-                            <BoonLine
-                                boons={boonLibrary.filter(boon => boon.god === god)}
-                                collectedBoonIds={collectedBoonIds}
-                                incompatibleBoonIds={incompatibleBoonIds}
-                                onClick={onBoonClick}
-                                iconSizePx={iconSizePx}
-                                iconSpacingPx={iconSpacingPx}
-                            />
+                        {getAllGodIds().map(godId => (
+                            <div className="App_GodBoons">
+                                {boonLibrary.filter(boon => boon.godId === godId).map(boon => (
+                                    <button className="App_GodBoons_Item">{boon.name}</button>
+                                ))}
+                            </div>
                         ))}
-                        <BoonLine
-                            boons={boonLibrary.filter(boon => boon.god === God.Hermes)}
-                            collectedBoonIds={collectedBoonIds}
-                            incompatibleBoonIds={incompatibleBoonIds}
-                            onClick={onBoonClick}
-                            iconSizePx={iconSizePx}
-                            iconSpacingPx={iconSpacingPx}
-                        />
-                        <BoonLine
-                            boons={boonLibrary.filter(boon => boon.rarityType === BoonRarityType.Duo)}
-                            collectedBoonIds={collectedBoonIds}
-                            incompatibleBoonIds={incompatibleBoonIds}
-                            onClick={onBoonClick}
-                            iconSizePx={iconSizePx}
-                            iconSpacingPx={iconSpacingPx}
-                        />
                     </div>
                 </div>
             </div>

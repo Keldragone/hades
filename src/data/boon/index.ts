@@ -1,89 +1,78 @@
-import { God } from "../god";
-import { RunState } from "../runState";
+import { GodId } from '../god';
+import { RunState } from '../runState';
 
-import { BoonData_Aphrodite } from "./Aphrodite";
-import { BoonData_Ares } from "./Ares";
-import { BoonData_Artemis } from "./Artemis";
-import { BoonData_Athena } from "./Athena";
-import { BoonData_Demeter } from "./Demeter";
-import { BoonData_Dionysus } from "./Dionysus";
-import { BoonData_Duo } from "./Duo";
-import { BoonData_Hermes } from "./Hermes";
-import { BoonData_Poseidon } from "./Poseidon";
-import { BoonData_Zeus } from "./Zeus";
+import Boons_Aphrodite from './Aphrodite';
+import Boons_Ares from './Ares';
+import Boons_Artemis from './Artemis';
+import Boons_Athena from './Athena';
+import Boons_Demeter from './Demeter';
+import Boons_Dionysus from './Dionysus';
+import Boons_Duo from './Duo';
+import Boons_Hermes from './Hermes';
+import Boons_Poseidon from './Poseidon';
+import Boons_Zeus from './Zeus';
 
-import { BoonInfo } from "./types";
+import { Boon } from './types';
 
-export const BoonData: { [ id: string ]: BoonInfo } = {
-    ...BoonData_Aphrodite,
-    ...BoonData_Ares,
-    ...BoonData_Artemis,
-    ...BoonData_Athena,
-    ...BoonData_Demeter,
-    ...BoonData_Dionysus,
-    ...BoonData_Hermes,
-    ...BoonData_Poseidon,
-    ...BoonData_Zeus,
-    ...BoonData_Duo,
-};
+export const Boons: Array<Boon> = [
+    ...Boons_Aphrodite,
+    ...Boons_Ares,
+    ...Boons_Artemis,
+    ...Boons_Athena,
+    ...Boons_Demeter,
+    ...Boons_Dionysus,
+    ...Boons_Hermes,
+    ...Boons_Poseidon,
+    ...Boons_Zeus,
+    ...Boons_Duo,
+];
 
-const getBoonData = (god: God) => {
-    if (god === God.Aphrodite) {
-        return BoonData_Aphrodite;
+const getBoons = (godId: GodId) => {
+    if (godId === GodId.Aphrodite) {
+        return Boons_Aphrodite;
     }
-    else if (god === God.Ares) {
-        return BoonData_Ares;
+    else if (godId === GodId.Ares) {
+        return Boons_Ares;
     }
-    else if (god === God.Artemis) {
-        return BoonData_Artemis;
+    else if (godId === GodId.Artemis) {
+        return Boons_Artemis;
     }
-    else if (god === God.Athena) {
-        return BoonData_Athena;
+    else if (godId === GodId.Athena) {
+        return Boons_Athena;
     }
-    else if (god === God.Demeter) {
-        return BoonData_Demeter;
+    else if (godId === GodId.Demeter) {
+        return Boons_Demeter;
     }
-    else if (god === God.Dionysus) {
-        return BoonData_Dionysus;
+    else if (godId === GodId.Dionysus) {
+        return Boons_Dionysus;
     }
-    else if (god === God.Hermes) {
-        return BoonData_Hermes;
+    else if (godId === GodId.Hermes) {
+        return Boons_Hermes;
     }
-    else if (god === God.Poseidon) {
-        return BoonData_Poseidon;
+    else if (godId === GodId.Poseidon) {
+        return Boons_Poseidon;
     }
-    else if (god === God.Zeus) {
-        return BoonData_Zeus;
+    else if (godId === GodId.Zeus) {
+        return Boons_Zeus;
     }
     
     return [];
 }
 
-export const getSingleGodBoons = (god: God) => {
-    const boonData = getBoonData(god);
-
-    return Object.entries(boonData).map(([boonDataId, boonDataValue]) => ({
-        id: boonDataId,
-        ...boonDataValue,
-    }));
+export const getSingleGodIdBoons = (godId: GodId) => {
+    return Boons.filter(boon => boon.godId === godId);
 };
 
-export const getSingleGodBoonIds = (god: God) => {
-    const boonData = getBoonData(god);
-
-    return Object.keys(boonData);
+export const getSingleGodIdBoonIds = (godId: GodId) => {
+    return Boons.filter(boon => boon.godId === godId).map(boon => boon.id);
 };
 
 export const getDuoBoonIds = () => {
-    const boonData = BoonData_Duo;
-    
-    return Object.keys(boonData);
+    return Boons_Duo.map(boon => boon.id);
 };
 
 export const getBoonLibrary = (runState: RunState) => {
-    const boonData = Object.values(BoonData);
-
-    return boonData.filter(boon => {
+    return Boons.filter(boon => {
         if (boon.testRunAvailability !== undefined) {
             return boon.testRunAvailability(runState);
         }
