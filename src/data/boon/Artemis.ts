@@ -1,10 +1,11 @@
 import { Boon, BoonId } from './types';
-import { hasBoon, notUsingAspect, oneOrMoreOf, usingAspect, xOrMoreOf } from './requirementsTests';
+import { allOf, hasBoon, hasBoonInSlot, notUsingAspect, oneOrMoreOf, usingAspect, usingKeepsake, xOrMoreOf } from './requirementsTests';
 
 import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { GodId } from '../god';
 import { AspectId } from '../weapon';
+import { KeepsakeId } from '../keepsake';
 
 const Boons_Artemis: Array<Boon> = [
     {
@@ -130,13 +131,18 @@ const Boons_Artemis: Array<Boon> = [
         name: 'Hunter Instinct',
         description: 'Your God Gauge charges faster when you deal Critical damage.',
         godId: GodId.Artemis,
-        testRequirements: oneOrMoreOf([
-            hasBoon(BoonId.Artemis_Attack),
-            hasBoon(BoonId.Artemis_Special),
-            hasBoon(BoonId.Artemis_Cast),
-            hasBoon(BoonId.Artemis_PressurePoints),
+        testRequirements: allOf([
+            oneOrMoreOf([
+                hasBoon(BoonId.Artemis_Attack),
+                hasBoon(BoonId.Artemis_Special),
+                hasBoon(BoonId.Artemis_Cast),
+                hasBoon(BoonId.Artemis_PressurePoints),
+            ]),
+            oneOrMoreOf([
+                hasBoonInSlot(BoonSlot.Aid),
+                usingKeepsake(KeepsakeId.Hades),
+            ]),
         ]),
-        // qq Do you need an aid for this??
         iconPath: './Icons/Boon/Artemis/Artemis_HunterInstinct.webp',
     },
     {

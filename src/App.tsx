@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { getGodFromId, GodId } from './data/god';
 
@@ -15,14 +15,17 @@ import Component_Weapon from './components/Weapon';
 import { KeepsakeId } from './data/keepsake';
 import { MirrorTalentId } from './data/mirror';
 import { HammerId } from './data/Hammer/types';
-import { BoonId } from './data/Boon/types';
+import { Boon, BoonId } from './data/Boon/types';
+import Component_BoonLibrary, { BoonLibrary_BoonData_Status } from './components/BoonLibrary';
+import { BoonRarityType } from './data/boonRarityType';
+import { hasBoon } from './data/Boon/requirementsTests';
 
 const App = () => {
-    const [ chosenAspectId, setChosenAspectId ] = useState(AspectId.Shield_Beowulf);
-    const [ chosenMirrorTalentIds, setChosenMirrorTalentIds ] = useState([ MirrorTalentId.InfernalSoul ]);
-
-    const [ collectedHammerIds, setCollectedHammerIds ] = useState([]);
-    const [ collectedBoonIds, setCollectedBoonIds ] = useState([]);
+    const [ chosenAspectId, setChosenAspectId ] = useState<AspectId>(AspectId.Shield_Beowulf);
+    const [ chosenMirrorTalentIds, setChosenMirrorTalentIds ] = useState<Array<MirrorTalentId>>([ MirrorTalentId.InfernalSoul ]);
+    const [ chosenKeepsakeId, setChosenKeepsakeId ] = useState<KeepsakeId>(KeepsakeId.Cerberus);
+    const [ collectedHammerIds, setCollectedHammerIds ] = useState<Array<HammerId>>([]);
+    const [ collectedBoonIds, setCollectedBoonIds ] = useState<Array<BoonId>>([]);
 
     const chosenAspect = useMemo(() => {
         return getAspectFromId(chosenAspectId);
@@ -43,6 +46,10 @@ const App = () => {
         collectedBoonIds: collectedBoonIds,
         collectedHammerIds: collectedHammerIds,
     };
+
+    useEffect(() => {
+        setCollectedBoonIds([]);
+    }, [ chosenAspectId, chosenMirrorTalentIds ]);
 
     const hammerLibrary = useMemo(() => {
         if (chosenWeapon === undefined || chosenAspect === undefined) {
@@ -89,8 +96,6 @@ const App = () => {
     };
 
     const onBoonClick = (boonId: BoonId): void => {
-        console.log(boonId);
-
         if (collectedBoonIds.includes(boonId)) {
             console.log(`Clicked collected boon ${boonId}`);
             setCollectedBoonIds(collectedBoonIds.filter(collectedBoonId => collectedBoonId !== boonId));
@@ -105,8 +110,55 @@ const App = () => {
         setChosenAspectId(aspectId);
     };
 
+    const boonGroups = [ GodId.Aphrodite, GodId.Ares, GodId.Artemis, GodId.Athena, GodId.Demeter, GodId.Dionysus, GodId.Poseidon, GodId.Zeus, GodId.Hermes ].map(godId => {
+        const god = getGodFromId(godId);
+
+        return {
+            heading: god.name,
+            headingColor: god.color,
+            headingIconPath: god.iconPath,
+            boonData: boonLibrary.filter(boon => boon.godId === godId).map(boon => {
+                let status = BoonLibrary_BoonData_Status.Available;
+    
+                if (collectedBoonIds.includes(boon.id)) {
+                    status = BoonLibrary_BoonData_Status.Collected;    
+                }
+                else if (boon.testRequirements !== undefined && !boon.testRequirements(runState)) {
+                    status = BoonLibrary_BoonData_Status.Unavailable;
+                }
+    
+                return {
+                    id: boon.id,
+                    status: status,
+                };
+            }),
+        };
+    });
+
+    boonGroups.push({
+        heading: 'Duo',
+        headingColor: '#888888',
+        headingIconPath: '',
+        boonData: boonLibrary.filter(boon => boon.rarityType === BoonRarityType.Duo).map(boon => {
+            let status = BoonLibrary_BoonData_Status.Available;
+
+            if (collectedBoonIds.includes(boon.id)) {
+                status = BoonLibrary_BoonData_Status.Collected;    
+            }
+            else if (boon.testRequirements !== undefined && !boon.testRequirements(runState)) {
+                status = BoonLibrary_BoonData_Status.Unavailable;
+            }
+
+            return {
+                id: boon.id,
+                status: status,
+            };
+        }),
+    });
+
     return (
         <div className="App">
+            <div className="App_Nav">Keldragone was here</div>
             <div className="App_Content">
                 <div className="App_TopBar">
                     <Component_Weapon
@@ -114,7 +166,9 @@ const App = () => {
                         chosenAspectId={chosenAspectId}
                         onClickAspect={onClickAspect}
                     />
-                    <Component_Keepsake />
+                    <Component_Keepsake
+                        chosenKeepsakeId={chosenKeepsakeId}
+                    />
                     <Component_MirrorTalents
                         chosenMirrorTalentIds={chosenMirrorTalentIds}
                         onClick={onMirrorClick}
@@ -128,14 +182,7 @@ const App = () => {
                         onClick={onHammerClick}
                     />
                     <div className="App_Right">
-                        {[ GodId.Aphrodite, GodId.Ares, GodId.Artemis, GodId.Athena, GodId.Demeter, GodId.Dionysus, GodId.Poseidon, GodId.Zeus, GodId.Hermes ].map(godId => (
-                            <div className="App_GodBoons">
-                                {getGodFromId(godId).name}
-                                {boonLibrary.filter(boon => boon.godId === godId).map(boon => (
-                                    <button className="App_GodBoons_Item">{boon.name}</button>
-                                ))}
-                            </div>
-                        ))}
+                        <Component_BoonLibrary boonGroups={boonGroups} onClick={onBoonClick} />
                     </div>
                 </div>
             </div>

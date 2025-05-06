@@ -43,8 +43,13 @@ const Component_Weapon = (props: Component_Weapon_Props) => {
                                 aspectClassName += " Weapon_Dropdown_Row_Aspect--Selected"
                             }
 
+                            const onClick = () => {
+                                onClickAspect(aspectId);
+                                setDropdownOpen(false);
+                            };
+
                             return (
-                                <button className={aspectClassName} onClick={() => onClickAspect(aspectId)}>
+                                <button className={aspectClassName} onClick={onClick}>
                                     <img className="Weapon_Dropdown_Row_Aspect_BorderIcon" src="./Icons/Boon/border_hollow.png" />
                                     <img className="Weapon_Dropdown_Row_Aspect_Icon" src={aspect.iconPath} />
                                     <div className="Weapon_Dropdown_Row_Aspect_Name">{aspect.name}</div>

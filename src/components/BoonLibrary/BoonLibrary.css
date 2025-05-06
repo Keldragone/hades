@@ -1,0 +1,108 @@
+.BoonLibrary {
+    display: flex;
+    flex-direction: column;
+}
+
+.BoonLibrary_Group {
+    display: flex;
+    flex-direction: row;
+
+    background-color: #111111;
+    border-radius: 8px;
+}
+
+.BoonLibrary_Group + .BoonLibrary_Group {
+    margin-top: 4px;
+}
+
+.BoonLibrary_Group_Heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px 0 0 8px;
+
+    width: 48px;
+    flex-shrink: 0;
+
+    padding: 2px 8px;
+}
+
+.BoonLibrary_Group_Heading_Text {
+    display: none;
+
+    color: #111111;
+    font-size: 0.75em;
+    font-weight: bold;
+}
+
+.BoonLibrary_Group_Heading_Icon {
+    height: 48px;
+}
+
+.BoonLibrary_Group_Items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    padding: 8px 4px 4px 8px;
+}
+
+.BoonLibrary_Group_Item {
+    padding: 1px 8px;
+
+    background-color: #2c2c2c;
+
+    margin-right: 4px;
+    margin-bottom: 4px;
+    font-size: 0.75em;
+}
+
+.BoonLibrary_Group_Item:disabled {
+    color: #666666;
+    background-color: #111111;
+    border-color: #222222;
+}
+
+.BoonLibrary_Group_Item.BoonLibrary_Group_Item--Legendary {
+    color: #ffa85d;
+    background-color: #543925;
+    border-color: #543925;
+}
+
+.BoonLibrary_Group_Item.BoonLibrary_Group_Item--Legendary:disabled {
+    color: #866b55;
+    background-color: #111111;
+    border-color: #222222;
+}
+
+.BoonLibrary_Group_Item.BoonLibrary_Group_Item--Duo {
+    color: #a2ffdd;
+    background-color: #252c28;
+    border-color: #252c28;
+}
+
+.BoonLibrary_Group_Item.BoonLibrary_Group_Item--Duo:disabled {
+    color: #607970;
+    background-color: #111111;
+    border-color: #222222;
+}
+
+.BoonLibrary_Group_Item.BoonLibrary_Group_Item--Collected {
+    border-color: #dddddd;
+    background-color: #dddddd;
+    color: #222222;
+}
+
+.BoonLibrary_Group_Item.BoonLibrary_Group_Item--Legendary.BoonLibrary_Group_Item--Collected {
+    border-color: #ffa85d;
+    background-color: #ffa85d;
+    color: #222222;
+}
+
+.BoonLibrary_Group_Item.BoonLibrary_Group_Item--Duo.BoonLibrary_Group_Item--Collected {
+    border-color: #a2ffdd;
+    background-color: #a2ffdd;
+    color: #222222;
+}

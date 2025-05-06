@@ -1,13 +1,29 @@
-.App {
+.App {}
+
+.App_Nav {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    align-items: center;
+    background-color: #111111;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    box-sizing: border-box;
+
+    height: 48px;
+    flex-shrink: 0;
+
+    padding: 0 16px;
+
+    z-index: 100;
 }
 
 .App_Content {
-    padding: 32px;
-    width: 100%;
+    margin-top: 48px;
+
+    box-sizing: border-box;
+    padding: 16px;
 }
 
 .App_TopBar {
@@ -25,26 +41,4 @@
 .App_Right {
     margin-left: 8px;
     flex-grow: 1;
-}
-
-.App_GodBoons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    padding: 8px 12px 4px 16px;
-    background-color: #111111;
-    border-radius: 8px;
-}
-
-.App_GodBoons + .App_GodBoons {
-    margin-top: 4px;
-}
-
-.App_GodBoons_Item {
-    padding: 0 8px;
-
-    margin-right: 4px;
-    margin-bottom: 4px;
-    font-size: 0.75em;
 }

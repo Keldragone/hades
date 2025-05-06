@@ -3,6 +3,8 @@ import { RunState } from '@/data/runState';
 import { BoonId } from './types';
 import { MirrorTalentId } from '@/data/mirror';
 import { AspectId } from '@/data/weapon';
+import { BoonSlot } from '../boonSlot';
+import { getBoonFromId } from '.';
 
 export type BoonRequirementsTest = (runState: RunState) => boolean;
 
@@ -12,6 +14,10 @@ export const hasBoon = (boonId: BoonId): BoonRequirementsTest => {
 
 export const doesNotHaveBoon = (boonId: BoonId): BoonRequirementsTest => {
     return (runState: RunState) => !runState.collectedBoonIds.includes(boonId);
+};
+
+export const hasBoonInSlot = (boonSlot: BoonSlot): BoonRequirementsTest => {
+    return (runState: RunState) => runState.collectedBoonIds.some(collectedBoonId => getBoonFromId(collectedBoonId).slot === boonSlot);
 };
 
 export const usingKeepsake = (keepsakeId: KeepsakeId): BoonRequirementsTest => {

@@ -12,7 +12,7 @@ import Boons_Hermes from './Hermes';
 import Boons_Poseidon from './Poseidon';
 import Boons_Zeus from './Zeus';
 
-import { Boon } from './types';
+import { Boon, BoonId } from './types';
 
 export const Boons: Array<Boon> = [
     ...Boons_Aphrodite,
@@ -79,4 +79,9 @@ export const getBoonLibrary = (runState: RunState) => {
 
         return true;
     });
+};
+
+export const getBoonFromId = (boonId: BoonId): Boon => {
+    // This needs to be made a lot more efficient!! Probably do a direct ID lookup by constructing a dictionary.
+    return Boons.find(boon => boon.id === boonId);
 };

@@ -1,18 +1,20 @@
 import './Keepsake.css'
-import { getAllKeepsakes } from '@/data/keepsake';
+import { getKeepsakeFromId, KeepsakeId } from '@/data/keepsake';
 
-const Component_Keepsakes = () => {
-    const keepsakes = getAllKeepsakes();
+interface Component_Keepsake_Props {
+    chosenKeepsakeId: KeepsakeId;
+}
 
-    const chosenKeepsakeId = 'Sisyphus';
+const Component_Keepsake = (props: Component_Keepsake_Props) => {
+    const { chosenKeepsakeId } = props;
 
-    const chosenKeepsake = keepsakes.find(keepsake => keepsake.id === chosenKeepsakeId);
+    const chosenKeepsake = getKeepsakeFromId(chosenKeepsakeId);
 
     return (
         <button className="Keepsake">
-            <img className="Keepsake_Icon" src={chosenKeepsake?.iconPath} />
+            <img className="Keepsake_Icon" src={chosenKeepsake.iconPath} />
         </button>
     )    
 };
 
-export default Component_Keepsakes;
+export default Component_Keepsake;
