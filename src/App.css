@@ -1,27 +1,27 @@
-.App {}
+.App {
+    height: 100vh;
+}
 
 .App_Nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #111111;
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
-    width: 100%;
     box-sizing: border-box;
-
+    width: 48px;
     height: 48px;
     flex-shrink: 0;
-
-    padding: 0 16px;
 
     z-index: 100;
 }
 
-.App_Content {
-    margin-top: 48px;
+.App_Nav_Logo {
+    width: 48px;
+}
 
+.App_Content {
     box-sizing: border-box;
     padding: 16px;
 }

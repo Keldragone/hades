@@ -75,7 +75,6 @@ const Hammers_Spear: Array<Hammer> = [
         id: HammerId.Spear_SerratedPoint,
         name: 'Serrated Point',
         description: 'Your Dash-Strike hits 3 times, but your dash has -25% range.',
-        // qq TEST WHETHER THIS IS INCOMPATIBLE WITH FLURRY JAB!! I DONT THINK IT IS...
         aspectIds: [ AspectId.Spear_Zagreus, AspectId.Spear_Achilles, AspectId.Spear_Hades, AspectId.Spear_GuanYu ],
         iconPath: './Icons/Hammer/Spear/SerratedPoint.webp',
     },

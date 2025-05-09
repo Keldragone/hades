@@ -1,4 +1,4 @@
-import { hasBoon, notUsingAspect, oneOrMoreOf, usingAspect } from './requirementsTests';
+import { hasBoon, hasBoonInSlot, notUsingAspect, oneOrMoreOf, usingAspect, usingKeepsake } from './requirementsTests';
 
 import { Boon, BoonId } from './types';
 
@@ -6,6 +6,7 @@ import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { GodId } from '../god';
 import { AspectId } from '../weapon';
+import { KeepsakeId } from '../keepsake';
 
 const Boons_Athena: Array<Boon> = [
     {
@@ -35,7 +36,7 @@ const Boons_Athena: Array<Boon> = [
     },
     {
         id: BoonId.Athena_CastAlternate,
-        name: 'Phalanx Flame',
+        name: 'Phalanx Flare',
         description: 'Your Cast damages foes around you, and can Deflect.',
         godId: GodId.Athena,
         slot: BoonSlot.Cast,
@@ -104,7 +105,10 @@ const Boons_Athena: Array<Boon> = [
         description: 'You begin each Encounter with your GodId Gauge partly full.',
         godId: GodId.Athena,
         iconPath: './Icons/Boon/Athena/Athena_ProudBearing.webp',
-        // qq does this require an aid?? probably??
+        testRequirements: oneOrMoreOf([
+            hasBoonInSlot(BoonSlot.Aid),
+            usingKeepsake(KeepsakeId.Hades),
+        ]),
     },
     {
         id: BoonId.Athena_SureFooting,

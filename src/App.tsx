@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { getGodFromId, GodId } from './data/god';
 
 import './App.css'
-import { getBoonLibrary } from './data/Boon';
+import { getBoonFromId, getBoonLibrary } from './data/Boon';
 import { AspectId, getAspectFromId, getWeaponFromId } from './data/weapon';
 import { getHammersForWeapon } from './data/Hammer';
 import { RunState } from './data/runState';
@@ -22,7 +22,20 @@ import { hasBoon } from './data/Boon/requirementsTests';
 
 const App = () => {
     const [ chosenAspectId, setChosenAspectId ] = useState<AspectId>(AspectId.Shield_Beowulf);
-    const [ chosenMirrorTalentIds, setChosenMirrorTalentIds ] = useState<Array<MirrorTalentId>>([ MirrorTalentId.InfernalSoul ]);
+    const [ chosenMirrorTalentIds, setChosenMirrorTalentIds ] = useState<Array<MirrorTalentId>>([
+        MirrorTalentId.FieryPresence,
+        MirrorTalentId.ChthonicVitality,
+        MirrorTalentId.StubbornDefiance,
+        MirrorTalentId.GreaterReflex,
+        MirrorTalentId.BoilingBlood,
+        MirrorTalentId.StygianSoul,
+        MirrorTalentId.DeepPockets,
+        MirrorTalentId.HighConfidence,
+        MirrorTalentId.FamilyFavorite,
+        MirrorTalentId.OlympianFavor,
+        MirrorTalentId.GodsLegacy,
+        MirrorTalentId.FatedPersuasion,
+    ]);
     const [ chosenKeepsakeId, setChosenKeepsakeId ] = useState<KeepsakeId>(KeepsakeId.Cerberus);
     const [ collectedHammerIds, setCollectedHammerIds ] = useState<Array<HammerId>>([]);
     const [ collectedBoonIds, setCollectedBoonIds ] = useState<Array<BoonId>>([]);
@@ -100,8 +113,26 @@ const App = () => {
             console.log(`Clicked collected boon ${boonId}`);
             setCollectedBoonIds(collectedBoonIds.filter(collectedBoonId => collectedBoonId !== boonId));
         } else {
+            let newBoonIds = [...collectedBoonIds];
+
             console.log(`Clicked uncollected boon ${boonId}`);
-            setCollectedBoonIds([boonId, ...collectedBoonIds]);
+            
+            // Check whether this boon is a slotted boon, and might replace another
+            const boon = getBoonFromId(boonId);
+
+            if (boon.slot !== undefined) {
+                const sameSlotBoonIds = collectedBoonIds
+                    .filter(collectedBoonId => getBoonFromId(collectedBoonId).slot === boon.slot);
+
+                console.log('Sameslotboonids');
+                console.log(sameSlotBoonIds);
+
+                newBoonIds = newBoonIds.filter(newBoonId => !sameSlotBoonIds.includes(newBoonId));
+            }
+
+            newBoonIds = [boonId, ...newBoonIds];
+
+            setCollectedBoonIds(newBoonIds);
         }
     };
 
@@ -158,7 +189,9 @@ const App = () => {
 
     return (
         <div className="App">
-            <div className="App_Nav">Keldragone was here</div>
+            <div className="App_Nav">
+                <img className="App_Nav_Logo" src="./public/Dragone.png" />
+            </div>
             <div className="App_Content">
                 <div className="App_TopBar">
                     <Component_Weapon

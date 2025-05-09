@@ -1,4 +1,4 @@
-import { allOf, hasBoon, usingKeepsake, notUsingAspect, oneOrMoreOf, usingAspect, xOrMoreOf } from './requirementsTests';
+import { allOf, hasBoon, usingKeepsake, notUsingAspect, oneOrMoreOf, usingAspect, xOrMoreOf, hasBoonInSlot } from './requirementsTests';
 
 import { Boon, BoonId } from './types';
 
@@ -62,10 +62,13 @@ const Boons_Poseidon: Array<Boon> = [
     {
         id: BoonId.Poseidon_BoilingPoint,
         name: 'Boiling Point',
-        description: 'Your GodId Gauge charges faster when you take damage.',
+        description: 'Your God Gauge charges faster when you take damage.',
         godId: GodId.Poseidon,
+        testRequirements: oneOrMoreOf([
+            hasBoonInSlot(BoonSlot.Aid),
+            usingKeepsake(KeepsakeId.Hades),
+        ]),
         iconPath: './Icons/Boon/Poseidon/Poseidon_BoilingPoint.webp',
-        // qq do you need an aid? probably!!
     },
     {
         id: BoonId.Poseidon_HydraulicMight,

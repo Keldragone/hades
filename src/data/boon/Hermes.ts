@@ -1,4 +1,4 @@
-import { allOf, hasBoon, usingKeepsake, hasMirrorTalent, noneOf, notUsingAspect, oneOrMoreOf, usingAspect } from './requirementsTests';
+import { allOf, hasBoon, usingKeepsake, hasMirrorTalent, noneOf, notUsingAspect, oneOrMoreOf, usingAspect, hasBoonInSlot } from './requirementsTests';
 import { Boon, BoonId } from './types';
 
 import { BoonRarityType } from '../boonRarityType';
@@ -6,6 +6,7 @@ import { GodId } from '../god';
 import { AspectId } from '../weapon';
 import { MirrorTalentId } from '../mirror';
 import { KeepsakeId } from '../keepsake';
+import { BoonSlot } from '../boonSlot';
 
 const Boons_Hermes: Array<Boon> = [
     {
@@ -14,11 +15,15 @@ const Boons_Hermes: Array<Boon> = [
         description: 'Foes drop [Cast] stuck in them faster.',
         godId: GodId.Hermes,
         pommable: false,
-        // requirementTest: doesNotHaveAnyOf([ 'Demeter_Cast', 'Duo_Ares_Poseidon', 'Ares_Cast', 'Dionysus_Cast' ]),
-        // qq can we still get this if we take incompatible casts?
         testRunAvailability: allOf([
             notUsingAspect(AspectId.Shield_Beowulf),
-            hasMirrorTalent(MirrorTalentId.InfernalSoul) // qq what if this talent is disabled (i.e. not taken or removed by heat)?
+            hasMirrorTalent(MirrorTalentId.InfernalSoul),
+        ]),
+        testRequirements: noneOf([
+            hasBoon(BoonId.Ares_Cast),
+            hasBoon(BoonId.Dionysus_Cast),
+            hasBoon(BoonId.Demeter_Cast),
+            hasBoon(BoonId.Duo_Ares_Poseidon),
         ]),
         iconPath: './Icons/Boon/Hermes/Hermes_QuickReload.webp',
     },
@@ -28,7 +33,7 @@ const Boons_Hermes: Array<Boon> = [
         description: 'You regenerate [Cast] faster.',
         godId: GodId.Hermes,
         pommable: false,
-        testRunAvailability: hasMirrorTalent(MirrorTalentId.StygianSoul), // qq what if this talent is disabled (i.e. not taken or removed by heat)?
+        testRunAvailability: hasMirrorTalent(MirrorTalentId.StygianSoul),
         iconPath: './Icons/Boon/Hermes/Hermes_AutoReload.webp',
     },
     {
@@ -69,8 +74,10 @@ const Boons_Hermes: Array<Boon> = [
         description: 'After using Call, gain Dodge chance and move speed for 10 Sec.',
         godId: GodId.Hermes,
         pommable: false,
-        // requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        // qq do we need aid?
+        testRequirements: oneOrMoreOf([
+            hasBoonInSlot(BoonSlot.Aid),
+            usingKeepsake(KeepsakeId.Hades),
+        ]),
         iconPath: './Icons/Boon/Hermes/Hermes_SecondWind.webp',
     },
     {
@@ -100,7 +107,7 @@ const Boons_Hermes: Array<Boon> = [
                 usingAspect(AspectId.Shield_Beowulf),
                 usingAspect(AspectId.Bow_Hera),
             ]),
-            hasMirrorTalent(MirrorTalentId.InfernalSoul) // qq what if this talent is disabled (i.e. not taken or removed by heat)?
+            hasMirrorTalent(MirrorTalentId.InfernalSoul),
         ]),
         iconPath: './Icons/Boon/Hermes/Hermes_FlurryCast.webp',
     },
@@ -110,8 +117,10 @@ const Boons_Hermes: Array<Boon> = [
         description: 'Your Call charges up automatically.',
         godId: GodId.Hermes,
         pommable: false,
-        // requirementTest: hasAtLeastOneOf([ 'Aphrodite_Aid', 'Ares_Aid', 'Artemis_Aid', 'Athena_Aid', 'Demeter_Aid', 'Dionysus_Aid', 'Poseidon_Aid', 'Zeus_Aid' ]), // AND HADES AID!!!!!
-        // qq do we need aid?
+        testRequirements: oneOrMoreOf([
+            hasBoonInSlot(BoonSlot.Aid),
+            usingKeepsake(KeepsakeId.Hades),
+        ]),
         iconPath: './Icons/Boon/Hermes/Hermes_QuickFavor.webp',
     },
     {
@@ -150,7 +159,7 @@ const Boons_Hermes: Array<Boon> = [
         godId: GodId.Hermes,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
-        testRunAvailability: hasMirrorTalent(MirrorTalentId.InfernalSoul), // qq what if this talent is disabled (i.e. not taken or removed by heat)?
+        testRunAvailability: hasMirrorTalent(MirrorTalentId.InfernalSoul),
         testRequirements: oneOrMoreOf([
             hasBoon(BoonId.Hermes_FlurryCast),
             hasBoon(BoonId.Hermes_QuickReload),
@@ -165,7 +174,7 @@ const Boons_Hermes: Array<Boon> = [
         godId: GodId.Hermes,
         rarityType: BoonRarityType.Legendary,
         pommable: false,
-        testRunAvailability: hasMirrorTalent(MirrorTalentId.StygianSoul), // qq what if this talent is disabled (i.e. not taken or removed by heat)?
+        testRunAvailability: hasMirrorTalent(MirrorTalentId.StygianSoul),
         testRequirements: oneOrMoreOf([
             hasBoon(BoonId.Hermes_AutoReload),
             usingKeepsake(KeepsakeId.Hermes),

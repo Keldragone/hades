@@ -75,9 +75,9 @@ const Boons_Duo: Array<Boon> = [
                 hasBoon(BoonId.Aphrodite_Attack),
                 hasBoon(BoonId.Aphrodite_Special),
                 hasBoon(BoonId.Aphrodite_Aid),
-            ])
+            ]),
+            doesNotHaveBoon(BoonId.Dionysus_Cast),
         ]),
-        // qq apparently ALSO not allowed to have dionysus cast; test this
         testRunAvailability: notUsingAspect(AspectId.Shield_Beowulf),
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Athena.webp',
     },
@@ -99,7 +99,6 @@ const Boons_Duo: Array<Boon> = [
                 hasBoon(BoonId.Aphrodite_Aid),
             ])
         ]),
-        // qq test cant get art-dem duo and also this
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Demeter.webp',
     },
     {
@@ -179,7 +178,6 @@ const Boons_Duo: Array<Boon> = [
             ]),
             notUsingKeepsake(KeepsakeId.Hades),
         ]),
-        // qq test can't get this with hades keepsake (aid)
         iconPath: './Icons/Boon/Duo/Duo_Aphrodite_Zeus.webp',
     },
     {

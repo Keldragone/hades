@@ -1,4 +1,4 @@
-import { hasBoon, notUsingAspect, oneOrMoreOf, usingAspect } from './requirementsTests';
+import { hasBoon, hasBoonInSlot, notUsingAspect, oneOrMoreOf, usingAspect, usingKeepsake } from './requirementsTests';
 
 import { Boon, BoonId } from './types';
 
@@ -6,6 +6,7 @@ import { BoonRarityType } from '../boonRarityType';
 import { BoonSlot } from '../boonSlot';
 import { GodId } from '../god';
 import { AspectId } from '../weapon';
+import { KeepsakeId } from '../keepsake';
 
 const Boons_Zeus: Array<Boon> = [
     {
@@ -63,8 +64,11 @@ const Boons_Zeus: Array<Boon> = [
         name: 'Billowing Strength',
         description: 'After using Call, you deal more damage for 15 Sec.',
         godId: GodId.Zeus,
+        testRequirements: oneOrMoreOf([
+            hasBoonInSlot(BoonSlot.Aid),
+            usingKeepsake(KeepsakeId.Hades),
+        ]),
         iconPath: './Icons/Boon/Zeus/Zeus_BillowingStrength.webp',
-        // qq need aid for this?
     },
     {
         id: BoonId.Zeus_LightningReflexes,
@@ -83,10 +87,13 @@ const Boons_Zeus: Array<Boon> = [
     {
         id: BoonId.Zeus_CloudedJudgment,
         name: 'Clouded Judgment',
-        description: 'Your GodId Gauge charges faster when you deal or take damage.',
+        description: 'Your God Gauge charges faster when you deal or take damage.',
         godId: GodId.Zeus,
+        testRequirements: oneOrMoreOf([
+            hasBoonInSlot(BoonSlot.Aid),
+            usingKeepsake(KeepsakeId.Hades),
+        ]),
         iconPath: './Icons/Boon/Zeus/Zeus_CloudedJudgment.webp',
-        // qq need aid for this?
     },
     {
         id: BoonId.Zeus_HighVoltage,
